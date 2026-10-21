@@ -1,0 +1,20 @@
+{
+  "name": "mobile-design-spec",
+  "description": "把 iOS、Android、HarmonyOS、微信小程序、H5 五套移动端尺寸规范落到代码，并覆盖平板、折叠屏、桌面、车机与大屏等扩展形态。 (single-plugin marketplace)",
+  "owner": {
+    "name": "Yardon",
+    "url": "https://github.com/YardonYan"
+  },
+  "metadata": {
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "mobile-design-spec",
+      "source": "./",
+      "description": "把 iOS、Android、HarmonyOS、微信小程序、H5 五套移动端尺寸规范落到代码，并覆盖平板、折叠屏、桌面、车机与大屏等扩展形态。",
+      "version": "1.0.0",
+      "category": "skill"
+    }
+  ]
+}

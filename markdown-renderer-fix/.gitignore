@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node (future)
+node_modules/
+package-lock.json
+
+# Design docs (internal only, not for publishing)
+CLAUDE_CODE_PROMPT.md
+
+# Environment
+.env
+*.bak
+
+# Temp files
+*.tmp
+*.log

@@ -1,0 +1,37 @@
+{
+  "name": "tech-blog-generator",
+  "version": "2.0",
+  "description": "Generates high-quality, 实战-oriented technical blogs from source code and documentation.",
+  "author": {
+    "name": "Yardon",
+    "url": "https://github.com/YardonYan"
+  },
+  "homepage": "https://github.com/YardonYan/tech-blog-generator",
+  "repository": "https://github.com/YardonYan/tech-blog-generator",
+  "license": "Apache-2.0",
+  "keywords": [
+    "agent-skill",
+    "ai-skill",
+    "tech-blog-generator"
+  ],
+  "skills": "./",
+  "hooks": {},
+  "interface": {
+    "displayName": "tech-blog-generator",
+    "shortDescription": "Generates high-quality, 实战-oriented technical blogs from source code and documentation.",
+    "longDescription": "Generates high-quality, 实战-oriented technical blogs from source code and documentation.",
+    "developerName": "Yardon",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "用 tech-blog-generator 处理当前项目里的相关任务",
+      "帮我看看这个项目的代码，用 tech-blog-generator 的规则来改"
+    ],
+    "websiteURL": "https://github.com/YardonYan/tech-blog-generator",
+    "screenshots": [],
+    "logo": "./assets/hero.png"
+  }
+}

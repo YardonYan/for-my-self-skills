@@ -1,0 +1,20 @@
+{
+  "name": "tech-blog-generator",
+  "description": "Generates high-quality, 实战-oriented technical blogs from source code and documentation. (single-plugin marketplace)",
+  "owner": {
+    "name": "Yardon",
+    "url": "https://github.com/YardonYan"
+  },
+  "metadata": {
+    "version": "2.0"
+  },
+  "plugins": [
+    {
+      "name": "tech-blog-generator",
+      "source": "./",
+      "description": "Generates high-quality, 实战-oriented technical blogs from source code and documentation.",
+      "version": "2.0",
+      "category": "skill"
+    }
+  ]
+}

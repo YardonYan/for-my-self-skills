@@ -1,0 +1,18 @@
+{
+  "name": "tech-blog-generator",
+  "version": "2.0",
+  "description": "Generates high-quality, 实战-oriented technical blogs from source code and documentation.",
+  "author": {
+    "name": "Yardon",
+    "url": "https://github.com/YardonYan"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/YardonYan/tech-blog-generator",
+  "repository": "https://github.com/YardonYan/tech-blog-generator",
+  "category": "skill",
+  "keywords": [
+    "agent-skill",
+    "ai-skill",
+    "tech-blog-generator"
+  ]
+}

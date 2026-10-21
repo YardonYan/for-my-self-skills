@@ -1,0 +1,201 @@
+# 前端 SSE 消费指南 / Frontend SSE Consumption Guide
+
+> 🇨🇳 ZH: SSE EventSource/fetch 消费、超时处理、断线重连、TextDecoder 流模式。
+> 🇬🇧 EN: SSE EventSource/fetch consumption, timeout handling, reconnection, TextDecoder stream mode.
+
+> **v3.0.0 — SSE Quality Checklist added**
+
+> 作者：Yardon | JavaScript 原生实现 + 框架适配
+
+## 完整消费函数（v2）
+
+```javascript
+async function consumeSSE(response, { onPing, onToken, onDone, onError }) {
+  if (!response.body) {
+    onError?.('Response body unavailable (opaque response from Service Worker?)');
+    return;
+  }
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder('utf-8');
+  let partialLine = '', fullText = '', streamDone = false;
+
+  try {
+    while (!streamDone) {
+      const { value, done } = await reader.read();
+      if (done) break;
+
+      const chunk = decoder.decode(value, { stream: true });
+      // ── SSE 行分隔符兼容：\r\n 和 \n ──
+      const lines = (partialLine + chunk).split(/\r?\n/);
+      partialLine = lines.pop() || '';
+
+      for (const line of lines) {
+        if (!line.startsWith('data: ')) continue;
+        const data = line.slice(6).trim();
+
+        if (data === '[DONE]') {
+          streamDone = true;
+          onDone(fullText);
+          break;
+        }
+        if (data === '[PING]') { onPing?.(); continue; }
+        if (data.startsWith('[ERROR]')) { onError(data.slice(7).trim()); return; }
+        if (data.startsWith('[')) continue;
+        const text = JSON.parse(data);
+        fullText += text; onToken(fullText);
+      }
+    }
+  } finally {
+    reader.releaseLock();
+    decoder.decode(); // 刷新缓冲区
+  }
+}
+```
+
+## TextDecoder 关键点
+
+```javascript
+// ❌ 错误
+const decoder = new TextDecoder();          // 虽然默认 utf-8，但不显式
+const text = decoder.decode(value);         // 缺少 { stream: true }
+
+// ✅ 正确
+const decoder = new TextDecoder('utf-8');
+// 循环中
+const chunk = decoder.decode(value, { stream: true });
+// 循环后刷新
+const final = decoder.decode();
+```
+
+## SSE 行分隔符兼容
+
+SSE 规范（[WHATWG](https://html.spec.whatwg.org/multipage/server-sent-events.html)）允许行以 `\r\n`、`\r` 或 `\n` 结尾。
+
+```javascript
+// ❌ 仅处理 \n
+const lines = (partial + chunk).split('\n');
+
+// ✅ 兼容 \r\n 和 \n
+const lines = (partial + chunk).split(/\r?\n/);
+
+// 更严格的规范兼容
+const lines = (partial + chunk).split(/(?:\r\n|\r|\n)/);
+```
+
+## SSE [DONE] 正确处理
+
+`[DONE]` 应同时退出内层 for 和外层 while 循环：
+
+```javascript
+// ❌ break 仅退出 for 循环，while 继续执行
+for (const line of lines) {
+  if (data === '[DONE]') break;  // 只退出 for，while 不退出
+}
+
+// ✅ 方案 1：使用标志位
+let streamDone = false;
+while (!streamDone) {
+  // read...
+  for (const line of lines) {
+    if (data === '[DONE]') { streamDone = true; break; }
+  }
+}
+
+// ✅ 方案 2：直接 return（如果在前端函数中）
+for (const line of lines) {
+  if (data === '[DONE]') { onDone(fullText); return; }
+}
+```
+
+## 超时管理
+
+```javascript
+const FIRST_CONTENT_TIMEOUT = 25000; // 25s（后端每 15s ping 一次）
+let hasPing = false;
+
+while (!streamDone) {
+  let readResult;
+  if (!hasPing) {
+    readResult = await Promise.race([
+      reader.read(),
+      new Promise(r => setTimeout(() => r({ timeout: true }), FIRST_CONTENT_TIMEOUT))
+    ]);
+    if ('timeout' in readResult) throw new Error('timeout'); // 明确检查属性存在，避免类型混淆
+  } else {
+    readResult = await reader.read();
+  }
+
+  // ... parse
+  if (data === '[PING]') hasPing = true; // 收到 ping → 取消超时
+}
+```
+
+## AbortController 最佳实践
+
+```javascript
+let abortCtl = null;
+
+function send() {
+  abortCtl = new AbortController();
+
+  const res = await fetch('/api/chat/stream', {
+    signal: abortCtl.signal,
+    // ...
+  });
+
+  // 用户取消
+  // abortCtl.abort() → fetch 抛出 AbortError
+}
+
+function cancel() {
+  abortCtl?.abort();
+  abortCtl = null;
+}
+
+// 清理时
+function cleanup() {
+  abortCtl = null;
+  // 防止旧 abortCtl 影响下次请求
+  const oldEl = document.getElementById('streamingMsg');
+  if (oldEl) oldEl.removeAttribute('id');
+}
+```
+
+## 重连机制
+
+```javascript
+async function sendWithRetry(payload, maxRetries = 2) {
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      await sendMessage(payload);
+      return; // 成功
+    } catch (err) {
+      if (attempt === maxRetries) throw err;
+      // 等待后重试
+      await new Promise(r => setTimeout(r, 1000 * (attempt + 1)));
+    }
+  }
+}
+```
+
+## 错误处理矩阵
+
+| 错误 | `err.name` | 用户提示 | 操作 |
+|------|-----------|---------|------|
+| 用户取消 | `AbortError` | "已取消生成" | 不重试 |
+| SSE 超时 | `Error('timeout')` | "响应较慢，正在切换..." | 降级到非流式 |
+| 网络断开 | `TypeError` | "无法连接到后端服务" | 提示检查服务 |
+| 服务器错误 | `Error('stream error')` | 具体错误信息 | 重试 1 次 |
+
+## SSE Quality Checklist / SSE 实现质量检查清单
+
+在实现或审查 SSE 消费者代码时，逐项检查以下要点：
+
+- [ ] `TextDecoder` 使用 `new TextDecoder('utf-8')` 显式指定编码
+- [ ] `TextDecoder.decode()` 循环中传入 `{ stream: true }`，循环结束后调用无参 `decode()` 刷新缓冲区
+- [ ] SSE 行分隔同时兼容 `\r\n` 和 `\n`（使用 `split(/\r?\n/)`）
+- [ ] `[DONE]` 信号正确终止流式循环（同时退出内层 for 和外层 while）
+- [ ] `AbortController` 用于超时处理和用户取消，`signal` 传入 `fetch()`
+- [ ] `reader.releaseLock()` 在 `finally` 块中执行，确保资源释放
+- [ ] 流式消息 `id` 属性在完成后清理（如移除 `#streamingMsg` 的 id）
+- [ ] 错误状态以用户可见方式展示（UI 提示），而非仅 `console.error`

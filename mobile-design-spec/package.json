@@ -1,0 +1,33 @@
+{
+  "name": "mobile-design-spec",
+  "version": "1.0.0",
+  "description": "把 iOS、Android、HarmonyOS、微信小程序、H5 五套移动端尺寸规范落到代码里，附带单位换算与规范走查脚本",
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "node scripts/selftest.mjs",
+    "convert": "node scripts/convert.cjs",
+    "audit": "node scripts/audit.cjs",
+    "data": "node tools/build_data.mjs",
+    "data:check": "node tools/build_data.mjs --check",
+    "provenance": "node tools/build_provenance.mjs",
+    "provenance:check": "node scripts/check_provenance.mjs",
+    "data:verify": "node tools/build_data.mjs --check && node tools/build_provenance.mjs --check && node scripts/check_provenance.mjs",
+    "skill:install": "node tools/install.mjs",
+    "plugins": "node tools/build_plugins.mjs ."
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "qoder-skill",
+    "agent-skill",
+    "design-spec",
+    "mobile",
+    "ios",
+    "android",
+    "harmonyos",
+    "miniprogram",
+    "h5",
+    "responsive"
+  ]
+}

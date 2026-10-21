@@ -1,0 +1,56 @@
+# UI Display Metadata
+# This file provides metadata for OpenClaw skill marketplace display
+
+name: tech-blog-generator
+display_name: Tech Blog Generator
+description: 将代码和文档转换为高质量中英文技术博客，集成 21 条写作规则、6 种文体模板、10 种语言代码陷阱
+icon: 📝
+category: developer_tools
+tags:
+  - code
+  - blog
+  - documentation
+  - technical-writing
+  - tutorial
+  - chinese-writing
+  - code-review
+
+# Trigger keywords
+triggers:
+  - write a blog
+  - generate tutorial
+  - explain code
+  - create documentation
+  - code review blog
+  - write a postmortem
+  - deep dive
+  - architecture overview
+  - 技术博客
+  - 写博客
+  - 写教程
+  - 代码讲解
+  - 源码分析
+  - 技术分享
+
+# File type support
+supported_files:
+  - .py
+  - .go
+  - .java
+  - .js
+  - .ts
+  - .jsx
+  - .tsx
+  - .rs
+  - .cpp
+  - .cs
+  - .kt
+  - .swift
+  - .md
+  - .pdf
+  - .txt
+  - .yaml
+  - .dockerfile
+
+# Freedom level (1-5, 5 = most autonomous)
+freedom_level: 3
