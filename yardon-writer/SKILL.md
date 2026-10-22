@@ -39,6 +39,7 @@ description: |
 3. 定原型（见 `references/article-prototypes.md`）
 4. 开写。AI 负责背景知识、类比候选、结构建议、按角度扩写；真实经历、核心角度、情绪表达必须人来给
 5. 过四层自检（见 `references/banned-and-check.md`）
+6. 过阅读体验自检（见 `references/readability.md`）。这一步决定读者会不会读下去，不能跳
 6. 终审定稿
 
 ## 文件索引
@@ -49,6 +50,7 @@ description: |
 | `references/voice-dna.md` | 他的语言 DNA：类比公式、自问自答、短句判断 |
 | `references/article-prototypes.md` | 五种文章原型与各自写法重心 |
 | `references/banned-and-check.md` | 双向禁用清单、四层自检 |
+| `references/readability.md` | 阅读体验层：数字分级、加粗收敛、开头写法、节奏与情绪线 |
 
 ## 底线
 
