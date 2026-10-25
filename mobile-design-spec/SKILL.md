@@ -2,6 +2,17 @@
 name: mobile-design-spec
 description: 把 iOS、Android、HarmonyOS、微信小程序、H5 五套移动端尺寸规范落到代码，并覆盖平板、折叠屏、桌面、车机与大屏等扩展形态。用于编写或修改移动端与响应式页面 (CSS/WXSS/SCSS/HTML/SwiftUI/Jetpack Compose/ArkTS .ets/Android XML)、逐机型查询屏幕参数与安全区高度、适配 iPad 与 macOS 和 Chromebook 和 tvOS 与 visionOS 与 watchOS、处理折叠屏与三折叠的多态布局、适配刘海屏和手势区、在 pt/dp/sp/vp/fp/lpx/rpx/px/rem/vw/dvh 之间换算、定切图倍率、做设计稿标注、检查触控热区和字号下限、按 WCAG 2.2 校验可点区域。数值取自 Apple HIG、Material Design 3、HarmonyOS Design、微信小程序文档、MDN 与 WCAG, 机型与份额数据基准 2026-10。
 argument-hint: <文件或目录路径, 或尺寸值如 16pt>
+category: mobile
+tags:
+  - mobile
+  - ios
+  - android
+  - harmonyos
+  - wechat-miniprogram
+  - responsive
+  - safe-area
+  - accessibility
+  - wcag
 ---
 
 # 移动端尺寸规范落地
