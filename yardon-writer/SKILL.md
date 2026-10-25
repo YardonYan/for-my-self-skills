@@ -2,6 +2,15 @@
 name: yardon-writer
 description: |
   Yardon 的写作风格，由他自己的技术长文风格与一套成熟的长文写作方法论融合而成。当需要写公众号文章、技术博客、CSDN 长文、项目复盘、经验总结、职场观察时使用。触发词包括但不限于：写文章、写博客、写篇长文、帮我写、续写、扩写、把素材写成文章、按我的风格写、写个复盘、总结成文章。也适用于丢过来一个 PDF、新闻链接、语音转文字或零散想法说「帮我写篇」。不要用于短内容（朋友圈、推特、小红书短帖）或纯标题摘要。
+license: Apache-2.0
+category: writing
+tags:
+  - writing
+  - chinese
+  - longform
+  - technical-writing
+  - narrative
+  - style
 ---
 
 # Yardon 写作风格
