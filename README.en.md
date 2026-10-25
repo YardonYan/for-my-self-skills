@@ -269,6 +269,8 @@ This public repo contains only the 7 public skills. Personal context, private sk
 
 ## License
 
+The root [LICENSE](./LICENSE) is Apache-2.0; [NOTICE](./NOTICE) documents the third-party exception.
+
 Six original skills are Apache-2.0: html-skill-effectiveness, markdown-renderer-fix, mobile-design-spec, task-skill-orchestrator, tech-blog-generator and yardon-writer. Each folder includes a `LICENSE` file.
 
 `html-designer__skillhub` is a third-party skill collected from SkillHub. It does not include a separate LICENSE file; check the original source and its license before reuse or redistribution.
@@ -285,3 +287,15 @@ Issues and PRs are welcome. To keep each skill traceable:
 ## Changelog
 
 Per-skill changes are recorded in [CHANGELOG.md](./CHANGELOG.md).
+
+---
+
+<div align="center">
+
+[Apache-2.0 License](./LICENSE) · free to use / modify / redistribute with copyright and license notices
+
+Six original skills are Apache-2.0; `html-designer__skillhub` is a third-party skill — see its folder and original source for licensing.
+
+Made by [@YardonYan](https://github.com/YardonYan)
+
+</div>

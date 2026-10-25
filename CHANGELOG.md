@@ -4,6 +4,11 @@ All notable changes to the public skill set. Each skill has its own section so c
 
 ## 2026-10-26
 
+### License
+
+- 中文：新增根 `LICENSE`（Apache-2.0）与 `NOTICE`，两份 README 增加许可 footer；6 个原创 Skill 为 Apache-2.0，`html-designer__skillhub` 为第三方例外。
+- English: Added a root `LICENSE` (Apache-2.0) and `NOTICE`, plus a license footer in both READMEs. Six original skills are Apache-2.0; `html-designer__skillhub` is a third-party exception.
+
 ### Repository
 
 - 中文：公开目录重写为中英文双语；新增 7 个 Skill 的用途、触发场景、标签、安装方式和兼容性说明；公开层固定为 7 个技能。

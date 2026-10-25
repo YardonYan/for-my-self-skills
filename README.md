@@ -269,6 +269,8 @@ for-my-self-skills/
 
 ## License
 
+仓库根目录的 [LICENSE](./LICENSE) 是 Apache-2.0；[NOTICE](./NOTICE) 说明第三方例外。
+
 6 个原创 Skill 使用 Apache-2.0：html-skill-effectiveness、markdown-renderer-fix、mobile-design-spec、task-skill-orchestrator、tech-blog-generator、yardon-writer。每个目录内附 `LICENSE`。
 
 `html-designer__skillhub` 是从 SkillHub 收集的第三方 Skill，目录内没有独立 LICENSE 文件；复用或再分发前请核对原始来源与许可。
@@ -285,3 +287,15 @@ Issue 和 PR 都欢迎。为了让每个 Skill 的变更可追溯，约定：
 ## Changelog
 
 每个 Skill 的变更记录见 [CHANGELOG.md](./CHANGELOG.md)。
+
+---
+
+<div align="center">
+
+[Apache-2.0 License](./LICENSE) · 自由使用 / 修改 / 再分发（保留版权与许可声明）
+
+6 个原创 Skill 使用 Apache-2.0；`html-designer__skillhub` 为第三方 Skill，许可见其目录与原始来源。
+
+Made by [@YardonYan](https://github.com/YardonYan)
+
+</div>
