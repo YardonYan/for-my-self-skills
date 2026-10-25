@@ -1,6 +1,18 @@
 ---
 name: html-designer
 description: 'Expert web graphic designer specializing in HTML/CSS design with deep knowledge of graphic design principles, typography, color theory, and visual hierarchy. Use when creating visually stunning HTML pages, implementing design systems, building landing pages, designing portfolios, crafting marketing pages, or applying professional graphic design principles to web projects. Ideal for translating design concepts into semantic, accessible HTML with responsive layouts and aesthetic excellence. Keywords: web design, graphic design, HTML templates, landing pages, portfolios, typography, color palettes, visual hierarchy, grid systems, accessibility.'
+category: design
+tags:
+  - web-design
+  - html
+  - css
+  - typography
+  - color
+  - landing-page
+  - portfolio
+  - accessibility
+version: "1.0.0"
+source: SkillHub
 ---
 
 # HTML Designer Skill
