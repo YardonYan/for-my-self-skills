@@ -23,6 +23,7 @@ tags:
   - orchestration
   - task-scheduling
   - multi-agent
+category: orchestration
 ---
 
 # Task Orchestrator v1.0.0
