@@ -2,10 +2,8 @@
   "slug": "html-designer",
   "name": "HTML Designer",
   "version": "1.0.0",
-  "installedAt": 1786346010182,
   "source": "skillhub",
   "iconSource": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/60484da4-21ca-4044-b2ff-2b3a1ddcd63f.png",
-  "iconLocalPath": "C:\\Users\\Yardon\\.workbuddy\\skills\\html-designer__skillhub\\_icon.png",
   "iconDownloadedFrom": "https://cloudcache.tencent-cloud.com/qcloud/ui/static/other_external_resource/60484da4-21ca-4044-b2ff-2b3a1ddcd63f.png",
   "installedContentHash": "sha256:7884ad855d90304ae8a9aa8b4925cd253d5c2a3838d6cbca0285b003a9f2d21d"
 }
