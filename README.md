@@ -1,6 +1,6 @@
 # for-my-self-skills
 
-YardonYan 的可公开技能集，8 个。
+YardonYan 的可公开技能集，7 个。
 
 ## 怎么用
 
@@ -20,13 +20,8 @@ git clone https://github.com/YardonYan/for-my-self-skills.git
 | task-skill-orchestrator | 复杂任务拆成 DAG，分波次并行 |
 | tech-blog-generator | 从代码或文档生成技术博客，中英双语 |
 | yardon-writer | 带个人风格的长文写作，双模式 |
-| yardon-router | 技能路由：什么场景用哪个技能、什么顺序 |
 | html-designer__skillhub | 网页视觉设计 |
 
 ## 不含哪些
 
-部分涉及个人信息的技能只在私有仓保存，不在这里公开。
-
-## 许可
-
-各技能目录内附 LICENSE。未附者按 Apache-2.0 处理。
+5 个涉及个人信息的技能和技能路由只在私有层保存，不在这里公开。公开集不含个人上下文。
