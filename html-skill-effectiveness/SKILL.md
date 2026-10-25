@@ -6,6 +6,15 @@ description: >-
   Use when the user asks for a report, comparison, dashboard, slide deck or interactive explainer delivered as one HTML file.
   NOT for auth, payment, backend logic or real-time database scenarios — refuse and inform the user in those cases.
 license: Apache-2.0
+category: frontend
+tags:
+  - html
+  - single-file
+  - report
+  - dashboard
+  - presentation
+  - interactive
+  - frontend
 ---
 
 
