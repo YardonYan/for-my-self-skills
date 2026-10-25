@@ -45,6 +45,15 @@ All notable changes to the public skill set. Each skill has its own section so c
 
 - 中文：新增中英文 README，说明这是 SkillHub 第三方 Skill、来源与版本，并补充安装、适用场景和标签；没有附加来源不明的 LICENSE。
 - English: Added Chinese/English READMEs documenting that this is a third-party SkillHub skill, its source and version, plus install, use cases and tags. No LICENSE was added because the original license is not included.
+- 中文：从 `_skillhub_meta.json` 移除本机安装路径。
+- English: Removed the local install path from `_skillhub_meta.json`.
+
+### tech-blog-generator
+
+- 中文：增加 `category: writing` 与发现标签：`technical-writing`、`blog`、`tutorial`、`documentation`、`bilingual`、`chinese`。
+- English: Added `category: writing` and discovery tags: `technical-writing`, `blog`, `tutorial`, `documentation`, `bilingual`, `chinese`.
+- 中文：移除包含本机路径的一次性 `scripts/backfill-contributions.ps1`。
+- English: Removed the one-off `scripts/backfill-contributions.ps1` that contained a local path.
 
 ## Earlier
 
