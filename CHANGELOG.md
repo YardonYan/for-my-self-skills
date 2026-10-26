@@ -4,6 +4,19 @@ All notable changes to the public skill set. Each skill has its own section so c
 
 ## 2026-10-26
 
+### 新增 wechat-mp-publish
+
+- 中文：新增 `wechat-mp-publish`，把「Markdown → 公众号」这条链路补全。核心解决图片丢失：微信只渲染 `mmbiz.qpic.cn` 上的图，外链与第三方图床会被过滤且有 Referer 防盗链，所以推送前必须把每张正文图走 `media/uploadimg` 换成微信图床地址。
+- English: Added `wechat-mp-publish`, closing the Markdown-to-WeChat pipeline. The core fix is images: WeChat only renders images hosted on `mmbiz.qpic.cn`, while external links and third-party image hosts get filtered and hit Referer hotlink protection. Every body image must go through `media/uploadimg` before publishing.
+- 中文：四个子命令：`convert`（Markdown 转全内联样式 HTML，可粘贴）、`check`（过滤规则合规检查）、`push`（传图 + 传封面 + 写草稿箱）、`doctor`（凭据与连通性自检）。只依赖 Python 标准库。
+- English: Four subcommands: `convert` (Markdown to all-inline HTML, paste-ready), `check` (filter-rule compliance), `push` (upload images, upload cover, write draft), `doctor` (credential and connectivity check). Standard library only.
+- 中文：渲染器按微信的脾气来：整段加粗自动变金句块，代码块用 `section` + `br` 而非 `pre`，mermaid 直接报错拦住，表格超过 3 列给提示。内置青竹、墨黑、经典蓝三套主题，改 `assets/themes.json` 即可扩展。
+- English: The renderer follows WeChat's rules: an all-bold paragraph becomes a pull-quote, code blocks use `section` plus `br` instead of `pre`, mermaid blocks fail fast, and tables wider than 3 columns trigger a warning. Three themes ship in `assets/themes.json`; adding one needs no code change.
+- 中文：明确不做发布。2025 年 7 月起 `freepublish/submit` 对个人主体与未认证企业号已回收，草稿箱接口也需认证账号（未认证返回 48001），所以工具止步于草稿箱，发布由人点。错误码 40164 / 40007 / 48001 / 40008 / 45004 均给中文处置建议。
+- English: Publishing is deliberately out of scope. Since July 2025 `freepublish/submit` is closed to personal and unverified business accounts, and the draft API itself needs a verified account (`48001` otherwise), so the tool stops at the draft box and a human clicks publish. Error codes 40164, 40007, 48001, 40008 and 45004 all map to plain-language fixes.
+- 中文：归入「文档与交付」类，该类由 3 增至 4，说明改为「转换要保真，演示要能看懂，发布要落到位」。公开层 15 → 16 个，原创 14 → 15 个。
+- English: Filed under Documents and Delivery, which grew from 3 to 4 and now reads "conversions keep fidelity, decks read clearly, publishing lands intact". Public layer 15 → 16, original skills 14 → 15.
+
 ### 新增 slides-workflow
 
 - 中文：新增 `slides-workflow`，把一套用 AI 做 PPT 的方法论落成可复用 Skill：四阶段流程（采集与逐页稿 → 风格说明 → 选形态制作 → 局部打磨），前两阶段设硬闸；三形态（HTML Slides / 整页图片 / 可编辑 PPTX）各有硬约束、制作提示词与验收清单；含图片稿还原方法、九个已知失败模式、两个零依赖校验脚本。

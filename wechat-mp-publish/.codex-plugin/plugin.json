@@ -1,0 +1,40 @@
+{
+  "name": "wechat-mp-publish",
+  "version": "1.0.0",
+  "description": "Turn Markdown articles into WeChat Official Account posts: all-inline styles, images uploaded to the WeChat CDN, and an optional push straight into the draft box.",
+  "author": {
+    "name": "Yardon",
+    "url": "https://github.com/YardonYan"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/YardonYan/for-my-self-skills/tree/main/wechat-mp-publish",
+  "repository": "https://github.com/YardonYan/for-my-self-skills/tree/main/wechat-mp-publish",
+  "keywords": [
+    "agent-skill",
+    "ai-skill",
+    "wechat-mp-publish",
+    "wechat",
+    "official-account",
+    "markdown",
+    "publishing"
+  ],
+  "skills": "./",
+  "hooks": {},
+  "interface": {
+    "displayName": "wechat-mp-publish",
+    "shortDescription": "Turn Markdown articles into WeChat Official Account posts: all-inline styles, images uploaded to the WeChat CDN, and an optional push straight into the draft box.",
+    "longDescription": "Turn Markdown articles into WeChat Official Account posts: all-inline styles, images uploaded to the WeChat CDN, and an optional push straight into the draft box.",
+    "developerName": "Yardon",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "把这篇文章排版发到公众号",
+      "把这篇 md 推送到公众号草稿箱"
+    ],
+    "websiteURL": "https://github.com/YardonYan/for-my-self-skills/tree/main/wechat-mp-publish",
+    "screenshots": []
+  }
+}

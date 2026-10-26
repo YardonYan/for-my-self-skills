@@ -1,0 +1,30 @@
+# wechat-mp-publish
+
+# 凭据
+.env
+*.env
+!*.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor temp files
+*.swp
+*.swo
+*~
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE
+.vscode/
+.idea/
+
+# 本地产物
+公众号版.html
+*.wmp.png
+*.wmp.jpg

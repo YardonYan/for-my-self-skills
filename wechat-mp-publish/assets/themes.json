@@ -1,0 +1,48 @@
+{
+  "_readme": "主题配色。改这里的值就能扩展新主题，不需要改代码。脚本用 --theme 指定 key。",
+  "qing": {
+    "name": "青竹",
+    "accent": "#2f6b66",
+    "text": "#3f3f3f",
+    "strong": "#1a1a17",
+    "muted": "#9a9a9a",
+    "border": "#ececec",
+    "codeBg": "#f6f7f9",
+    "codeText": "#333333",
+    "quoteBg": "#f5f8f7",
+    "inlineCodeText": "#2f6b66",
+    "fontSize": "16px",
+    "lineHeight": "1.9",
+    "letterSpacing": "0.4px"
+  },
+  "ink": {
+    "name": "墨黑",
+    "accent": "#1f2328",
+    "text": "#3d3d3d",
+    "strong": "#111111",
+    "muted": "#999999",
+    "border": "#e8e8e8",
+    "codeBg": "#f5f5f5",
+    "codeText": "#2b2b2b",
+    "quoteBg": "#f7f7f7",
+    "inlineCodeText": "#c0392b",
+    "fontSize": "16px",
+    "lineHeight": "1.85",
+    "letterSpacing": "0.4px"
+  },
+  "blue": {
+    "name": "经典蓝",
+    "accent": "#1e6feb",
+    "text": "#3f3f3f",
+    "strong": "#1a1a17",
+    "muted": "#9a9a9a",
+    "border": "#e9eef7",
+    "codeBg": "#f4f7fc",
+    "codeText": "#2f3b4c",
+    "quoteBg": "#f2f6fd",
+    "inlineCodeText": "#1e6feb",
+    "fontSize": "16px",
+    "lineHeight": "1.9",
+    "letterSpacing": "0.4px"
+  }
+}

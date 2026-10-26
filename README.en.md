@@ -4,9 +4,9 @@
 
 # Yardon Skills
 
-#### Fifteen Agent Skills I use and maintain in real projects
+#### Sixteen Agent Skills I use and maintain in real projects
 
-[![Skills](https://img.shields.io/badge/Skills-15-10B981?style=flat-square)](#catalog)
+[![Skills](https://img.shields.io/badge/Skills-16-10B981?style=flat-square)](#catalog)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-8B5CF6?style=flat-square)](#compatibility)
 [![License](https://img.shields.io/badge/License-Apache--2.0-D97706?style=flat-square)](#license)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-D97706?style=flat-square&logo=anthropic&logoColor=white)](#compatibility)
@@ -26,7 +26,7 @@ Grouped by where the skill sits in your work, four categories, one skill each. S
 | Category | What it covers | Skills |
 |---|---|---|
 | [Web and Frontend](#web-and-frontend) | Produce interfaces, or fix what is visibly broken in them. Page specs, visual design, mobile sizing, plus rendering-layer debugging for Markdown and SSE. | 4 |
-| [Documents and Delivery](#documents-and-delivery) | Turn content into a file someone else can just open: conversions keep fidelity, decks have to be understood. | 3 |
+| [Documents and Delivery](#documents-and-delivery) | Turn content into a file someone else can just open: conversions keep fidelity, decks read clearly, publishing lands intact. | 4 |
 | [Engineering Workflow and Quality](#engineering-workflow-and-quality) | Own how the work gets done and whether it is right. Requirement-to-design flow, review standards, parallel task orchestration, document merge adjudication, and how lessons persist. | 5 |
 | [Writing and Expression](#writing-and-expression) | Turn thinking into something a person reads clearly and a model executes precisely. | 3 |
 
@@ -45,13 +45,14 @@ Produce interfaces, or fix what is visibly broken in them. Page specs, visual de
 
 ### Documents and Delivery
 
-Turn content into a file someone else can just open: conversions keep fidelity, decks have to be understood.
+Turn content into a file someone else can just open: conversions keep fidelity, decks read clearly, publishing lands intact.
 
 | Skill | One-liner | Tags | Docs |
 |---|---|---|---|
 | [md-to-docx](./md-to-docx/) | Lossless Markdown to Word with element-by-element fidelity and a zero-loss check | `markdown` `docx` `python-docx` | [中文](./md-to-docx/README.md) · [EN](./md-to-docx/README.en.md) |
 | [html-to-pdf](./html-to-pdf/) | Print-optimized HTML to PDF via headless Chrome, CJK text intact | `pdf` `headless-chrome` `print` | [中文](./html-to-pdf/README.md) · [EN](./html-to-pdf/README.en.md) |
 | [slides-workflow](./slides-workflow/) | Raw material to finished deck: page script, style spec, then one of three formats | `slides` `ppt` `pptx` `deck` | [中文](./slides-workflow/README.md) · [EN](./slides-workflow/README.en.md) |
+| [wechat-mp-publish](./wechat-mp-publish/) | Markdown to a WeChat draft, and images that survive the trip | `wechat` `markdown` `publishing` | [中文](./wechat-mp-publish/README.md) · [EN](./wechat-mp-publish/README.en.md) |
 
 ### Engineering Workflow and Quality
 
@@ -212,7 +213,7 @@ Docs: [中文](./markdown-renderer-fix/README.md) · [English](./markdown-render
 
 ### Documents and Delivery
 
-Turn content into a file someone else can just open: conversions keep fidelity, decks have to be understood.
+Turn content into a file someone else can just open: conversions keep fidelity, decks read clearly, publishing lands intact.
 
 <details>
 <summary><b>md-to-docx</b> — Map Markdown to Word element by element, then prove nothing was dropped. `RESULT: PASS` or it isn't done.</summary>
@@ -280,6 +281,31 @@ I have a deck as images and want a PPTX I can edit.
 **Tags:** `slides` `ppt` `pptx` `presentation` `deck` `workflow`
 
 Docs: [中文](./slides-workflow/README.md) · [English](./slides-workflow/README.en.md)
+
+</details>
+
+<details>
+<summary><b>wechat-mp-publish</b> — Markdown in, WeChat draft out. Fixes the problem that keeps biting: images vanish after pasting.</summary>
+
+**What it solves:** Publishing to WeChat rarely fails on layout. It fails on images. `![](images/a.png)` in Markdown becomes a broken icon once pasted, and hosting on Gitee or OSS does not help — WeChat only renders images from its own CDN and adds Referer hotlink protection. This skill uploads every image through `media/uploadimg` to get an `mmbiz.qpic.cn` URL before writing the article body.
+
+**When to use it:** Publishing markdown to WeChat, images that disappear after upload, or pushing an article into the draft box.
+
+**Inside:** Markdown to all-inline HTML (WeChat strips style and class tags), three themes, automatic image upload and oversized-image compression, field-limit validation, draft push, a credential and connectivity check, plus an error-code table for 40164, 40007 and 48001.
+
+**Boundaries:** Stops at the draft box and never clicks publish. No Xiaohongshu or Zhihu layout. Does not write the article.
+
+**Example prompts:**
+
+```
+Lay this article out for our WeChat account.
+Why do my images disappear after uploading?
+Push this markdown into the WeChat draft box.
+```
+
+**Tags:** `wechat` `markdown` `publishing` `inline-style` `draft`
+
+Docs: [中文](./wechat-mp-publish/README.md) · [English](./wechat-mp-publish/README.en.md)
 
 </details>
 
@@ -502,6 +528,7 @@ Docs: [中文](./prompt-optimizer/README.md) · [English](./prompt-optimizer/REA
 | md-to-docx | Python + python-docx | Required by both scripts |
 | html-to-pdf | Chrome/Edge + PyMuPDF | PyMuPDF only for the verification step |
 | slides-workflow | Python 3.8+ (scripts only) | Production-stage external skills are optional; prompts work without them |
+| wechat-mp-publish | Python 3.8+ (scripts only) | Draft push needs a verified account; paste route does not |
 | code-review | None | Any Agent Skills-compatible tool |
 | dev-workflow | None | Pairs well with code-review |
 | task-skill-orchestrator | OpenClaw `sessions_spawn` + 5 sub-agents | Other platforms need a custom dispatch layer |
@@ -531,7 +558,7 @@ for-my-self-skills/
 ├── mobile-design-spec/
 ├── markdown-renderer-fix/
 │
-│   ── Documents and Delivery (3) ──
+│   ── Documents and Delivery (4) ──
 ├── md-to-docx/
 │   ├── SKILL.md
 │   └── scripts/              conversion and zero-loss verification
@@ -541,6 +568,11 @@ for-my-self-skills/
 │   ├── references/           four-stage method and three build prompts
 │   ├── assets/               brief, page script and style spec templates
 │   └── scripts/              scaffold.py, verify.py
+├── wechat-mp-publish/
+│   ├── SKILL.md
+│   ├── references/           API details, WeChat filter rules
+│   ├── assets/               colour themes
+│   └── scripts/              wmp.py (convert / check / push / doctor)
 │
 │   ── Engineering Workflow and Quality (5) ──
 ├── code-review/
@@ -566,13 +598,13 @@ Every folder uses `SKILL.md` as the entry point. `references/` is loaded on dema
 
 ## Privacy boundary
 
-This public repo contains only the 15 public skills. Personal context, private skills and company material are not included. Names, emails, phone numbers, companies and data in examples are fictional or placeholders. If you find real information in a skill, please open an issue.
+This public repo contains only the 16 public skills. Personal context, private skills and company material are not included. Names, emails, phone numbers, companies and data in examples are fictional or placeholders. If you find real information in a skill, please open an issue.
 
 ## License
 
 The root [LICENSE](./LICENSE) is Apache-2.0; [NOTICE](./NOTICE) documents the third-party exception.
 
-Fourteen original skills are Apache-2.0: html-skill-effectiveness, markdown-renderer-fix, mobile-design-spec, task-skill-orchestrator, tech-blog-generator, yardon-writer, code-review, self-improving-agent, md-to-docx, html-to-pdf, prompt-optimizer, dev-workflow, merge-dev-docs and slides-workflow. Each folder includes a `LICENSE` file.
+Fifteen original skills are Apache-2.0: html-skill-effectiveness, markdown-renderer-fix, mobile-design-spec, task-skill-orchestrator, tech-blog-generator, yardon-writer, code-review, self-improving-agent, md-to-docx, html-to-pdf, prompt-optimizer, dev-workflow, merge-dev-docs, slides-workflow and wechat-mp-publish. Each folder includes a `LICENSE` file.
 
 `html-designer__skillhub` is a third-party skill collected from SkillHub. It does not include a separate LICENSE file; check the original source and its license before reuse or redistribution.
 
@@ -595,7 +627,7 @@ Per-skill changes are recorded in [CHANGELOG.md](./CHANGELOG.md).
 
 [Apache-2.0 License](./LICENSE) · free to use / modify / redistribute with copyright and license notices
 
-Fourteen original skills are Apache-2.0; `html-designer__skillhub` is a third-party skill — see its folder and original source for licensing.
+Fifteen original skills are Apache-2.0; `html-designer__skillhub` is a third-party skill — see its folder and original source for licensing.
 
 Made by [@YardonYan](https://github.com/YardonYan)
 
