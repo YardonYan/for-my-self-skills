@@ -42,24 +42,53 @@ AI 写稿(md) ──► [人审稿] ──► AI 排版+传图 ──► [人发
 python scripts/wmp.py convert article.md -o 公众号版.html --theme qing
 python scripts/wmp.py check 公众号版.html
 
-# 2) 先干跑一遍，确认图片和字段都没问题
+# 2) 只搬图片：把 md / html / 目录里的图全换到微信图床
+python scripts/wmp.py upload article.md --rewrite
+
+# 3) 先干跑一遍，确认图片和字段都没问题
 python scripts/wmp.py push article.md --cover cover.png --author Yardon --dry-run
 
-# 3) 真推草稿箱（需要 .env 里的 AppID / AppSecret）
+# 4) 真推草稿箱（需要 .env 里的 AppID / AppSecret）
 python scripts/wmp.py push article.md --cover cover.png --author Yardon --digest "摘要"
 
-# 4) 凭据和连通性自检
+# 5) 凭据和连通性自检
 python scripts/wmp.py doctor
 ```
 
 `convert` 产出的是可粘贴 HTML，图片保留原地址；`push` 才会上传图片换成微信地址。
 
+## 怎么保证图片一定在图床
+
+三处卡口，任何一处不过就不算完成：
+
+| 卡口 | 做什么 | 什么时候 |
+|---|---|---|
+| 上传 | 逐张调 `media/uploadimg`，把本地路径或外链换成 `mmbiz.qpic.cn` 地址 | `push` 内置，或单独跑 `upload` |
+| 校验 | 扫 HTML 里每个 `<img src>`，不是 mmbiz 域名就报警告 | `convert` / `check` 每次都会跑 |
+| 落盘 | `--rewrite` 生成替代版文件，原文件不动，人工核对后再用 | `upload` 加参数时 |
+
+只想要图在床、不想发文章，就用 `upload`：它可以在 md、html、图片目录上跑，输出一份「原地址 → mmbiz 地址」的清单，加 `--rewrite` 还会把地址替换好写进副本。
+
+`upload` 的输出长这样：
+
+```
+目标：article.md（Markdown，3 张）
+  images/cover.png   93 KB
+  images/filter-diagram.png   161 KB
+  ✓ images/cover.png
+    → http://mmbiz.qpic.cn/mmbiz_png/xxxx/0
+已生成替换版：article.wechat.md
+原文件没动，核对无误后再拿它去发布。
+RESULT: PASS
+```
+
 ## 两条出口怎么选
 
 | 情况 | 走哪条 |
 |---|---|
-| 账号未认证，或不想给程序 AppSecret | `convert` → 浏览器打开 → 全选复制 → 粘到编辑器 |
-| 账号已认证，想省掉手工粘贴 | `push` → 后台草稿箱看一眼 → 点发布 |
+| 想省掉手工粘贴，愿意配 AppID/AppSecret | `push` → 后台草稿箱看一眼 → 点发布 |
+| 不想把 AppSecret 交给脚本 | `convert` → 浏览器打开 → 全选复制 → 粘到编辑器 |
+| 只要图片进图床，文章自己贴 | `upload --rewrite` → 用替换版去粘贴 |
 | 只想要稳定样式，不在乎自动化 | `convert` + 固定主题，粘贴 |
 
 `convert` 出来的 HTML 粘贴时图片会跟着走（浏览器会把图像数据放进剪贴板），但样式可能被微信改写一两处；`push` 没有这个问题，因为 HTML 是直接从服务端写进草稿的。
@@ -91,7 +120,7 @@ python scripts/wmp.py doctor
 |---|---|---|
 | `40164` | 调用 IP 不在白名单 | 后台「设置与开发 → 基本配置 → IP白名单」加当前公网 IP。运营商 NAT 的 IP 会变，建议跑在固定 IP 的机器上 |
 | `40007` | 封面用了临时素材 | 封面只能走 `material/add_material`，不能用 `media/upload` |
-| `48001` | 接口未授权 | 草稿箱接口需要公众号完成微信认证，未认证的个人订阅号调不通，改走 `convert` 粘贴 |
+| `48001` | 接口未授权 | 草稿箱、素材、正文图这三个接口，实测报告显示个人未认证号也能调；真报这个错再回退到 `convert` 粘贴，别急着下结论 |
 | `40008` | 正文过长 | 拆篇，或压缩代码块 |
 | `45004` | 摘要超 128 字 | 删短 |
 | 草稿里图片裂开 | 正文图不是 `mmbiz.qpic.cn` | 走 `push`，别手工拼外链 |

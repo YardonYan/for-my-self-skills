@@ -44,6 +44,9 @@ AI 写稿 ──► [人审稿] ──► AI 排版+传图 ──► [人发布]
 python scripts/wmp.py convert article.md -o 公众号版.html --theme qing
 python scripts/wmp.py check 公众号版.html
 
+# 只搬图片：把 md / html / 目录里的图全换到微信图床，并生成替换版
+python scripts/wmp.py upload article.md --rewrite
+
 # 干跑，确认标题、字数、图片都对，不发任何请求
 python scripts/wmp.py push article.md --cover cover.png --author Yardon --dry-run
 
@@ -97,9 +100,27 @@ WECHAT_APPSECRET=...
 
 `.env` 已在 `.gitignore` 里。脚本不会把密钥打进日志或输出。
 
+## 图片怎么保证一定在微信图床
+
+三处卡口，缺一处都不算完成：
+
+| 卡口 | 做什么 | 在哪 |
+|---|---|---|
+| 上传 | 逐张调 `media/uploadimg`，本地路径和外链都换成 `mmbiz.qpic.cn` 地址 | `push` 内置；单独用 `upload` |
+| 校验 | 扫每个 `<img src>`，不是 mmbiz 域名就报警告 | `convert` / `check` 每次跑 |
+| 落盘 | `--rewrite` 生成替换版，原文件不动 | `upload --rewrite` |
+
+只要图、不发文章，就单跑 `upload`。它支持 md、html、图片目录三种输入：
+
+```bash
+python scripts/wmp.py upload article.md --rewrite --json
+```
+
+输出「原地址 → mmbiz 地址」的清单，加 `--rewrite` 会写一份 `article.wechat.md`，原文件保持原样，核对无误后拿副本去发布。
+
 ## 已知限制
 
-**草稿箱接口需要认证账号。** 未认证的个人订阅号调 `draft/add` 会返回 `48001`，这时候走 `convert` 粘贴就行，排版结果是一样的。
+**账号权限因类型而异，先实测再下结论。** 网上常说「个人号没接口权限」，这个说法不准。有实测报告显示，个人未认证号的 token、`media/uploadimg`、`material/add_material`、`draft/add` 都能调通，只有 `freepublish/submit` 需要企业认证。也有说法称未认证号调 `draft/add` 会返回 `48001`。两种说法冲突，脚本不预设结论：先跑 `doctor` 验 token，再跑 `push --dry-run`，通了就真推，报 48001 再回退到 `convert` 粘贴。
 
 **发布接口对个人号已关闭。** 2025 年 7 月起，`freepublish/submit` 的权限对个人主体和未认证企业号被回收。所以本 Skill 只做到草稿箱，最后那一下由人点。
 

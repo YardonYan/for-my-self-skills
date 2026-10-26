@@ -44,6 +44,9 @@ Python 3.8+ standard library only. No pip install, and `convert` works offline.
 python scripts/wmp.py convert article.md -o wechat.html --theme qing
 python scripts/wmp.py check wechat.html
 
+# Images only: move every image in a md, html or folder to the WeChat CDN
+python scripts/wmp.py upload article.md --rewrite
+
 # Dry run: verify title, length and images without any network call
 python scripts/wmp.py push article.md --cover cover.png --author Yardon --dry-run
 
@@ -97,9 +100,25 @@ WECHAT_APPSECRET=...
 
 `.env` is already in `.gitignore`. Secrets are never printed to logs or output.
 
+## How images are guaranteed to sit on the WeChat CDN
+
+Three gates, and skipping any one leaves the job unfinished:
+
+| Gate | What happens | Where |
+|---|---|---|
+| Upload | Each image goes through `media/uploadimg`, turning local paths and external URLs into `mmbiz.qpic.cn` addresses | Built into `push`; or run `upload` alone |
+| Verify | Every `<img src>` is checked; anything not on the mmbiz domain raises a warning | `convert` / `check` |
+| Write | `--rewrite` writes a copy with the new addresses; the original stays untouched | `upload --rewrite` |
+
+If you only need the images moved, run `upload` on its own. It accepts a markdown file, an HTML file, or an image folder:
+
+```bash
+python scripts/wmp.py upload article.md --rewrite --json
+```
+
 ## Known limits
 
-**The draft API needs a verified account.** Unverified personal accounts get `48001` from `draft/add`. Use `convert` and paste instead — the layout is identical.
+**Account permissions vary; test before assuming.** The common claim that personal accounts have no API access is inaccurate. One tested report shows an unverified personal account can call `token`, `media/uploadimg`, `material/add_material` and `draft/add`; only `freepublish/submit` needs business verification. Another source says `draft/add` returns `48001` for unverified accounts. The two conflict, so the script assumes nothing: run `doctor`, then `push --dry-run`, and only fall back to `convert` if you actually see `48001`.
 
 **The publish API is closed to personal accounts.** Since July 2025, `freepublish/submit` is no longer available to personal or unverified business accounts. That is why this skill stops at the draft box and leaves the final click to a human.
 

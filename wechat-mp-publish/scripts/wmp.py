@@ -497,10 +497,54 @@ def replace_src(page_html, mapping):
     return page_html
 
 
+def enter_dir_of(path):
+    """把工作目录切到目标文件所在目录，让相对图片路径能正确解析。"""
+    d = os.path.dirname(os.path.abspath(path))
+    if os.path.isdir(d) and os.path.abspath(os.getcwd()) != d:
+        os.chdir(d)
+    return d
+
+
+def prepare_args(md, *others):
+    """返回 (md 的 basename, 其余参数的绝对路径)，并把 cwd 切到 md 所在目录。"""
+    abs_md = os.path.abspath(md)
+    keep = [os.path.abspath(o) if o else o for o in others]
+    enter_dir_of(abs_md)
+    return os.path.basename(abs_md), keep
+
+
+def gather_refs(target):
+    """从 md / html / 目录里收集图片引用，保持出现顺序并去重。"""
+    refs, seen = [], set()
+
+    def add(src):
+        if src not in seen:
+            seen.add(src)
+            refs.append(src)
+
+    if os.path.isdir(target):
+        for name in sorted(os.listdir(target)):
+            if os.path.splitext(name)[1].lower() in (".jpg", ".jpeg", ".png"):
+                add(name)
+        return refs, "dir"
+
+    ext = os.path.splitext(target)[1].lower()
+    text = open(target, encoding="utf-8").read()
+    if ext in (".html", ".htm"):
+        for src in re.findall(r'<img[^>]+src="([^"]+)"', text):
+            add(src)
+        return refs, "html"
+    for src in re.findall(r"!\[[^\]]*\]\(([^)\s]+)\)", text):
+        add(src)
+    return refs, "md"
+
+
+
 # ---------------------------------------------------------------- 子命令
 
 def cmd_convert(args):
-    md = open(args.md, encoding="utf-8").read()
+    md_name, _ = prepare_args(args.md)
+    md = open(md_name, encoding="utf-8").read()
     theme = load_theme(args.theme)
     page, title = render(md, theme)
     doc = wrap_document(page, title)
@@ -554,7 +598,9 @@ def cmd_doctor(args):
 
 
 def cmd_push(args):
-    md = open(args.md, encoding="utf-8").read()
+    md_name, (cover,) = prepare_args(args.md, args.cover)
+    args.cover = cover
+    md = open(md_name, encoding="utf-8").read()
     theme = load_theme(args.theme)
     page, auto_title = render(md, theme)
     title = args.title or auto_title
@@ -663,6 +709,99 @@ def cmd_push(args):
     return 0
 
 
+def cmd_upload(args):
+    """只做一件事：把图片搬进微信图床，换出 mmbiz.qpic.cn 地址。"""
+    p = os.path.abspath(args.target)
+    if not os.path.exists(p):
+        die("找不到目标：" + args.target)
+    if os.path.isdir(p):
+        os.chdir(p)
+        base, kind_name = ".", "目录"
+    else:
+        os.chdir(os.path.dirname(p))
+        base = os.path.basename(p)
+        kind_name = {"md": "Markdown", "html": "HTML"}.get(
+            os.path.splitext(p)[1].lower().lstrip("."), "文件")
+
+    refs, kind = gather_refs(base)
+    if not refs:
+        die("没找到图片。md 里写 ![](图)，html 里写 <img src=\"…\">，目录里放 jpg/png")
+
+    out("目标：%s（%s，%d 张）" % (args.target, kind_name, len(refs)))
+
+    plan = []
+    for src in refs:
+        if src.startswith("http") or src.startswith("//"):
+            if "mmbiz.qpic.cn" in src:
+                plan.append((src, None, "已在微信图床，跳过"))
+            else:
+                plan.append((src, None, "远程图，先下载再上传"))
+            continue
+        if not os.path.isfile(src):
+            die("图片不存在：" + src)
+        size = os.path.getsize(src)
+        note = "%.0f KB" % (size / 1024)
+        if size > LIMIT_CONTENT_IMG:
+            note += "，超 1MB 会自动压缩"
+        plan.append((src, src, note))
+
+    for src, _, note in plan:
+        out("  %s   %s" % (src, note))
+
+    if args.dry_run:
+        out("\n--dry-run：未上传。真实执行会逐张调 media/uploadimg 换取 mmbiz.qpic.cn 地址。")
+        out("RESULT: DRY-RUN")
+        return 0
+
+    appid, secret = _load_env()
+    if not (appid and secret):
+        die("没有凭据。先跑 `python scripts/wmp.py doctor` 按提示配置 .env")
+
+    token = get_token(appid, secret)
+    mapping = {}
+    try:
+        for src, local, _ in plan:
+            if src.startswith("http") and "mmbiz.qpic.cn" in src:
+                continue
+            path = local
+            if path is None:
+                path = download_image(src if not src.startswith("//") else "https:" + src)
+            fixed = shrink_if_needed(path, LIMIT_CONTENT_IMG)
+            if os.path.getsize(fixed) > LIMIT_CONTENT_IMG:
+                die("压不到 1MB 以下：" + src)
+            url = upload_content_image(token, fixed)
+            mapping[src] = url
+            out("  ✓ %s" % src)
+            out("    → %s" % url)
+    except ApiError as e:
+        out("\n接口报错：%s" % e)
+        out("  原因：%s" % e.hint())
+        return 1
+
+    out("\n%d 张全部在 mmbiz.qpic.cn。" % len(mapping))
+
+    if args.json:
+        out(json.dumps(mapping, ensure_ascii=False, indent=2))
+
+    if args.rewrite:
+        if kind == "dir":
+            die("--rewrite 只支持 md / html，目录模式请用上面的清单")
+        text = open(base, encoding="utf-8").read()
+        if kind == "md":
+            for old, new in mapping.items():
+                text = text.replace("](%s)" % old, "](%s)" % new)
+            out_name = os.path.splitext(base)[0] + ".wechat.md"
+        else:
+            text = replace_src(text, mapping)
+            out_name = os.path.splitext(base)[0] + ".wechat.html"
+        open(out_name, "w", encoding="utf-8", newline="\n").write(text)
+        out("已生成替换版：%s" % out_name)
+        out("原文件没动，核对无误后再拿它去发布。")
+
+    out("RESULT: PASS")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description="公众号文章排版与草稿箱推送")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -686,6 +825,13 @@ def main():
     p.add_argument("--theme")
     p.add_argument("--dry-run", action="store_true")
     p.set_defaults(func=cmd_push)
+
+    u = sub.add_parser("upload", help="只把图片搬到微信图床，换取 mmbiz 地址")
+    u.add_argument("target", help="md 文件、html 文件，或图片目录")
+    u.add_argument("--rewrite", action="store_true", help="生成图片地址已替换的副本")
+    u.add_argument("--json", action="store_true", help="同时打印 JSON 映射")
+    u.add_argument("--dry-run", action="store_true")
+    u.set_defaults(func=cmd_upload)
 
     d = sub.add_parser("doctor", help="检查凭据与接口连通性")
     d.set_defaults(func=cmd_doctor)

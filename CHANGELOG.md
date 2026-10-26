@@ -4,6 +4,15 @@ All notable changes to the public skill set. Each skill has its own section so c
 
 ## 2026-10-26
 
+### wechat-mp-publish 增加 upload 子命令
+
+- 中文：新增 `upload`，只做一件事：把图片搬进微信图床。支持 Markdown、HTML、图片目录三种输入，逐张调 `media/uploadimg` 换取 `mmbiz.qpic.cn` 地址，输出「原地址 → 微信地址」清单；加 `--rewrite` 生成替换版副本，原文件不动，加 `--json` 输出机器可读映射。
+- English: Added the `upload` subcommand, which does exactly one thing: move images onto the WeChat CDN. It accepts a Markdown file, an HTML file or an image folder, uploads each image through `media/uploadimg` to get an `mmbiz.qpic.cn` URL, and prints an old-to-new mapping. `--rewrite` writes a replaced copy without touching the original; `--json` emits a machine-readable mapping.
+- 中文：`convert` / `push` 现在会先把工作目录切到目标文件所在目录，从任意位置用绝对路径调用都能正确解析相对图片路径；`-o` 的输出落在目标文件旁边。
+- English: `convert` and `push` now switch to the target file's directory first, so relative image paths resolve correctly no matter where you invoke them from, and `-o` writes next to the target file.
+- 中文：修正对 `48001` 的绝对化判断。原文写「未认证的个人订阅号调 draft/add 会返回 48001」，但另有实测报告称个人未认证号的 token、`uploadimg`、`add_material`、`draft/add` 四步全通，只有 `freepublish/submit` 需企业认证。两种说法冲突，改为不预设结论：先 `doctor` 再 `push --dry-run` 实测，真报 48001 才回退粘贴。
+- English: Corrected an over-confident claim about `48001`. The docs previously stated that unverified personal accounts get `48001` from `draft/add`; another tested report shows all four steps (token, `uploadimg`, `add_material`, `draft/add`) working on an unverified personal account, with only `freepublish/submit` needing business verification. The two conflict, so the skill no longer assumes either: run `doctor`, then `push --dry-run`, and fall back to pasting only if `48001` actually appears.
+
 ### 新增 wechat-mp-publish
 
 - 中文：新增 `wechat-mp-publish`，把「Markdown → 公众号」这条链路补全。核心解决图片丢失：微信只渲染 `mmbiz.qpic.cn` 上的图，外链与第三方图床会被过滤且有 Referer 防盗链，所以推送前必须把每张正文图走 `media/uploadimg` 换成微信图床地址。
