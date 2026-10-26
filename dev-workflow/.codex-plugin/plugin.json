@@ -1,0 +1,38 @@
+{
+  "name": "dev-workflow",
+  "version": "1.0.0",
+  "description": "Five-stage development flow: requirement, design, implementation, code review and bug fix, each with its own reference playbook.",
+  "author": {
+    "name": "Yardon",
+    "url": "https://github.com/YardonYan"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/YardonYan/for-my-self-skills/tree/main/dev-workflow",
+  "repository": "https://github.com/YardonYan/for-my-self-skills/tree/main/dev-workflow",
+  "keywords": [
+    "agent-skill",
+    "ai-skill",
+    "dev-workflow",
+    "code-review",
+    "sdlc"
+  ],
+  "skills": "./",
+  "hooks": {},
+  "interface": {
+    "displayName": "dev-workflow",
+    "shortDescription": "Five-stage development flow: requirement, design, implementation, code review and bug fix, each with its own reference playbook.",
+    "longDescription": "Five-stage development flow: requirement, design, implementation, code review and bug fix, each with its own reference playbook.",
+    "developerName": "Yardon",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "按开发五步法来，先做需求理解和方案设计",
+      "这个 bug 帮我按 dev-workflow 的流程定位修复"
+    ],
+    "websiteURL": "https://github.com/YardonYan/for-my-self-skills/tree/main/dev-workflow",
+    "screenshots": []
+  }
+}

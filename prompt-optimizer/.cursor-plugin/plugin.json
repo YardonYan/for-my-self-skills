@@ -1,0 +1,22 @@
+{
+  "name": "prompt-optimizer",
+  "version": "1.0.0",
+  "description": "Rewrite a draft prompt into four selectable variants: detailed, role-play, structured and reverse-engineered.",
+  "author": {
+    "name": "Yardon",
+    "url": "https://github.com/YardonYan"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/YardonYan/for-my-self-skills/tree/main/prompt-optimizer",
+  "repository": "https://github.com/YardonYan/for-my-self-skills/tree/main/prompt-optimizer",
+  "displayName": "prompt-optimizer",
+  "keywords": [
+    "agent-skill",
+    "ai-skill",
+    "prompt-optimizer",
+    "prompt-engineering",
+    "llm"
+  ],
+  "skills": "./",
+  "hooks": {}
+}

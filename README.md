@@ -4,9 +4,9 @@
 
 # Yardon Skills
 
-#### 11 个在真实项目里用过、整理出来的 Agent Skills
+#### 14 个在真实项目里用过、整理出来的 Agent Skills
 
-[![Skills](https://img.shields.io/badge/Skills-11-10B981?style=flat-square)](#目录)
+[![Skills](https://img.shields.io/badge/Skills-14-10B981?style=flat-square)](#目录)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-8B5CF6?style=flat-square)](#兼容性)
 [![License](https://img.shields.io/badge/License-Apache--2.0-D97706?style=flat-square)](#license)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-D97706?style=flat-square&logo=anthropic&logoColor=white)](#兼容性)
@@ -33,6 +33,9 @@
 | [self-improving-agent](./self-improving-agent/) | 把纠正、报错与知识缺口沉淀成项目规则或新 Skill | `learnings` `memory` `retrospective` | [中文](./self-improving-agent/README.md) · [EN](./self-improving-agent/README.en.md) |
 | [md-to-docx](./md-to-docx/) | Markdown 无损转 Word，逐元素保真，附零缺失校验脚本 | `markdown` `docx` `python-docx` | [中文](./md-to-docx/README.md) · [EN](./md-to-docx/README.en.md) |
 | [html-to-pdf](./html-to-pdf/) | 打印优化 HTML + Chrome 无头转 PDF，中文不乱码 | `pdf` `headless-chrome` `print` | [中文](./html-to-pdf/README.md) · [EN](./html-to-pdf/README.en.md) |
+| [prompt-optimizer](./prompt-optimizer/) | 一份草稿 prompt 出四种策略版本，对比挑一个 | `prompt-engineering` `llm` `rewrite` | [中文](./prompt-optimizer/README.md) · [EN](./prompt-optimizer/README.en.md) |
+| [dev-workflow](./dev-workflow/) | 开发五步法，每步有手册，附各语言审查指南包 | `dev-workflow` `code-review` `sdlc` | [中文](./dev-workflow/README.md) · [EN](./dev-workflow/README.en.md) |
+| [merge-dev-docs](./merge-dev-docs/) | 两套开发文档合并：裁决冲突而不是摘要融合 | `documentation` `conflict-matrix` `adr` | [中文](./merge-dev-docs/README.md) · [EN](./merge-dev-docs/README.en.md) |
 | [html-designer__skillhub](./html-designer__skillhub/) | 网页视觉设计：排版、配色、层级、栅格、可访问性 | `web-design` `html` `css` `landing-page` | [中文](./html-designer__skillhub/README.md) · [EN](./html-designer__skillhub/README.en.md) |
 
 ## 安装
@@ -297,6 +300,79 @@ Markdown 里的 Mermaid 不显示，代码块也没有高亮。
 
 文档：[中文](./html-to-pdf/README.md) · [English](./html-to-pdf/README.en.md)
 
+### prompt-optimizer
+
+**一句话**：一份草稿 prompt 进去，四种策略的成品出来，对比挑一个。
+
+**解决什么**：「AI 没理解我的意思」九成不是模型不行，是 prompt 缺了它需要的东西——受众、输出格式、边界条件、什么叫作完成了。这个 Skill 不做温和润色，而是按四种不同思路各重写一版，让你看到同一需求在不同组织方式下的效果差异。
+
+**什么时候用**：提示词写不清晰、AI 反复理解错、需要确定性输出、或者只是想让指令更有效。
+
+**内含**：四种策略（详细展开 / 角色扮演 / 结构化 / 逆向提炼）、每种策略的优化方向与适用场景、统一输出格式与策略对比表、五条不越界原则。
+
+**边界**：不改变原意、不硬包装已经够好的 prompt；语言跟随输入。
+
+**示例触发**：
+
+```
+帮我优化这个 prompt，给我几个版本对比。
+AI 没理解我的意思，帮我把这个需求写清楚。
+```
+
+**标签**：`prompt-engineering` `prompt` `rewrite` `llm`
+
+文档：[中文](./prompt-optimizer/README.md) · [English](./prompt-optimizer/README.en.md)
+
+### dev-workflow
+
+**一句话**：需求理解 → 方案设计 → 代码实现 → 代码审查 → Bug 修复，每步有自己的作业手册。
+
+**解决什么**：拿到需求直接开写是最常见的失败起点。缺需求理解会做出没人要的东西，缺方案设计会写到一半推翻重来，缺代码审查把问题留到交付。这个 Skill 拆成五步，按用户说的话判断当前在哪一步，再加载对应手册。
+
+**什么时候用**：需求分析、方案与架构设计、开始写代码、代码 review、bug 定位与修复。
+
+**内含**：五个阶段的手册（需求 / 设计 / 实现 / 审查 / 修 bug）、三步自动落盘规则（`docs/` 追加写入带时间标题）、按语言分开的审查指南包（Go / Java / Python / Rust / C / C++ / Qt / TypeScript / React / Vue / CSS），外加架构、安全、性能三份专项指南。
+
+**说明**：审查指南是公开资料的整理归纳（Go 官方指南、Uber Go Style Guide、JetBrains 的 SOLID 讨论、MDN 等），引用链接保留在各篇文末。
+
+**边界**：`dev-workflow` 管流程，审查标准交给 `code-review`，两者可并存。
+
+**示例触发**：
+
+```
+帮我分析这个需求，先出需求理解。
+按这个方案开始写代码。
+这个 bug 帮我定位修复。
+```
+
+**标签**：`dev-workflow` `code-review` `sdlc` `requirement` `documentation`
+
+文档：[中文](./dev-workflow/README.md) · [English](./dev-workflow/README.en.md)
+
+### merge-dev-docs
+
+**一句话**：合并的本质是裁决冲突，不是摘要融合。
+
+**解决什么**：把两套开发文档交给模型「融合一下」，产物一定比原文更模糊、更没约束力，而模糊表述等于没有规范。这个 Skill 逐条抽出主张、找出真冲突、给出有依据的裁决，最后写成能照着做的规范。它还专门处理三个必踩的坑：先读 A 再读 B 造成的措辞污染、单套文档内部自相矛盾、新旧设计时态混用。
+
+**什么时候用**：两套开发文档要合一份、架构文档要互相对齐、团队规范要取两家优点。
+
+**内含**：六阶段流程（确认前提 / 清点 / 独立画像 / 抽条目建矩阵 / 裁决 / 硬闸 + 写分册 / 沉淀）、`judgment-rules.md` 裁决判据、六份模板（文档画像、冲突矩阵、ADR、废弃清单、合并后架构文档与开发规范）、`claim-index.cjs` 清点与重叠打分脚本（Node 20+ 零依赖）。
+
+**边界**：不合并代码（用 diff / rebase）；只有一套文档不需要它；两边主题不重叠直接拼目录即可。
+
+**示例触发**：
+
+```
+把这两套开发文档合并成一份可执行的规范。
+对齐这两份架构文档，冲突的地方给我裁决。
+取两家优点，合并成一版团队规范。
+```
+
+**标签**：`documentation` `conflict-matrix` `adr` `dev-docs` `merge`
+
+文档：[中文](./merge-dev-docs/README.md) · [English](./merge-dev-docs/README.en.md)
+
 ### html-designer__skillhub
 
 **一句话**：把网页设计原则落成可直接打开的 HTML/CSS 页面。
@@ -335,6 +411,9 @@ Markdown 里的 Mermaid 不显示，代码块也没有高亮。
 | self-improving-agent | 无 | 需要项目内可写 `.learnings/` |
 | md-to-docx | Python + python-docx | 转换与校验脚本都需要 |
 | html-to-pdf | Chrome/Edge + PyMuPDF | 仅核验步骤需要 PyMuPDF |
+| prompt-optimizer | 无 | 任何支持 Agent Skills 的工具 |
+| dev-workflow | 无 | 可选配合 code-review 使用 |
+| merge-dev-docs | Node.js >= 20（仅脚本） | 只读规则与模板不需要 Node |
 | html-designer__skillhub | 无 | 第三方 Skill，见目录内来源说明 |
 
 常见工具：Claude Code、Codex、Qoder、Cursor、CodeBuddy，以及任何兼容 Agent Skills 标准的 Agent。具体加载方式以工具文档为准。
@@ -362,6 +441,14 @@ for-my-self-skills/
 │   ├── SKILL.md
 │   └── scripts/              转换与零缺失校验脚本
 ├── html-to-pdf/
+├── prompt-optimizer/
+├── dev-workflow/
+│   ├── SKILL.md
+│   └── reference/            五阶段手册 + review-kit 审查指南包
+├── merge-dev-docs/
+│   ├── SKILL.md
+│   ├── assets/               六份模板
+│   └── scripts/              claim-index.cjs
 └── html-designer__skillhub/
 ```
 
@@ -369,13 +456,13 @@ for-my-self-skills/
 
 ## 隐私边界
 
-这个公开仓只有 11 个可公开的 Skill。个人上下文、私有 Skill、公司资料不在公开仓。示例里的姓名、邮箱、电话、公司名和数据都是虚构或占位；如果你在 Skill 里看到真实信息，请提 Issue。
+这个公开仓只有 14 个可公开的 Skill。个人上下文、私有 Skill、公司资料不在公开仓。示例里的姓名、邮箱、电话、公司名和数据都是虚构或占位；如果你在 Skill 里看到真实信息，请提 Issue。
 
 ## License
 
 仓库根目录的 [LICENSE](./LICENSE) 是 Apache-2.0；[NOTICE](./NOTICE) 说明第三方例外。
 
-10 个原创 Skill 使用 Apache-2.0：html-skill-effectiveness、markdown-renderer-fix、mobile-design-spec、task-skill-orchestrator、tech-blog-generator、yardon-writer、code-review、self-improving-agent、md-to-docx、html-to-pdf。每个目录内附 `LICENSE`。
+13 个原创 Skill 使用 Apache-2.0：html-skill-effectiveness、markdown-renderer-fix、mobile-design-spec、task-skill-orchestrator、tech-blog-generator、yardon-writer、code-review、self-improving-agent、md-to-docx、html-to-pdf、prompt-optimizer、dev-workflow、merge-dev-docs。每个目录内附 `LICENSE`。
 
 `html-designer__skillhub` 是从 SkillHub 收集的第三方 Skill，目录内没有独立 LICENSE 文件；复用或再分发前请核对原始来源与许可。
 
@@ -398,7 +485,7 @@ Issue 和 PR 都欢迎。为了让每个 Skill 的变更可追溯，约定：
 
 [Apache-2.0 License](./LICENSE) · 自由使用 / 修改 / 再分发（保留版权与许可声明）
 
-10 个原创 Skill 使用 Apache-2.0；`html-designer__skillhub` 为第三方 Skill，许可见其目录与原始来源。
+13 个原创 Skill 使用 Apache-2.0；`html-designer__skillhub` 为第三方 Skill，许可见其目录与原始来源。
 
 Made by [@YardonYan](https://github.com/YardonYan)
 

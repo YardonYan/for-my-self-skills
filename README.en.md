@@ -4,9 +4,9 @@
 
 # Yardon Skills
 
-#### Eleven Agent Skills I use and maintain in real projects
+#### Fourteen Agent Skills I use and maintain in real projects
 
-[![Skills](https://img.shields.io/badge/Skills-11-10B981?style=flat-square)](#catalog)
+[![Skills](https://img.shields.io/badge/Skills-14-10B981?style=flat-square)](#catalog)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-8B5CF6?style=flat-square)](#compatibility)
 [![License](https://img.shields.io/badge/License-Apache--2.0-D97706?style=flat-square)](#license)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-D97706?style=flat-square&logo=anthropic&logoColor=white)](#compatibility)
@@ -33,6 +33,9 @@ This is not a prompt dump or one giant system prompt. Each skill solves one clas
 | [self-improving-agent](./self-improving-agent/) | Turn corrections, failures and knowledge gaps into project rules or a new skill | `learnings` `memory` `retrospective` | [中文](./self-improving-agent/README.md) · [EN](./self-improving-agent/README.en.md) |
 | [md-to-docx](./md-to-docx/) | Lossless Markdown to Word with element-by-element fidelity and a zero-loss check | `markdown` `docx` `python-docx` | [中文](./md-to-docx/README.md) · [EN](./md-to-docx/README.en.md) |
 | [html-to-pdf](./html-to-pdf/) | Print-optimized HTML to PDF via headless Chrome, CJK text intact | `pdf` `headless-chrome` `print` | [中文](./html-to-pdf/README.md) · [EN](./html-to-pdf/README.en.md) |
+| [prompt-optimizer](./prompt-optimizer/) | One draft prompt in, four strategy variants out, pick one | `prompt-engineering` `llm` `rewrite` | [中文](./prompt-optimizer/README.md) · [EN](./prompt-optimizer/README.en.md) |
+| [dev-workflow](./dev-workflow/) | Five-stage development flow with per-stage playbooks and per-language review guides | `dev-workflow` `code-review` `sdlc` | [中文](./dev-workflow/README.md) · [EN](./dev-workflow/README.en.md) |
+| [merge-dev-docs](./merge-dev-docs/) | Merge two sets of dev docs by adjudicating conflicts, not summarizing | `documentation` `conflict-matrix` `adr` | [中文](./merge-dev-docs/README.md) · [EN](./merge-dev-docs/README.en.md) |
 | [html-designer__skillhub](./html-designer__skillhub/) | Web visual design: typography, color, hierarchy, grids and accessibility | `web-design` `html` `css` `landing-page` | [中文](./html-designer__skillhub/README.md) · [EN](./html-designer__skillhub/README.en.md) |
 
 ## Install
@@ -297,6 +300,79 @@ Docs: [中文](./md-to-docx/README.md) · [English](./md-to-docx/README.en.md)
 
 Docs: [中文](./html-to-pdf/README.md) · [English](./html-to-pdf/README.en.md)
 
+### prompt-optimizer
+
+**One-liner:** One draft prompt in, four finished variants out, pick the one that fits.
+
+**What it solves:** "the model didn't understand me" is almost never the model — the prompt is missing audience, output format, constraints or a definition of done. This skill doesn't polish; it rewrites the same request four ways so you can see how organization changes the result.
+
+**When to use it:** A prompt that isn't landing, a model that keeps missing the point, a need for deterministic output, or simply an instruction that should be more effective.
+
+**Inside:** Four strategies (detailed expansion / role-play / structured decomposition / reverse-engineered), optimization directions and use cases for each, a uniform output format with a comparison table, and five principles that keep the rewrite in bounds.
+
+**Boundaries:** Never changes the intent and never wraps a prompt that is already good; matches the input language.
+
+**Example prompts:**
+
+```
+Optimize this prompt and give me a few versions to compare.
+The model keeps missing my point — rewrite this request clearly.
+```
+
+**Tags:** `prompt-engineering` `prompt` `rewrite` `llm`
+
+Docs: [中文](./prompt-optimizer/README.md) · [English](./prompt-optimizer/README.en.md)
+
+### dev-workflow
+
+**One-liner:** Requirement → design → implementation → code review → bug fix, each stage with its own playbook.
+
+**What it solves:** Writing code the moment a requirement arrives is the classic failure. Skipping requirement analysis builds the wrong thing; skipping design means rewriting halfway; skipping review ships the defects. This skill splits the work into five stages, infers the current one from what you said, and loads the matching playbook.
+
+**When to use it:** Requirement analysis, design and architecture, starting implementation, code review, or locating and fixing a bug.
+
+**Inside:** Five stage playbooks (requirement / design / implementation / review / bug fix), automatic write-back to `docs/` with timestamped blocks, and per-language review guides (Go, Java, Python, Rust, C, C++, Qt, TypeScript, React, Vue, CSS) plus architecture, security and performance guides.
+
+**Note:** The review guides summarize public references (the Go official guide, the Uber Go Style Guide, JetBrains' SOLID discussion, MDN and others); source links are kept at the end of each document.
+
+**Boundaries:** `dev-workflow` owns the process; the review standard comes from `code-review`. Both can coexist.
+
+**Example prompts:**
+
+```
+Analyze this requirement and give me the requirement doc first.
+Start implementing this design.
+Find and fix this bug.
+```
+
+**Tags:** `dev-workflow` `code-review` `sdlc` `requirement` `documentation`
+
+Docs: [中文](./dev-workflow/README.md) · [English](./dev-workflow/README.en.md)
+
+### merge-dev-docs
+
+**One-liner:** Merging is conflict adjudication, not summarization.
+
+**What it solves:** Ask a model to "blend" two sets of dev docs and the output is always vaguer than either input — and a vague spec is no spec. This skill extracts claims one by one, finds the real conflicts, adjudicates each with evidence and writes something executable. It also handles three traps that break a naive merge: wording contamination from reading A before B, a single set contradicting itself, and old and new designs mixed in tense.
+
+**When to use it:** Two sets of development documents need to become one, architecture docs need aligning, or a team standard should take the best of both.
+
+**Inside:** A phased flow (settle premises / inventory / independent profiles / extract claims and build the matrix / adjudicate / hard gate then write the volumes / record decisions), `judgment-rules.md` for adjudication criteria, six templates (doc profile, conflict matrix, ADR, deprecation list, merged architecture doc and merged dev spec), and `claim-index.cjs` for inventory and overlap scoring (Node 20+, zero dependencies).
+
+**Boundaries:** Not for merging code (use diff / rebase), not needed for a single document set, and unnecessary when the two sets cover unrelated topics.
+
+**Example prompts:**
+
+```
+Merge these two sets of development documents into one executable spec.
+Align these two architecture docs and adjudicate the conflicts.
+Take the best of both and produce one team standard.
+```
+
+**Tags:** `documentation` `conflict-matrix` `adr` `dev-docs` `merge`
+
+Docs: [中文](./merge-dev-docs/README.md) · [English](./merge-dev-docs/README.en.md)
+
 ### html-designer__skillhub
 
 **One-liner:** Turn web design principles into clean, openable HTML/CSS pages.
@@ -335,6 +411,9 @@ Docs: [中文](./html-designer__skillhub/README.md) · [English](./html-designer
 | self-improving-agent | None | Needs a writable `.learnings/` in the project |
 | md-to-docx | Python + python-docx | Required by both scripts |
 | html-to-pdf | Chrome/Edge + PyMuPDF | PyMuPDF only for the verification step |
+| prompt-optimizer | None | Any Agent Skills-compatible tool |
+| dev-workflow | None | Pairs well with code-review |
+| merge-dev-docs | Node.js >= 20 (scripts only) | Rules and templates work without Node |
 | html-designer__skillhub | None | Third-party skill; see its source notes |
 
 Common tools: Claude Code, Codex, Qoder, Cursor, CodeBuddy, and any Agent Skills-compatible agent. Check your tool's docs for the exact load path.
@@ -362,6 +441,14 @@ for-my-self-skills/
 │   ├── SKILL.md
 │   └── scripts/              conversion and zero-loss verification
 ├── html-to-pdf/
+├── prompt-optimizer/
+├── dev-workflow/
+│   ├── SKILL.md
+│   └── reference/            five stage playbooks + review-kit guides
+├── merge-dev-docs/
+│   ├── SKILL.md
+│   ├── assets/               six templates
+│   └── scripts/              claim-index.cjs
 └── html-designer__skillhub/
 ```
 
@@ -369,13 +456,13 @@ Every folder uses `SKILL.md` as the entry point. `references/` is loaded on dema
 
 ## Privacy boundary
 
-This public repo contains only the 11 public skills. Personal context, private skills and company material are not included. Names, emails, phone numbers, companies and data in examples are fictional or placeholders. If you find real information in a skill, please open an issue.
+This public repo contains only the 14 public skills. Personal context, private skills and company material are not included. Names, emails, phone numbers, companies and data in examples are fictional or placeholders. If you find real information in a skill, please open an issue.
 
 ## License
 
 The root [LICENSE](./LICENSE) is Apache-2.0; [NOTICE](./NOTICE) documents the third-party exception.
 
-Ten original skills are Apache-2.0: html-skill-effectiveness, markdown-renderer-fix, mobile-design-spec, task-skill-orchestrator, tech-blog-generator, yardon-writer, code-review, self-improving-agent, md-to-docx and html-to-pdf. Each folder includes a `LICENSE` file.
+Thirteen original skills are Apache-2.0: html-skill-effectiveness, markdown-renderer-fix, mobile-design-spec, task-skill-orchestrator, tech-blog-generator, yardon-writer, code-review, self-improving-agent, md-to-docx, html-to-pdf, prompt-optimizer, dev-workflow and merge-dev-docs. Each folder includes a `LICENSE` file.
 
 `html-designer__skillhub` is a third-party skill collected from SkillHub. It does not include a separate LICENSE file; check the original source and its license before reuse or redistribution.
 
@@ -398,7 +485,7 @@ Per-skill changes are recorded in [CHANGELOG.md](./CHANGELOG.md).
 
 [Apache-2.0 License](./LICENSE) · free to use / modify / redistribute with copyright and license notices
 
-Ten original skills are Apache-2.0; `html-designer__skillhub` is a third-party skill — see its folder and original source for licensing.
+Thirteen original skills are Apache-2.0; `html-designer__skillhub` is a third-party skill — see its folder and original source for licensing.
 
 Made by [@YardonYan](https://github.com/YardonYan)
 

@@ -1,0 +1,38 @@
+{
+  "name": "merge-dev-docs",
+  "version": "1.0.0",
+  "description": "Merge two sets of development documents by adjudicating conflicts instead of summarizing, across six gated phases.",
+  "author": {
+    "name": "Yardon",
+    "url": "https://github.com/YardonYan"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/YardonYan/for-my-self-skills/tree/main/merge-dev-docs",
+  "repository": "https://github.com/YardonYan/for-my-self-skills/tree/main/merge-dev-docs",
+  "keywords": [
+    "agent-skill",
+    "ai-skill",
+    "merge-dev-docs",
+    "documentation",
+    "conflict-matrix"
+  ],
+  "skills": "./",
+  "hooks": {},
+  "interface": {
+    "displayName": "merge-dev-docs",
+    "shortDescription": "Merge two sets of development documents by adjudicating conflicts instead of summarizing, across six gated phases.",
+    "longDescription": "Merge two sets of development documents by adjudicating conflicts instead of summarizing, across six gated phases.",
+    "developerName": "Yardon",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "把这两套开发文档合并成一份可执行的规范",
+      "对齐这两份架构文档，冲突的地方给我裁决"
+    ],
+    "websiteURL": "https://github.com/YardonYan/for-my-self-skills/tree/main/merge-dev-docs",
+    "screenshots": []
+  }
+}

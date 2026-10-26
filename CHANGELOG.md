@@ -4,14 +4,14 @@ All notable changes to the public skill set. Each skill has its own section so c
 
 ## 2026-10-26
 
-### 新增 4 个 Skill（从私有工作仓筛选）
+### 新增 7 个 Skill（从私有工作仓筛选）
 
-- 中文：从私有工作仓筛选 4 个可公开的原创 Skill 迁入：`code-review`、`self-improving-agent`、`md-to-docx`、`html-to-pdf`。筛选口径为原创、无公司实体内容（公司名、客户、内网路径、价格与费率）、无私有仓库或内部平台依赖、内容通用可复用。
-- English: Moved four public-safe original skills over from the private work repo: `code-review`, `self-improving-agent`, `md-to-docx` and `html-to-pdf`. Selection criteria: original work, no company-identifying content (names, clients, intranet paths, pricing, fee rates), no dependency on a private repo or internal platform, and generic enough to reuse.
+- 中文：从私有工作仓筛选 7 个可公开的原创 Skill 迁入：`code-review`、`self-improving-agent`、`md-to-docx`、`html-to-pdf`、`prompt-optimizer`、`dev-workflow`、`merge-dev-docs`。筛选口径为原创、无公司实体内容（公司名、客户、内网路径、价格与费率）、无私有仓库或内部平台依赖、内容通用可复用。
+- English: Moved seven public-safe original skills over from the private work repo: `code-review`, `self-improving-agent`, `md-to-docx`, `html-to-pdf`, `prompt-optimizer`, `dev-workflow` and `merge-dev-docs`. Selection criteria: original work, no company-identifying content (names, clients, intranet paths, pricing, fee rates), no dependency on a private repo or internal platform, and generic enough to reuse.
 - 中文：迁移时清除了个人绝对路径与内部项目名，删除市场侧的定价字段与生成的 `CONTRIBUTORS` 文件，补齐 `LICENSE`、`.gitignore` 与四套插件清单（Claude Code / CodeBuddy / Codex / Cursor）。
 - English: On migration, personal absolute paths and internal project names were stripped, marketplace pricing fields and generated `CONTRIBUTORS` files were dropped, and `LICENSE`, `.gitignore` plus four plugin manifests (Claude Code / CodeBuddy / Codex / Cursor) were added.
-- 中文：公开层由 7 个 Skill 增至 11 个，原创 Skill 由 6 个增至 10 个；两份根 README 的徽章、目录表、Skills 章节、兼容性表与仓库结构同步更新。
-- English: The public layer grew from 7 to 11 skills, and original skills from 6 to 10. Both root READMEs had their badges, catalog, skill sections, compatibility table and repository layout updated.
+- 中文：公开层由 7 个 Skill 增至 14 个，原创 Skill 由 6 个增至 13 个；两份根 README 的徽章、目录表、Skills 章节、兼容性表与仓库结构同步更新。
+- English: The public layer grew from 7 to 14 skills, and original skills from 6 to 13. Both root READMEs had their badges, catalog, skill sections, compatibility table and repository layout updated.
 
 ### code-review
 
@@ -32,6 +32,21 @@ All notable changes to the public skill set. Each skill has its own section so c
 
 - 中文：新增。打印 CSS、base64 内嵌、Chrome 无头命令、三重核验与六个踩坑；Chrome 路径改为 `shutil.which` 查找并注明各平台路径，实战案例中的个人目录与内部项目名已脱敏。
 - English: New. Print CSS, base64 inlining, the headless Chrome command, three verification passes and six pitfalls. Chrome is now resolved via `shutil.which` with per-platform notes, and the personal directory and internal project name in the case study were sanitized.
+
+### prompt-optimizer
+
+- 中文：新增。一稿四版（详细展开 / 角色扮演 / 结构化 / 逆向提炼）与策略对比表；frontmatter 中的 `license: MIT` 改为跟随仓库 Apache-2.0，补 `version` 字段。
+- English: New. One draft in, four variants out (detailed expansion, role-play, structured decomposition, reverse-engineered) with a strategy comparison table. The frontmatter `license: MIT` was aligned to the repository's Apache-2.0, and a `version` field was added.
+
+### dev-workflow
+
+- 中文：新增。五阶段手册、`docs/` 自动落盘规则、按语言分开的审查指南包；README 说明 review-kit 是公开资料的整理归纳并保留引用链接。
+- English: New. Five stage playbooks, the automatic `docs/` write-back rules and per-language review guides. The README states that review-kit summarizes public references and keeps their source links.
+
+### merge-dev-docs
+
+- 中文：新增。六阶段合并流程、裁决判据、六份模板与 `claim-index.cjs` 清点打分脚本；内容原本无公司实体痕迹，仅补许可与插件清单。
+- English: New. The phased merge flow, adjudication criteria, six templates and the `claim-index.cjs` inventory and scoring script. The content carried no company-identifying traces; only the license and plugin manifests were added.
 
 ### License
 
