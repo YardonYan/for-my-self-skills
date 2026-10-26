@@ -1,0 +1,39 @@
+{
+  "name": "html-to-pdf",
+  "version": "1.0.0",
+  "description": "Render print-optimized HTML to PDF with headless Chrome: Chinese text intact, tables unbroken, images inlined.",
+  "author": {
+    "name": "Yardon",
+    "url": "https://github.com/YardonYan"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/YardonYan/for-my-self-skills/tree/main/html-to-pdf",
+  "repository": "https://github.com/YardonYan/for-my-self-skills/tree/main/html-to-pdf",
+  "keywords": [
+    "agent-skill",
+    "ai-skill",
+    "html-to-pdf",
+    "pdf",
+    "headless-chrome",
+    "print"
+  ],
+  "skills": "./",
+  "hooks": {},
+  "interface": {
+    "displayName": "html-to-pdf",
+    "shortDescription": "Render print-optimized HTML to PDF with headless Chrome: Chinese text intact, tables unbroken, images inlined.",
+    "longDescription": "Render print-optimized HTML to PDF with headless Chrome: Chinese text intact, tables unbroken, images inlined.",
+    "developerName": "Yardon",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "把这份说明转成 PDF 交付",
+      "用打印优化的 HTML 出一份 PDF 版方案"
+    ],
+    "websiteURL": "https://github.com/YardonYan/for-my-self-skills/tree/main/html-to-pdf",
+    "screenshots": []
+  }
+}

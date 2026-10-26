@@ -4,9 +4,9 @@
 
 # Yardon Skills
 
-#### Seven Agent Skills I use and maintain in real projects
+#### Eleven Agent Skills I use and maintain in real projects
 
-[![Skills](https://img.shields.io/badge/Skills-7-10B981?style=flat-square)](#catalog)
+[![Skills](https://img.shields.io/badge/Skills-11-10B981?style=flat-square)](#catalog)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-8B5CF6?style=flat-square)](#compatibility)
 [![License](https://img.shields.io/badge/License-Apache--2.0-D97706?style=flat-square)](#license)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-D97706?style=flat-square&logo=anthropic&logoColor=white)](#compatibility)
@@ -29,6 +29,10 @@ This is not a prompt dump or one giant system prompt. Each skill solves one clas
 | [task-skill-orchestrator](./task-skill-orchestrator/) | Turn a complex request into a dependency-aware DAG and dispatch it in parallel waves to sub-agents | `orchestration` `dag` `multi-agent` | [中文](./task-skill-orchestrator/README.md) · [EN](./task-skill-orchestrator/README.en.md) |
 | [tech-blog-generator](./tech-blog-generator/) | Turn code or technical docs into readable technical blog posts and tutorials | `technical-writing` `blog` `documentation` | [中文](./tech-blog-generator/README.md) · [EN](./tech-blog-generator/README.en.md) |
 | [yardon-writer](./yardon-writer/) | Chinese longform writing in two modes: technical and narrative | `writing` `chinese` `longform` | [中文](./yardon-writer/README.md) · [EN](./yardon-writer/README.en.md) |
+| [code-review](./code-review/) | Seven-dimension review checklist for AI-generated code: issue list only, no edits | `code-review` `ai-code` `code-audit` | [中文](./code-review/README.md) · [EN](./code-review/README.en.md) |
+| [self-improving-agent](./self-improving-agent/) | Turn corrections, failures and knowledge gaps into project rules or a new skill | `learnings` `memory` `retrospective` | [中文](./self-improving-agent/README.md) · [EN](./self-improving-agent/README.en.md) |
+| [md-to-docx](./md-to-docx/) | Lossless Markdown to Word with element-by-element fidelity and a zero-loss check | `markdown` `docx` `python-docx` | [中文](./md-to-docx/README.md) · [EN](./md-to-docx/README.en.md) |
+| [html-to-pdf](./html-to-pdf/) | Print-optimized HTML to PDF via headless Chrome, CJK text intact | `pdf` `headless-chrome` `print` | [中文](./html-to-pdf/README.md) · [EN](./html-to-pdf/README.en.md) |
 | [html-designer__skillhub](./html-designer__skillhub/) | Web visual design: typography, color, hierarchy, grids and accessibility | `web-design` `html` `css` `landing-page` | [中文](./html-designer__skillhub/README.md) · [EN](./html-designer__skillhub/README.en.md) |
 
 ## Install
@@ -203,6 +207,96 @@ This reads like AI wrote it. Rewrite it using the yardon-writer rules.
 
 Docs: [中文](./yardon-writer/README.md) · [English](./yardon-writer/README.en.md)
 
+### code-review
+
+**One-liner:** Audit and fix are separate. Review produces an issue list and changes nothing.
+
+**What it solves:** AI-written code has failure modes that don't show on the surface — calls to APIs that don't exist (hallucinated signatures), `except: pass` swallowing errors and returning defaults (output looks fine, data is already wrong), three layers of abstraction for a 20-line requirement, and rebuilt wheels the project already had. This skill walks a seven-dimension checklist; every issue carries a file:line location, root cause, blast radius and fix direction, and anything unverified is tagged `to-verify`.
+
+**When to use it:** Gating code you wrote with AI, reviewing inherited (or AI-generated) code, or adding one more check before delivery.
+
+**Inside:** Seven dimensions (correctness / hallucination and silent degradation / performance and resources / redundancy and consistency / security / over-engineering / verifiability), the severity order, the falsification step, a capability table, troubleshooting scripts and a pre-delivery checklist.
+
+**Boundaries:** Read-only. Opportunistic fixes and refactors are out of scope; performance tuning gets a direction, not a run; no penetration testing.
+
+**Example prompts:**
+
+```
+Review this code with code-review — issue list only, don't touch it.
+Run a pre-delivery seven-dimension check on this module.
+This code was AI-generated; focus on hallucinated APIs and silent degradation.
+```
+
+**Tags:** `code-review` `ai-code` `code-audit` `read-only` `quality-gate`
+
+Docs: [中文](./code-review/README.md) · [English](./code-review/README.en.md)
+
+### self-improving-agent
+
+**One-liner:** Log every correction, failure and knowledge gap into `.learnings/`; promote the recurring ones into rules.
+
+**What it solves:** An agent forgets everything between sessions, so the same trap gets hit next week — the lesson lived only in one conversation. This skill turns "remember that" into a structured, searchable, closable action: three ledger files for lessons, failures and missing features, each entry carrying an ID, priority, status and area, related entries linked with `See Also`, and patterns past the threshold compressed into one preventive rule in the project rules file.
+
+**When to use it:** You were corrected, a command failed, your knowledge turned out stale, the user asked for something missing, or you want to extract a reusable approach into a new skill.
+
+**Inside:** Full templates and field tables for the three ledgers, ID rules, status transitions and closing the loop, duplicate detection, the promotion threshold, criteria and quality gates for extracting a skill, and multi-platform wiring including optional hook scripts.
+
+**Boundaries:** Scoped to record, promote and extract. Active failure fixing belongs to `self-healing`; one-off typos are not logged.
+
+**Example prompts:**
+
+```
+Log this pitfall into .learnings/.
+Review .learnings/ and promote the recurring patterns into rules.
+This approach worked — extract it into a skill.
+```
+
+**Tags:** `learnings` `memory` `retrospective` `self-improving` `knowledge-base`
+
+Docs: [中文](./self-improving-agent/README.md) · [English](./self-improving-agent/README.en.md)
+
+### md-to-docx
+
+**One-liner:** Map Markdown to Word element by element, then prove nothing was dropped. `RESULT: PASS` or it isn't done.
+
+**What it solves:** pandoc needs another install and CJK styling work; online converters can't take internal documents; copy-paste collapses formatting and misaligns tables. This skill maps structure directly with `python-docx`, then verifies character by character: every Markdown content line must appear in the docx, and heading, table and code-block counts must match.
+
+**When to use it:** Markdown that has to become Word for archiving or submission — weekly reports, standard archives, manuals, proposals.
+
+**Inside:** A complete element mapping table (headings / tables / code / quotes / lists / rules / inline formatting), heading and table shading implementations, seven pitfalls already handled (italic regex eating dimensions, table separators read as rules, A4 vs Letter, CJK `eastAsia` fonts, ordered-list renumbering, box-drawing alignment), plus two parameterised scripts for conversion and verification.
+
+**Dependency:** `pip install python-docx` — the only third-party package.
+
+**Boundaries:** Images are not embedded yet; add an image-paragraph step when needed.
+
+**Example prompts:**
+
+```
+Convert this md to Word — it has to be lossless.
+Turn this weekly report into a docx for archiving.
+This manual goes to non-technical colleagues; give me a Word file.
+```
+
+**Tags:** `markdown` `docx` `word` `python-docx` `document-conversion`
+
+Docs: [中文](./md-to-docx/README.md) · [English](./md-to-docx/README.en.md)
+
+### html-to-pdf
+
+**One-liner:** CSS is the typesetting language; `@page` controls the paper. CJK intact, tables whole.
+
+**What it solves:** weasyprint needs GTK on Windows; reportlab means registering CJK fonts and writing table layout in code; Word-to-PDF depends on the Office version and local fonts. This skill uses headless Chrome in a fixed three-step flow: write print-optimized HTML, inline images as base64, then verify page count and keywords and render pages to PNG for a visual check.
+
+**When to use it:** Manuals, handbooks, reports and proposals delivered as PDF to people who don't render Markdown.
+
+**Inside:** The key print CSS rules, the base64 inlining approach, the headless Chrome command with URI escaping, three verification passes (page count / keywords / render check), six pitfalls (silent failure on CJK paths, locked PDFs reporting success, never deleting the source, duplicate figure titles, CJK and emoji in Pillow, stale figures after copy edits), and the one-source-two-outputs pattern for PDF plus web.
+
+**Dependencies:** Chrome or Edge; `fitz` (PyMuPDF) for verification.
+
+**Tags:** `pdf` `html` `headless-chrome` `print` `document-delivery`
+
+Docs: [中文](./html-to-pdf/README.md) · [English](./html-to-pdf/README.en.md)
+
 ### html-designer__skillhub
 
 **One-liner:** Turn web design principles into clean, openable HTML/CSS pages.
@@ -237,6 +331,10 @@ Docs: [中文](./html-designer__skillhub/README.md) · [English](./html-designer
 | task-skill-orchestrator | OpenClaw `sessions_spawn` + 5 sub-agents | Other platforms need a custom dispatch layer |
 | tech-blog-generator | None | Any Agent Skills-compatible tool |
 | yardon-writer | None | Chinese longform writing |
+| code-review | None | Any Agent Skills-compatible tool |
+| self-improving-agent | None | Needs a writable `.learnings/` in the project |
+| md-to-docx | Python + python-docx | Required by both scripts |
+| html-to-pdf | Chrome/Edge + PyMuPDF | PyMuPDF only for the verification step |
 | html-designer__skillhub | None | Third-party skill; see its source notes |
 
 Common tools: Claude Code, Codex, Qoder, Cursor, CodeBuddy, and any Agent Skills-compatible agent. Check your tool's docs for the exact load path.
@@ -258,6 +356,12 @@ for-my-self-skills/
 ├── task-skill-orchestrator/
 ├── tech-blog-generator/
 ├── yardon-writer/
+├── code-review/
+├── self-improving-agent/
+├── md-to-docx/
+│   ├── SKILL.md
+│   └── scripts/              conversion and zero-loss verification
+├── html-to-pdf/
 └── html-designer__skillhub/
 ```
 
@@ -265,13 +369,13 @@ Every folder uses `SKILL.md` as the entry point. `references/` is loaded on dema
 
 ## Privacy boundary
 
-This public repo contains only the 7 public skills. Personal context, private skills and company material are not included. Names, emails, phone numbers, companies and data in examples are fictional or placeholders. If you find real information in a skill, please open an issue.
+This public repo contains only the 11 public skills. Personal context, private skills and company material are not included. Names, emails, phone numbers, companies and data in examples are fictional or placeholders. If you find real information in a skill, please open an issue.
 
 ## License
 
 The root [LICENSE](./LICENSE) is Apache-2.0; [NOTICE](./NOTICE) documents the third-party exception.
 
-Six original skills are Apache-2.0: html-skill-effectiveness, markdown-renderer-fix, mobile-design-spec, task-skill-orchestrator, tech-blog-generator and yardon-writer. Each folder includes a `LICENSE` file.
+Ten original skills are Apache-2.0: html-skill-effectiveness, markdown-renderer-fix, mobile-design-spec, task-skill-orchestrator, tech-blog-generator, yardon-writer, code-review, self-improving-agent, md-to-docx and html-to-pdf. Each folder includes a `LICENSE` file.
 
 `html-designer__skillhub` is a third-party skill collected from SkillHub. It does not include a separate LICENSE file; check the original source and its license before reuse or redistribution.
 
@@ -294,7 +398,7 @@ Per-skill changes are recorded in [CHANGELOG.md](./CHANGELOG.md).
 
 [Apache-2.0 License](./LICENSE) · free to use / modify / redistribute with copyright and license notices
 
-Six original skills are Apache-2.0; `html-designer__skillhub` is a third-party skill — see its folder and original source for licensing.
+Ten original skills are Apache-2.0; `html-designer__skillhub` is a third-party skill — see its folder and original source for licensing.
 
 Made by [@YardonYan](https://github.com/YardonYan)
 

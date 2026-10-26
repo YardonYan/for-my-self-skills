@@ -1,0 +1,37 @@
+{
+  "name": "code-review",
+  "version": "1.0.0",
+  "description": "Seven-dimension read-only review checklist for AI-generated code: outputs a located issue list and never edits.",
+  "author": {
+    "name": "Yardon",
+    "url": "https://github.com/YardonYan"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/YardonYan/for-my-self-skills/tree/main/code-review",
+  "repository": "https://github.com/YardonYan/for-my-self-skills/tree/main/code-review",
+  "keywords": [
+    "agent-skill",
+    "ai-skill",
+    "code-review",
+    "code-audit",
+    "ai-generated-code"
+  ],
+  "skills": "./",
+  "hooks": {},
+  "interface": {
+    "displayName": "code-review",
+    "shortDescription": "Seven-dimension read-only review checklist for AI-generated code: outputs a located issue list and never edits.",
+    "longDescription": "Seven-dimension read-only review checklist for AI-generated code: outputs a located issue list and never edits.",
+    "developerName": "Yardon",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read"
+    ],
+    "defaultPrompt": [
+      "用 code-review 审查这段代码，只出问题清单不要改",
+      "交付前用 code-review 做一次七维自检"
+    ],
+    "websiteURL": "https://github.com/YardonYan/for-my-self-skills/tree/main/code-review",
+    "screenshots": []
+  }
+}

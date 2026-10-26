@@ -1,0 +1,23 @@
+{
+  "name": "md-to-docx",
+  "version": "1.0.0",
+  "description": "Lossless Markdown to Word (.docx) conversion with element-by-element fidelity and a zero-loss verification script.",
+  "author": {
+    "name": "Yardon",
+    "url": "https://github.com/YardonYan"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/YardonYan/for-my-self-skills/tree/main/md-to-docx",
+  "repository": "https://github.com/YardonYan/for-my-self-skills/tree/main/md-to-docx",
+  "displayName": "md-to-docx",
+  "keywords": [
+    "agent-skill",
+    "ai-skill",
+    "md-to-docx",
+    "markdown",
+    "docx",
+    "python-docx"
+  ],
+  "skills": "./",
+  "hooks": {}
+}

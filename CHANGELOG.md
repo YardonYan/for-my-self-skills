@@ -4,6 +4,35 @@ All notable changes to the public skill set. Each skill has its own section so c
 
 ## 2026-10-26
 
+### 新增 4 个 Skill（从私有工作仓筛选）
+
+- 中文：从私有工作仓筛选 4 个可公开的原创 Skill 迁入：`code-review`、`self-improving-agent`、`md-to-docx`、`html-to-pdf`。筛选口径为原创、无公司实体内容（公司名、客户、内网路径、价格与费率）、无私有仓库或内部平台依赖、内容通用可复用。
+- English: Moved four public-safe original skills over from the private work repo: `code-review`, `self-improving-agent`, `md-to-docx` and `html-to-pdf`. Selection criteria: original work, no company-identifying content (names, clients, intranet paths, pricing, fee rates), no dependency on a private repo or internal platform, and generic enough to reuse.
+- 中文：迁移时清除了个人绝对路径与内部项目名，删除市场侧的定价字段与生成的 `CONTRIBUTORS` 文件，补齐 `LICENSE`、`.gitignore` 与四套插件清单（Claude Code / CodeBuddy / Codex / Cursor）。
+- English: On migration, personal absolute paths and internal project names were stripped, marketplace pricing fields and generated `CONTRIBUTORS` files were dropped, and `LICENSE`, `.gitignore` plus four plugin manifests (Claude Code / CodeBuddy / Codex / Cursor) were added.
+- 中文：公开层由 7 个 Skill 增至 11 个，原创 Skill 由 6 个增至 10 个；两份根 README 的徽章、目录表、Skills 章节、兼容性表与仓库结构同步更新。
+- English: The public layer grew from 7 to 11 skills, and original skills from 6 to 10. Both root READMEs had their badges, catalog, skill sections, compatibility table and repository layout updated.
+
+### code-review
+
+- 中文：新增。七维审查清单与审计修复分离工作流，含证伪流程、能力边界表、故障剧本与交付前自检清单；改为适合公开仓的 README，删除 SkillHub 案例填写草稿。
+- English: New. Seven-dimension review checklist with audit-fix separation, including the falsification step, capability table, troubleshooting scripts and a pre-delivery checklist. README rewritten for the public repo; the SkillHub listing draft was removed.
+
+### self-improving-agent
+
+- 中文：新增。`.learnings/` 三账本记录、提升阈值、Skill 抽取流程与多平台接入；移除 frontmatter 中的 `suggested_price`、`pricing_tier`、`pricing_model` 三个市场字段。
+- English: New. Three `.learnings/` ledgers, the promotion threshold, the skill-extraction flow and multi-platform wiring. Removed the `suggested_price`, `pricing_tier` and `pricing_model` marketplace fields from the frontmatter.
+
+### md-to-docx
+
+- 中文：新增。逐元素映射表、七个已踩过的坑、转换与零缺失校验脚本；脚本调用方式改为通用的 `python scripts/...`，依赖说明改为 `pip install python-docx`，删除个人 venv 绝对路径与内部档案名。
+- English: New. Element mapping table, seven pitfalls already handled, and the conversion plus zero-loss verification scripts. Invocation is now the generic `python scripts/...`, the dependency note reads `pip install python-docx`, and the personal venv path and internal archive name were removed.
+
+### html-to-pdf
+
+- 中文：新增。打印 CSS、base64 内嵌、Chrome 无头命令、三重核验与六个踩坑；Chrome 路径改为 `shutil.which` 查找并注明各平台路径，实战案例中的个人目录与内部项目名已脱敏。
+- English: New. Print CSS, base64 inlining, the headless Chrome command, three verification passes and six pitfalls. Chrome is now resolved via `shutil.which` with per-platform notes, and the personal directory and internal project name in the case study were sanitized.
+
 ### License
 
 - 中文：新增根 `LICENSE`（Apache-2.0）与 `NOTICE`，两份 README 增加许可 footer；6 个原创 Skill 为 Apache-2.0，`html-designer__skillhub` 为第三方例外。

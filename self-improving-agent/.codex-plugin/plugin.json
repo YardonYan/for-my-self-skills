@@ -1,0 +1,39 @@
+{
+  "name": "self-improving-agent",
+  "version": "1.0.0",
+  "description": "Capture corrections, command failures and knowledge gaps into .learnings/, then promote recurring patterns into project rules or a new skill.",
+  "author": {
+    "name": "Yardon",
+    "url": "https://github.com/YardonYan"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/YardonYan/for-my-self-skills/tree/main/self-improving-agent",
+  "repository": "https://github.com/YardonYan/for-my-self-skills/tree/main/self-improving-agent",
+  "keywords": [
+    "agent-skill",
+    "ai-skill",
+    "self-improving-agent",
+    "learnings",
+    "memory",
+    "retrospective"
+  ],
+  "skills": "./",
+  "hooks": {},
+  "interface": {
+    "displayName": "self-improving-agent",
+    "shortDescription": "Capture corrections, command failures and knowledge gaps into .learnings/, then promote recurring patterns into project rules or a new skill.",
+    "longDescription": "Capture corrections, command failures and knowledge gaps into .learnings/, then promote recurring patterns into project rules or a new skill.",
+    "developerName": "Yardon",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "把这次的踩坑沉淀到 .learnings/",
+      "回顾 .learnings/，把反复出现的经验提升成规则"
+    ],
+    "websiteURL": "https://github.com/YardonYan/for-my-self-skills/tree/main/self-improving-agent",
+    "screenshots": []
+  }
+}

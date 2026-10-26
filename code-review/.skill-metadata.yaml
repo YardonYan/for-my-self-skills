@@ -1,0 +1,94 @@
+examples:
+  - id: review-any-code
+    title:
+      zh: 通用代码体检
+      en: General Code Checkup
+    description:
+      zh: 拿任意代码做七维审查，输出带定位行号的问题清单，只读不改
+      en: Seven-dimension review of any code, delivering a located issue list, read-only
+    prompt:
+      zh: |-
+        请用 code-review skill 审查以下代码：
+
+        代码：{{粘贴代码或文件路径}}
+        语言/运行环境：{{如：Python 3.11 / Windows}}
+        重点关注：{{如：性能/安全/AI幻觉与静默降级/全部七维}}
+
+        按「审计修复分离」执行：只读不改，输出问题清单（定位文件:行号 + 根因 + 影响面 + 严重度 + 修复方向），我确认后再谈修复。
+      en: |-
+        Please review the following code with the code-review skill:
+
+        Code: {{paste code or file path}}
+        Language / runtime: {{e.g., Python 3.11 / Windows}}
+        Focus: {{e.g., performance / security / AI hallucination & silent degradation / all seven dimensions}}
+
+        Follow "audit-fix separation": read-only, output an issue list (file:line + root cause + impact + severity + fix direction). Wait for my confirmation before any fix.
+
+  - id: review-ai-generated
+    title:
+      zh: AI生成代码专项审查
+      en: AI-generated Code Review
+    description:
+      zh: 针对AI写码高发问题：幻觉API、静默降级、过度工程、重复造轮子
+      en: "Targets AI-specific pitfalls: hallucinated APIs, silent degradation, over-engineering, duplicate wheels"
+    prompt:
+      zh: |-
+        这段代码是AI生成的，请用 code-review skill 做专项审查，重点扫AI特有问题：
+
+        代码：{{粘贴代码或文件路径}}
+        项目路径：{{如提供了，用于全库搜引用判断死代码和重复造轮子}}
+
+        重点：②幻觉API与静默降级（except:pass/吞错误给默认值）、④死代码与重复造轮子（先全库Grep引用）、⑥过度工程（删掉抽象层功能会不会坏）。
+      en: |-
+        This code was AI-generated. Run a focused code-review skill pass on AI-specific pitfalls:
+
+        Code: {{paste code or file path}}
+        Project path: {{if provided, grep references repo-wide to detect dead code and duplicate wheels}}
+
+        Focus: ② hallucinated APIs & silent degradation (except: pass, swallowing errors with defaults), ④ dead code & duplicate wheels (grep references first), ⑥ over-engineering (would deleting the abstraction break anything?).
+
+  - id: pre-delivery-check
+    title:
+      zh: 交付前自检
+      en: Pre-delivery Check
+    description:
+      zh: 代码交付前的最后一道闸：bug证据、证伪、调试残留、可验证性
+      en: "Final gate before delivery: bug evidence, falsification, debug leftovers, verifiability"
+    prompt:
+      zh: |-
+        我准备交付这段代码，请用 code-review skill 做交付前自检：
+
+        代码：{{粘贴代码或文件路径}}
+        交付目标：{{如：给同事用的脚本/进生产的服务/给客户的报表工具}}
+
+        重点按七维自检清单走：bug须有证据或标「待验证」、认定的bug证伪一次（空值/空集合/极值/NaN/跨日）、调试残留零容忍、无证据=未完成。
+      en: |-
+        I'm about to deliver this code. Run the pre-delivery check with the code-review skill:
+
+        Code: {{paste code or file path}}
+        Delivery target: {{e.g., internal script / production service / client tool}}
+
+        Follow the seven-dimension checklist: bugs need evidence or a "to-verify" tag, falsify each confirmed bug once (empty / single-element / extreme / NaN / cross-day), zero tolerance for debug leftovers, no evidence = not done.
+
+  - id: perf-and-redundancy
+    title:
+      zh: 性能与冗余扫描
+      en: Performance & Redundancy Scan
+    description:
+      zh: 大炮打蚊子、循环内IO、死代码、重复造轮子一次扫清
+      en: One pass for overkill solutions, in-loop I/O, dead code, and duplicate wheels
+    prompt:
+      zh: |-
+        请用 code-review skill 对以下代码做性能与冗余专项扫描：
+
+        代码：{{粘贴代码或文件路径}}
+        性能场景：{{如：高频调用/万行数据/实时界面}}
+
+        ③性能维度：循环内new对象/拼字符串/做IO、未关句柄、大文件全量进内存、外部调用无超时；④冗余维度：死代码（须全库Grep确认）、调试残留、同逻辑≥3处、_v2/_final后缀文件。性能建议须给profile前后数字，拿不出只说「预期」。
+      en: |-
+        Run a focused performance & redundancy scan with the code-review skill:
+
+        Code: {{paste code or file path}}
+        Performance context: {{e.g., hot path / 10k-row data / realtime UI}}
+
+        Dimension ③ performance: object/string/I-O inside loops, unclosed handles, whole-file loads, external calls without timeout; Dimension ④ redundancy: dead code (must grep references first), debug leftovers, same logic in 3+ places, _v2/_final suffixed files. Performance claims need before/after profile numbers, otherwise say "expected".

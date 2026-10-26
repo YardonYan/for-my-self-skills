@@ -4,9 +4,9 @@
 
 # Yardon Skills
 
-#### 7 个在真实项目里用过、整理出来的 Agent Skills
+#### 11 个在真实项目里用过、整理出来的 Agent Skills
 
-[![Skills](https://img.shields.io/badge/Skills-7-10B981?style=flat-square)](#目录)
+[![Skills](https://img.shields.io/badge/Skills-11-10B981?style=flat-square)](#目录)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-8B5CF6?style=flat-square)](#兼容性)
 [![License](https://img.shields.io/badge/License-Apache--2.0-D97706?style=flat-square)](#license)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-D97706?style=flat-square&logo=anthropic&logoColor=white)](#兼容性)
@@ -29,6 +29,10 @@
 | [task-skill-orchestrator](./task-skill-orchestrator/) | 把复杂任务拆成依赖 DAG，分波次并行给多个 Sub Agent | `orchestration` `dag` `multi-agent` | [中文](./task-skill-orchestrator/README.md) · [EN](./task-skill-orchestrator/README.en.md) |
 | [tech-blog-generator](./tech-blog-generator/) | 从代码或文档生成技术博客、教程和技术说明 | `technical-writing` `blog` `documentation` | [中文](./tech-blog-generator/README.md) · [EN](./tech-blog-generator/README.en.md) |
 | [yardon-writer](./yardon-writer/) | 中文长文写作风格，技术文与叙事文双模式 | `writing` `chinese` `longform` | [中文](./yardon-writer/README.md) · [EN](./yardon-writer/README.en.md) |
+| [code-review](./code-review/) | AI 生成代码的七维审查清单：只出问题清单，不动手修 | `code-review` `ai-code` `code-audit` | [中文](./code-review/README.md) · [EN](./code-review/README.en.md) |
+| [self-improving-agent](./self-improving-agent/) | 把纠正、报错与知识缺口沉淀成项目规则或新 Skill | `learnings` `memory` `retrospective` | [中文](./self-improving-agent/README.md) · [EN](./self-improving-agent/README.en.md) |
+| [md-to-docx](./md-to-docx/) | Markdown 无损转 Word，逐元素保真，附零缺失校验脚本 | `markdown` `docx` `python-docx` | [中文](./md-to-docx/README.md) · [EN](./md-to-docx/README.en.md) |
+| [html-to-pdf](./html-to-pdf/) | 打印优化 HTML + Chrome 无头转 PDF，中文不乱码 | `pdf` `headless-chrome` `print` | [中文](./html-to-pdf/README.md) · [EN](./html-to-pdf/README.en.md) |
 | [html-designer__skillhub](./html-designer__skillhub/) | 网页视觉设计：排版、配色、层级、栅格、可访问性 | `web-design` `html` `css` `landing-page` | [中文](./html-designer__skillhub/README.md) · [EN](./html-designer__skillhub/README.en.md) |
 
 ## 安装
@@ -203,6 +207,96 @@ Markdown 里的 Mermaid 不显示，代码块也没有高亮。
 
 文档：[中文](./yardon-writer/README.md) · [English](./yardon-writer/README.en.md)
 
+### code-review
+
+**一句话**：审计与修复分离，review 只出问题清单，不动手改。
+
+**解决什么**：AI 写的代码有几类病从外观上看不出来——调用不存在的 API（幻觉签名）、`except: pass` 吞错误悄悄给默认值（表面正常数据已错）、20 行需求搭三层抽象、项目里已有轮子又造一个。这个 Skill 用七维清单逐条扫，每条问题必须带定位行号、根因、影响面和修复方向，证据不足的只标「待验证」。
+
+**什么时候用**：用 AI 写代码要把关、接手别人（或 AI）的代码做体检、交付前想多一道质检。
+
+**内含**：七维检查清单（正确性 / 幻觉与静默降级 / 性能与资源 / 冗余与一致性 / 安全 / 过度工程 / 可验证性）、严重度排序铁律、证伪流程、能力边界表、故障剧本与交付前自检清单。
+
+**边界**：只读审查。顺手修复、顺手重构都算越界；性能调优只报方向不代跑；渗透测试级安全审计不做。
+
+**示例触发**：
+
+```
+用 code-review 审查这段代码，只出问题清单不要改。
+交付前用 code-review 做一次七维自检。
+这段代码是 AI 生成的，重点扫幻觉 API 和静默降级。
+```
+
+**标签**：`code-review` `ai-code` `code-audit` `read-only` `quality-gate`
+
+文档：[中文](./code-review/README.md) · [English](./code-review/README.en.md)
+
+### self-improving-agent
+
+**一句话**：每次纠正、报错、知识缺口都写进 `.learnings/`，反复出现的模式提升成规则。
+
+**解决什么**：AI 每开一个新会话就失忆一次，同一个坑今天踩完明天还踩，因为教训只留在这次对话里。这个 Skill 把「记录」变成有格式、可检索、有闭环的动作：三个账本文件分管经验、报错与缺失功能，每条带 ID、优先级、状态与领域标签，同类问题用 `See Also` 关联，复发达阈值时压缩成一句预防式规则写进项目规则文件。
+
+**什么时候用**：被用户纠正、命令报错、发现知识过时、用户提出缺失功能、要求复盘沉淀，或想把一套做法提取成新 Skill。
+
+**内含**：三个账本的完整模板与字段取值表、ID 生成规则、状态流转与处理闭环、重复模式检测、提升阈值、从经验抽取 Skill 的判定与质量门槛、多平台接入方式（含可选 Hook 脚本）。
+
+**边界**：只管记录、提升、抽取这条链路。正在进行的故障修复走 `self-healing`；纯一次性笔误不记。
+
+**示例触发**：
+
+```
+把这次的踩坑沉淀到 .learnings/。
+回顾一下 .learnings/，把反复出现的经验提升成规则。
+这个方案挺好，提取成 skill。
+```
+
+**标签**：`learnings` `memory` `retrospective` `self-improving` `knowledge-base`
+
+文档：[中文](./self-improving-agent/README.md) · [English](./self-improving-agent/README.en.md)
+
+### md-to-docx
+
+**一句话**：按 Markdown 逐元素映射到 Word，转完还要跑零缺失校验，`RESULT: PASS` 才算完成。
+
+**解决什么**：pandoc 要另装、中文样式不跟手；在线转换站不能传公司文档；手动粘贴进 Word 格式全掉、表格错行。这个 Skill 用 `python-docx` 直接按结构映射，然后用脚本逐字校验：Markdown 里每一条内容行都要能在 docx 里找到，标题、表格、代码块数量也要一致。
+
+**什么时候用**：Markdown 文档要落成 Word 归档或提交——周报、标准档案、使用说明、方案。
+
+**内含**：完整元素映射表（标题 / 表格 / 代码块 / 引用 / 列表 / 水平线 / 行内格式）、六级标题与表格底纹实现、七个已踩过的坑（斜体正则误判尺寸、表格分隔行误判水平线、A4 与 Letter、中文字体 eastAsia、有序列表编号续接、代码块框线字符对齐）、转换与校验两个参数化脚本。
+
+**依赖**：`pip install python-docx`，仅此一个第三方包。
+
+**边界**：Markdown 图片暂不嵌入，需要时自行补图片段落逻辑。
+
+**示例触发**：
+
+```
+把这份 md 转成 word，我要无损的。
+这份周报落成 docx 归档。
+这份说明书给业务同事，转成 Word 发过去。
+```
+
+**标签**：`markdown` `docx` `word` `python-docx` `document-conversion`
+
+文档：[中文](./md-to-docx/README.md) · [English](./md-to-docx/README.en.md)
+
+### html-to-pdf
+
+**一句话**：CSS 就是排版语言，`@page` 直接控制纸张，中文不乱码、表格不散架。
+
+**解决什么**：weasyprint 在 Windows 要装 GTK；reportlab 中文要手工注册字体、表格排版代码量大；Word 转 PDF 受 Office 版本和本机字体影响。这个 Skill 用 Chrome 无头模式，把三件事做成固定流程：写打印优化的 HTML、图片一律 base64 内嵌、转完核验页数与关键词再渲染成 PNG 目视检查。
+
+**什么时候用**：说明书、使用手册、报告、方案要交成 PDF；交付对象不熟悉 Markdown 渲染。
+
+**内含**：打印 CSS 关键规则、base64 内嵌做法、Chrome 无头命令与 URI 转义、三重核验（页数 / 关键词 / 渲染目检）、六个踩坑（中文路径静默失败、PDF 被占用不报错、源文件必须保留、图内标题重复、Pillow 中文与 emoji、改文案要回查配图），以及同一份源 HTML 同时出 PDF 与网页的做法。
+
+**依赖**：Chrome 或 Edge；`fitz`（PyMuPDF）用于核验。
+
+**标签**：`pdf` `html` `headless-chrome` `print` `document-delivery`
+
+文档：[中文](./html-to-pdf/README.md) · [English](./html-to-pdf/README.en.md)
+
 ### html-designer__skillhub
 
 **一句话**：把网页设计原则落成可直接打开的 HTML/CSS 页面。
@@ -237,6 +331,10 @@ Markdown 里的 Mermaid 不显示，代码块也没有高亮。
 | task-skill-orchestrator | OpenClaw `sessions_spawn` + 5 类 Sub Agent | 其他平台需替换派发层 |
 | tech-blog-generator | 无 | 任何支持 Agent Skills 的工具 |
 | yardon-writer | 无 | 中文长文场景 |
+| code-review | 无 | 任何支持 Agent Skills 的工具 |
+| self-improving-agent | 无 | 需要项目内可写 `.learnings/` |
+| md-to-docx | Python + python-docx | 转换与校验脚本都需要 |
+| html-to-pdf | Chrome/Edge + PyMuPDF | 仅核验步骤需要 PyMuPDF |
 | html-designer__skillhub | 无 | 第三方 Skill，见目录内来源说明 |
 
 常见工具：Claude Code、Codex、Qoder、Cursor、CodeBuddy，以及任何兼容 Agent Skills 标准的 Agent。具体加载方式以工具文档为准。
@@ -258,6 +356,12 @@ for-my-self-skills/
 ├── task-skill-orchestrator/
 ├── tech-blog-generator/
 ├── yardon-writer/
+├── code-review/
+├── self-improving-agent/
+├── md-to-docx/
+│   ├── SKILL.md
+│   └── scripts/              转换与零缺失校验脚本
+├── html-to-pdf/
 └── html-designer__skillhub/
 ```
 
@@ -265,13 +369,13 @@ for-my-self-skills/
 
 ## 隐私边界
 
-这个公开仓只有 7 个可公开的 Skill。个人上下文、私有 Skill、公司资料不在公开仓。示例里的姓名、邮箱、电话、公司名和数据都是虚构或占位；如果你在 Skill 里看到真实信息，请提 Issue。
+这个公开仓只有 11 个可公开的 Skill。个人上下文、私有 Skill、公司资料不在公开仓。示例里的姓名、邮箱、电话、公司名和数据都是虚构或占位；如果你在 Skill 里看到真实信息，请提 Issue。
 
 ## License
 
 仓库根目录的 [LICENSE](./LICENSE) 是 Apache-2.0；[NOTICE](./NOTICE) 说明第三方例外。
 
-6 个原创 Skill 使用 Apache-2.0：html-skill-effectiveness、markdown-renderer-fix、mobile-design-spec、task-skill-orchestrator、tech-blog-generator、yardon-writer。每个目录内附 `LICENSE`。
+10 个原创 Skill 使用 Apache-2.0：html-skill-effectiveness、markdown-renderer-fix、mobile-design-spec、task-skill-orchestrator、tech-blog-generator、yardon-writer、code-review、self-improving-agent、md-to-docx、html-to-pdf。每个目录内附 `LICENSE`。
 
 `html-designer__skillhub` 是从 SkillHub 收集的第三方 Skill，目录内没有独立 LICENSE 文件；复用或再分发前请核对原始来源与许可。
 
@@ -294,7 +398,7 @@ Issue 和 PR 都欢迎。为了让每个 Skill 的变更可追溯，约定：
 
 [Apache-2.0 License](./LICENSE) · 自由使用 / 修改 / 再分发（保留版权与许可声明）
 
-6 个原创 Skill 使用 Apache-2.0；`html-designer__skillhub` 为第三方 Skill，许可见其目录与原始来源。
+10 个原创 Skill 使用 Apache-2.0；`html-designer__skillhub` 为第三方 Skill，许可见其目录与原始来源。
 
 Made by [@YardonYan](https://github.com/YardonYan)
 
