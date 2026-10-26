@@ -306,7 +306,8 @@ def check(page_html):
             if not os.path.isfile(src):
                 issues.append("本地图片不存在：" + src)
 
-    text_only = re.sub(r"<[^>]+>", "", page_html)
+    body_only = re.sub(r"<head[\s\S]*?</head>", "", page_html, flags=re.I)
+    text_only = re.sub(r"<[^>]+>", "", body_only)
     chars = len(re.findall(r"[\u4e00-\u9fa5]", text_only))
     if chars > LIMIT_BODY_CHARS:
         issues.append("正文 %d 个中文字，超过微信 20000 字上限" % chars)
