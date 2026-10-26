@@ -4,6 +4,15 @@ All notable changes to the public skill set. Each skill has its own section so c
 
 ## 2026-10-26
 
+### README 分类重构
+
+- 中文：两份根 README 由 14 个 Skill 平铺改为按四类分组：网页与前端（4）、文档与交付（2）、工程流程与质量（5）、写作与表达（3）。分类口径是「用在哪一步」，一个 Skill 只归一类。
+- English: Both root READMEs switched from a flat list of 14 skills to four groups: Web and Frontend (4), Documents and Delivery (2), Engineering Workflow and Quality (5) and Writing and Expression (3). The criterion is where the skill sits in the work; each skill belongs to exactly one group.
+- 中文：新增「分类」章节，用一张表说明每类管什么、含几个 Skill，并带锚点直达该类清单；目录表拆成四张分组表；Skills 章节按同样分组，每个 Skill 折叠成一行摘要，点开才展开详情。
+- English: Added a Categories section with a table explaining what each group covers and how many skills it holds, linking straight to the matching list. The catalog is now four grouped tables, and the Skills section follows the same grouping with each skill collapsed to a one-line summary.
+- 中文：兼容性表按分类顺序重排；仓库结构图加上分类分隔注释，并说明目录保持扁平、分类只体现在 README 里，以免 `tree/main/<skill-name>` 直链和安装命令失效。
+- English: The compatibility table was reordered to match the groups. The repository layout diagram gained category divider comments and a note that the directory layout stays flat, so `tree/main/<skill-name>` links and install commands keep working.
+
 ### 新增 7 个 Skill（从私有工作仓筛选）
 
 - 中文：从私有工作仓筛选 7 个可公开的原创 Skill 迁入：`code-review`、`self-improving-agent`、`md-to-docx`、`html-to-pdf`、`prompt-optimizer`、`dev-workflow`、`merge-dev-docs`。筛选口径为原创、无公司实体内容（公司名、客户、内网路径、价格与费率）、无私有仓库或内部平台依赖、内容通用可复用。

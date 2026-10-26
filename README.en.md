@@ -19,24 +19,60 @@ These skills follow the [Agent Skills](https://agentskills.io) open standard. To
 
 This is not a prompt dump or one giant system prompt. Each skill solves one class of problem, with explicit trigger conditions, output shape and boundaries. When the task matches, the agent loads the skill on its own.
 
+Grouped by where the skill sits in your work, four categories, one skill each. Scan the table to find the direction, then open the category you need.
+
+## Categories
+
+| Category | What it covers | Skills |
+|---|---|---|
+| [Web and Frontend](#web-and-frontend) | Produce interfaces, or fix what is visibly broken in them. Page specs, visual design, mobile sizing, plus rendering-layer debugging for Markdown and SSE. | 4 |
+| [Documents and Delivery](#documents-and-delivery) | Turn content into a file someone else can just open. Fidelity and verification matter here, not layout creativity. | 2 |
+| [Engineering Workflow and Quality](#engineering-workflow-and-quality) | Own how the work gets done and whether it is right. Requirement-to-design flow, review standards, parallel task orchestration, document merge adjudication, and how lessons persist. | 5 |
+| [Writing and Expression](#writing-and-expression) | Turn thinking into something a person reads clearly and a model executes precisely. | 3 |
+
 ## Catalog
+
+### Web and Frontend
+
+Produce interfaces, or fix what is visibly broken in them. Page specs, visual design, mobile sizing, plus rendering-layer debugging for Markdown and SSE.
 
 | Skill | One-liner | Tags | Docs |
 |---|---|---|---|
 | [html-skill-effectiveness](./html-skill-effectiveness/) | Generate single-file HTML artifacts: reports, dashboards, comparisons, slide decks, interactive explainers | `html` `single-file` `dashboard` `report` | [中文](./html-skill-effectiveness/README.md) · [EN](./html-skill-effectiveness/README.en.md) |
-| [markdown-renderer-fix](./markdown-renderer-fix/) | Fix Markdown rendering, SSE garbled Chinese, code highlighting, Mermaid and KaTeX | `markdown` `sse` `encoding` `frontend` | [中文](./markdown-renderer-fix/README.md) · [EN](./markdown-renderer-fix/README.en.md) |
+| [html-designer__skillhub](./html-designer__skillhub/) | Web visual design: typography, color, hierarchy, grids and accessibility | `web-design` `html` `css` `landing-page` | [中文](./html-designer__skillhub/README.md) · [EN](./html-designer__skillhub/README.en.md) |
 | [mobile-design-spec](./mobile-design-spec/) | Mobile sizing rules for iOS, Android, HarmonyOS, WeChat Mini Program and H5 | `mobile` `ios` `android` `harmonyos` | [中文](./mobile-design-spec/README.md) · [EN](./mobile-design-spec/README.en.md) |
-| [task-skill-orchestrator](./task-skill-orchestrator/) | Turn a complex request into a dependency-aware DAG and dispatch it in parallel waves to sub-agents | `orchestration` `dag` `multi-agent` | [中文](./task-skill-orchestrator/README.md) · [EN](./task-skill-orchestrator/README.en.md) |
-| [tech-blog-generator](./tech-blog-generator/) | Turn code or technical docs into readable technical blog posts and tutorials | `technical-writing` `blog` `documentation` | [中文](./tech-blog-generator/README.md) · [EN](./tech-blog-generator/README.en.md) |
-| [yardon-writer](./yardon-writer/) | Chinese longform writing in two modes: technical and narrative | `writing` `chinese` `longform` | [中文](./yardon-writer/README.md) · [EN](./yardon-writer/README.en.md) |
-| [code-review](./code-review/) | Seven-dimension review checklist for AI-generated code: issue list only, no edits | `code-review` `ai-code` `code-audit` | [中文](./code-review/README.md) · [EN](./code-review/README.en.md) |
-| [self-improving-agent](./self-improving-agent/) | Turn corrections, failures and knowledge gaps into project rules or a new skill | `learnings` `memory` `retrospective` | [中文](./self-improving-agent/README.md) · [EN](./self-improving-agent/README.en.md) |
+| [markdown-renderer-fix](./markdown-renderer-fix/) | Fix Markdown rendering, SSE garbled Chinese, code highlighting, Mermaid and KaTeX | `markdown` `sse` `encoding` `frontend` | [中文](./markdown-renderer-fix/README.md) · [EN](./markdown-renderer-fix/README.en.md) |
+
+### Documents and Delivery
+
+Turn content into a file someone else can just open. Fidelity and verification matter here, not layout creativity.
+
+| Skill | One-liner | Tags | Docs |
+|---|---|---|---|
 | [md-to-docx](./md-to-docx/) | Lossless Markdown to Word with element-by-element fidelity and a zero-loss check | `markdown` `docx` `python-docx` | [中文](./md-to-docx/README.md) · [EN](./md-to-docx/README.en.md) |
 | [html-to-pdf](./html-to-pdf/) | Print-optimized HTML to PDF via headless Chrome, CJK text intact | `pdf` `headless-chrome` `print` | [中文](./html-to-pdf/README.md) · [EN](./html-to-pdf/README.en.md) |
-| [prompt-optimizer](./prompt-optimizer/) | One draft prompt in, four strategy variants out, pick one | `prompt-engineering` `llm` `rewrite` | [中文](./prompt-optimizer/README.md) · [EN](./prompt-optimizer/README.en.md) |
+
+### Engineering Workflow and Quality
+
+Own how the work gets done and whether it is right. Requirement-to-design flow, review standards, parallel task orchestration, document merge adjudication, and how lessons persist.
+
+| Skill | One-liner | Tags | Docs |
+|---|---|---|---|
+| [code-review](./code-review/) | Seven-dimension review checklist for AI-generated code: issue list only, no edits | `code-review` `ai-code` `code-audit` | [中文](./code-review/README.md) · [EN](./code-review/README.en.md) |
 | [dev-workflow](./dev-workflow/) | Five-stage development flow with per-stage playbooks and per-language review guides | `dev-workflow` `code-review` `sdlc` | [中文](./dev-workflow/README.md) · [EN](./dev-workflow/README.en.md) |
+| [task-skill-orchestrator](./task-skill-orchestrator/) | Turn a complex request into a dependency-aware DAG and dispatch it in parallel waves to sub-agents | `orchestration` `dag` `multi-agent` | [中文](./task-skill-orchestrator/README.md) · [EN](./task-skill-orchestrator/README.en.md) |
 | [merge-dev-docs](./merge-dev-docs/) | Merge two sets of dev docs by adjudicating conflicts, not summarizing | `documentation` `conflict-matrix` `adr` | [中文](./merge-dev-docs/README.md) · [EN](./merge-dev-docs/README.en.md) |
-| [html-designer__skillhub](./html-designer__skillhub/) | Web visual design: typography, color, hierarchy, grids and accessibility | `web-design` `html` `css` `landing-page` | [中文](./html-designer__skillhub/README.md) · [EN](./html-designer__skillhub/README.en.md) |
+| [self-improving-agent](./self-improving-agent/) | Turn corrections, failures and knowledge gaps into project rules or a new skill | `learnings` `memory` `retrospective` | [中文](./self-improving-agent/README.md) · [EN](./self-improving-agent/README.en.md) |
+
+### Writing and Expression
+
+Turn thinking into something a person reads clearly and a model executes precisely.
+
+| Skill | One-liner | Tags | Docs |
+|---|---|---|---|
+| [tech-blog-generator](./tech-blog-generator/) | Turn code or technical docs into readable technical blog posts and tutorials | `technical-writing` `blog` `documentation` | [中文](./tech-blog-generator/README.md) · [EN](./tech-blog-generator/README.en.md) |
+| [yardon-writer](./yardon-writer/) | Chinese longform writing in two modes: technical and narrative | `writing` `chinese` `longform` | [中文](./yardon-writer/README.md) · [EN](./yardon-writer/README.en.md) |
+| [prompt-optimizer](./prompt-optimizer/) | One draft prompt in, four strategy variants out, pick one | `prompt-engineering` `llm` `rewrite` | [中文](./prompt-optimizer/README.md) · [EN](./prompt-optimizer/README.en.md) |
 
 ## Install
 
@@ -69,9 +105,14 @@ Open `<skill-name>/SKILL.md` and paste it into the project rules, system prompt 
 
 ## Skills
 
-### html-skill-effectiveness
+Grouped the same way as above. Collapsed, each entry shows only the skill name and its one-liner; expand for what it solves, when to use it, what is inside and where it stops.
 
-**One-liner:** Turn documents people skim into single-file HTML documents people actually read.
+### Web and Frontend
+
+Produce interfaces, or fix what is visibly broken in them. Page specs, visual design, mobile sizing, plus rendering-layer debugging for Markdown and SSE.
+
+<details>
+<summary><b>html-skill-effectiveness</b> — Turn documents people skim into single-file HTML documents people actually read.</summary>
 
 **What it solves:** Markdown is linear. It cannot express side-by-side comparisons, zoomable architecture diagrams, slide decks with speaker notes, or live dashboards. This skill makes the agent produce one self-contained HTML file with inline CSS/JS, zero external dependencies, openable directly in a browser.
 
@@ -93,31 +134,35 @@ Turn this technical note into a slide deck with speaker notes.
 
 Docs: [中文](./html-skill-effectiveness/README.md) · [English](./html-skill-effectiveness/README.en.md)
 
-### markdown-renderer-fix
+</details>
 
-**One-liner:** Fix garbled Chinese, broken Markdown and streaming output at the data-flow root.
+<details>
+<summary><b>html-designer__skillhub</b> — Turn web design principles into clean, openable HTML/CSS pages.</summary>
 
-**What it solves:** Garbled Chinese looks like an encoding bug, but the data crosses backend decoding, JSON escaping, HTTP transport, frontend TextDecoder and Markdown parsing. Fixing one stage often is not enough. This skill diagnoses each stage and ships paired frontend/backend fixes.
+**What it solves:** Pages that work but look unpolished: arbitrary type sizes, line heights, spacing and hierarchy; colors chosen by feel; mobile and desktop layouts that do not share a grid. This skill applies typography, color, grid, hierarchy and accessibility rules to produce clean HTML/CSS.
 
-**When to use it:** SSE streaming shows garbled text, Markdown tables/code blocks/Mermaid/KaTeX render incorrectly, tool-call output needs filtering, or Chinese text displays badly in the frontend.
+**When to use it:** Landing pages, campaign pages, portfolios, design systems, type and color schemes, or turning a mockup/design brief into HTML.
 
-**Inside:** An eight-stage data-flow diagnosis, frontend/backend encoding templates, code-highlighting/Mermaid/KaTeX fixes, tool-call filtering, and v3.0.0 production cases.
+**Inside:** 4 design references (graphic design, glossary, UI/UX, web design), 5 openable HTML examples, a design workflow and an accessibility checklist.
+
+**Note:** This is a third-party skill collected from SkillHub, not original work by Yardon. The original `SKILL.md`, `references/` and `assets/` are kept here; source and version are recorded in `_skillhub_meta.json`.
 
 **Example prompts:**
 
 ```
-SSE streaming turns Chinese into garbled characters. Find the root cause.
-Mermaid diagrams do not render and code blocks are not highlighted.
-The stream is printing the tool-call JSON. Filter it out.
+Build a minimal product landing page with professional typography, color and spacing.
+Redesign this portfolio page without changing the content.
+Give me a type and color system for a SaaS website, then implement it in HTML.
 ```
 
-**Tags:** `markdown` `sse` `streaming` `encoding` `chinese` `mermaid` `katex` `frontend`
+**Tags:** `web-design` `html` `css` `typography` `color` `landing-page` `portfolio` `accessibility`
 
-Docs: [中文](./markdown-renderer-fix/README.md) · [English](./markdown-renderer-fix/README.en.md)
+Docs: [中文](./html-designer__skillhub/README.md) · [English](./html-designer__skillhub/README.en.md)
 
-### mobile-design-spec
+</details>
 
-**One-liner:** Apply five mobile sizing systems to code and explain the source of every change.
+<details>
+<summary><b>mobile-design-spec</b> — Apply five mobile sizing systems to code and explain the source of every change.</summary>
 
 **What it solves:** Mobile code is full of “looks about right” numbers: touch targets too small, content touching the screen edge, bottom buttons hidden by the gesture area, text below the readable minimum, wrong units per platform. This skill centralizes the rules for iOS, Android, HarmonyOS, WeChat Mini Program and H5, plus tablets, foldables, car displays and large screens.
 
@@ -139,128 +184,37 @@ Check this page's tap targets and font sizes.
 
 Docs: [中文](./mobile-design-spec/README.md) · [English](./mobile-design-spec/README.en.md)
 
-### task-skill-orchestrator
+</details>
 
-**One-liner:** Decompose a complex request into a dependency-aware DAG and dispatch it in parallel waves to sub-agents.
+<details>
+<summary><b>markdown-renderer-fix</b> — Fix garbled Chinese, broken Markdown and streaming output at the data-flow root.</summary>
 
-**What it solves:** For a request like “research three companies and produce one comparison report”, the default approach is sequential: A, then B, then C. This skill splits the work into subtasks and dependencies, runs independent work in the same wave, and aggregates the results, reducing waiting and context switching.
+**What it solves:** Garbled Chinese looks like an encoding bug, but the data crosses backend decoding, JSON escaping, HTTP transport, frontend TextDecoder and Markdown parsing. Fixing one stage often is not enough. This skill diagnoses each stage and ships paired frontend/backend fixes.
 
-**When to use it:** A request naturally breaks into independent sub-goals, needs parallel work, batch processing or complex task orchestration.
+**When to use it:** SSE streaming shows garbled text, Markdown tables/code blocks/Mermaid/KaTeX render incorrectly, tool-call output needs filtering, or Chinese text displays badly in the frontend.
 
-**Inside:** DAG decomposition, wave scheduling, sub-agent roles, result aggregation, failure retry and concurrency control.
-
-**Platform requirements:** Designed for OpenClaw's `sessions_spawn` sub-agent mechanism. It expects `file-agent`, `search-agent`, `browser`, `app-agent` and `computer-agent`. Other platforms need to replace the dispatch layer.
-
-**Example prompts:**
-
-```
-Research these three companies in parallel and produce one comparison report.
-Break this large task down, run what can be parallel, and deliver one result.
-Process these files in batches of five and retry failures separately.
-```
-
-**Tags:** `orchestration` `dag` `multi-agent` `parallel` `subagents` `task-planning`
-
-Docs: [中文](./task-skill-orchestrator/README.md) · [English](./task-skill-orchestrator/README.en.md)
-
-### tech-blog-generator
-
-**One-liner:** Turn code and docs into technical blog posts people can actually read, not terminology dumps.
-
-**What it solves:** Technical writing often becomes a code paraphrase or correct-but-empty filler. This skill follows a senior engineer's writing process: analyze the code architecture, choose a genre, apply 21 anti-fluff rules, then run three review passes.
-
-**When to use it:** Upload code or technical docs and ask for a blog post, tutorial, code explanation or documentation. Chinese and English are both supported.
-
-**Inside:** 21 writing rules, 6 genre templates, 3 review passes and bilingual templates. It focuses on technical writing only — not marketing copy, UI copy or casual chat.
+**Inside:** An eight-stage data-flow diagnosis, frontend/backend encoding templates, code-highlighting/Mermaid/KaTeX fixes, tool-call filtering, and v3.0.0 production cases.
 
 **Example prompts:**
 
 ```
-Turn this Python project into a technical blog post.
-Write a tutorial from this design doc for readers new to the framework.
-Explain these modules in an article with code and trade-offs.
+SSE streaming turns Chinese into garbled characters. Find the root cause.
+Mermaid diagrams do not render and code blocks are not highlighted.
+The stream is printing the tool-call JSON. Filter it out.
 ```
 
-**Tags:** `technical-writing` `blog` `tutorial` `documentation` `bilingual` `chinese`
+**Tags:** `markdown` `sse` `streaming` `encoding` `chinese` `mermaid` `katex` `frontend`
 
-Docs: [中文](./tech-blog-generator/README.md) · [English](./tech-blog-generator/README.en.md)
+Docs: [中文](./markdown-renderer-fix/README.md) · [English](./markdown-renderer-fix/README.en.md)
 
-### yardon-writer
+</details>
 
-**One-liner:** Chinese longform writing: technical posts stay clear, narrative posts stay readable.
+### Documents and Delivery
 
-**What it solves:** Technical posts turn into manuals, narrative posts turn into diaries, and mixing the two satisfies neither. This skill decides the mode first, applies the matching structure, rhythm and banned-phrase rules, then runs a reading-experience check.
+Turn content into a file someone else can just open. Fidelity and verification matter here, not layout creativity.
 
-**When to use it:** WeChat articles, technical blogs, CSDN longform, project retrospectives, lessons learned and workplace observations. Also useful for turning a PDF, news link, transcript or scattered notes into an article.
-
-**Two modes:** Mode A keeps sections, tables, code and chapter summaries. Mode B pushes headings into the background, uses transitions, and puts first-person experience and a point of view first.
-
-**Boundaries:** Not for short social posts. Never invent experiences, numbers, amounts or dialogues. Company material is desensitized by default.
-
-**Example prompts:**
-
-```
-Turn these notes into a longform WeChat article in my style.
-Rewrite this project retrospective — no diary-style chronology.
-Turn this PDF into a technical longform article.
-This reads like AI wrote it. Rewrite it using the yardon-writer rules.
-```
-
-**Tags:** `writing` `chinese` `longform` `technical-writing` `narrative` `style`
-
-Docs: [中文](./yardon-writer/README.md) · [English](./yardon-writer/README.en.md)
-
-### code-review
-
-**One-liner:** Audit and fix are separate. Review produces an issue list and changes nothing.
-
-**What it solves:** AI-written code has failure modes that don't show on the surface — calls to APIs that don't exist (hallucinated signatures), `except: pass` swallowing errors and returning defaults (output looks fine, data is already wrong), three layers of abstraction for a 20-line requirement, and rebuilt wheels the project already had. This skill walks a seven-dimension checklist; every issue carries a file:line location, root cause, blast radius and fix direction, and anything unverified is tagged `to-verify`.
-
-**When to use it:** Gating code you wrote with AI, reviewing inherited (or AI-generated) code, or adding one more check before delivery.
-
-**Inside:** Seven dimensions (correctness / hallucination and silent degradation / performance and resources / redundancy and consistency / security / over-engineering / verifiability), the severity order, the falsification step, a capability table, troubleshooting scripts and a pre-delivery checklist.
-
-**Boundaries:** Read-only. Opportunistic fixes and refactors are out of scope; performance tuning gets a direction, not a run; no penetration testing.
-
-**Example prompts:**
-
-```
-Review this code with code-review — issue list only, don't touch it.
-Run a pre-delivery seven-dimension check on this module.
-This code was AI-generated; focus on hallucinated APIs and silent degradation.
-```
-
-**Tags:** `code-review` `ai-code` `code-audit` `read-only` `quality-gate`
-
-Docs: [中文](./code-review/README.md) · [English](./code-review/README.en.md)
-
-### self-improving-agent
-
-**One-liner:** Log every correction, failure and knowledge gap into `.learnings/`; promote the recurring ones into rules.
-
-**What it solves:** An agent forgets everything between sessions, so the same trap gets hit next week — the lesson lived only in one conversation. This skill turns "remember that" into a structured, searchable, closable action: three ledger files for lessons, failures and missing features, each entry carrying an ID, priority, status and area, related entries linked with `See Also`, and patterns past the threshold compressed into one preventive rule in the project rules file.
-
-**When to use it:** You were corrected, a command failed, your knowledge turned out stale, the user asked for something missing, or you want to extract a reusable approach into a new skill.
-
-**Inside:** Full templates and field tables for the three ledgers, ID rules, status transitions and closing the loop, duplicate detection, the promotion threshold, criteria and quality gates for extracting a skill, and multi-platform wiring including optional hook scripts.
-
-**Boundaries:** Scoped to record, promote and extract. Active failure fixing belongs to `self-healing`; one-off typos are not logged.
-
-**Example prompts:**
-
-```
-Log this pitfall into .learnings/.
-Review .learnings/ and promote the recurring patterns into rules.
-This approach worked — extract it into a skill.
-```
-
-**Tags:** `learnings` `memory` `retrospective` `self-improving` `knowledge-base`
-
-Docs: [中文](./self-improving-agent/README.md) · [English](./self-improving-agent/README.en.md)
-
-### md-to-docx
-
-**One-liner:** Map Markdown to Word element by element, then prove nothing was dropped. `RESULT: PASS` or it isn't done.
+<details>
+<summary><b>md-to-docx</b> — Map Markdown to Word element by element, then prove nothing was dropped. `RESULT: PASS` or it isn't done.</summary>
 
 **What it solves:** pandoc needs another install and CJK styling work; online converters can't take internal documents; copy-paste collapses formatting and misaligns tables. This skill maps structure directly with `python-docx`, then verifies character by character: every Markdown content line must appear in the docx, and heading, table and code-block counts must match.
 
@@ -284,9 +238,10 @@ This manual goes to non-technical colleagues; give me a Word file.
 
 Docs: [中文](./md-to-docx/README.md) · [English](./md-to-docx/README.en.md)
 
-### html-to-pdf
+</details>
 
-**One-liner:** CSS is the typesetting language; `@page` controls the paper. CJK intact, tables whole.
+<details>
+<summary><b>html-to-pdf</b> — CSS is the typesetting language; `@page` controls the paper. CJK intact, tables whole.</summary>
 
 **What it solves:** weasyprint needs GTK on Windows; reportlab means registering CJK fonts and writing table layout in code; Word-to-PDF depends on the Office version and local fonts. This skill uses headless Chrome in a fixed three-step flow: write print-optimized HTML, inline images as base64, then verify page count and keywords and render pages to PNG for a visual check.
 
@@ -300,32 +255,39 @@ Docs: [中文](./md-to-docx/README.md) · [English](./md-to-docx/README.en.md)
 
 Docs: [中文](./html-to-pdf/README.md) · [English](./html-to-pdf/README.en.md)
 
-### prompt-optimizer
+</details>
 
-**One-liner:** One draft prompt in, four finished variants out, pick the one that fits.
+### Engineering Workflow and Quality
 
-**What it solves:** "the model didn't understand me" is almost never the model — the prompt is missing audience, output format, constraints or a definition of done. This skill doesn't polish; it rewrites the same request four ways so you can see how organization changes the result.
+Own how the work gets done and whether it is right. Requirement-to-design flow, review standards, parallel task orchestration, document merge adjudication, and how lessons persist.
 
-**When to use it:** A prompt that isn't landing, a model that keeps missing the point, a need for deterministic output, or simply an instruction that should be more effective.
+<details>
+<summary><b>code-review</b> — Audit and fix are separate. Review produces an issue list and changes nothing.</summary>
 
-**Inside:** Four strategies (detailed expansion / role-play / structured decomposition / reverse-engineered), optimization directions and use cases for each, a uniform output format with a comparison table, and five principles that keep the rewrite in bounds.
+**What it solves:** AI-written code has failure modes that don't show on the surface — calls to APIs that don't exist (hallucinated signatures), `except: pass` swallowing errors and returning defaults (output looks fine, data is already wrong), three layers of abstraction for a 20-line requirement, and rebuilt wheels the project already had. This skill walks a seven-dimension checklist; every issue carries a file:line location, root cause, blast radius and fix direction, and anything unverified is tagged `to-verify`.
 
-**Boundaries:** Never changes the intent and never wraps a prompt that is already good; matches the input language.
+**When to use it:** Gating code you wrote with AI, reviewing inherited (or AI-generated) code, or adding one more check before delivery.
+
+**Inside:** Seven dimensions (correctness / hallucination and silent degradation / performance and resources / redundancy and consistency / security / over-engineering / verifiability), the severity order, the falsification step, a capability table, troubleshooting scripts and a pre-delivery checklist.
+
+**Boundaries:** Read-only. Opportunistic fixes and refactors are out of scope; performance tuning gets a direction, not a run; no penetration testing.
 
 **Example prompts:**
 
 ```
-Optimize this prompt and give me a few versions to compare.
-The model keeps missing my point — rewrite this request clearly.
+Review this code with code-review — issue list only, don't touch it.
+Run a pre-delivery seven-dimension check on this module.
+This code was AI-generated; focus on hallucinated APIs and silent degradation.
 ```
 
-**Tags:** `prompt-engineering` `prompt` `rewrite` `llm`
+**Tags:** `code-review` `ai-code` `code-audit` `read-only` `quality-gate`
 
-Docs: [中文](./prompt-optimizer/README.md) · [English](./prompt-optimizer/README.en.md)
+Docs: [中文](./code-review/README.md) · [English](./code-review/README.en.md)
 
-### dev-workflow
+</details>
 
-**One-liner:** Requirement → design → implementation → code review → bug fix, each stage with its own playbook.
+<details>
+<summary><b>dev-workflow</b> — Requirement → design → implementation → code review → bug fix, each stage with its own playbook.</summary>
 
 **What it solves:** Writing code the moment a requirement arrives is the classic failure. Skipping requirement analysis builds the wrong thing; skipping design means rewriting halfway; skipping review ships the defects. This skill splits the work into five stages, infers the current one from what you said, and loads the matching playbook.
 
@@ -349,9 +311,35 @@ Find and fix this bug.
 
 Docs: [中文](./dev-workflow/README.md) · [English](./dev-workflow/README.en.md)
 
-### merge-dev-docs
+</details>
 
-**One-liner:** Merging is conflict adjudication, not summarization.
+<details>
+<summary><b>task-skill-orchestrator</b> — Decompose a complex request into a dependency-aware DAG and dispatch it in parallel waves to sub-agents.</summary>
+
+**What it solves:** For a request like “research three companies and produce one comparison report”, the default approach is sequential: A, then B, then C. This skill splits the work into subtasks and dependencies, runs independent work in the same wave, and aggregates the results, reducing waiting and context switching.
+
+**When to use it:** A request naturally breaks into independent sub-goals, needs parallel work, batch processing or complex task orchestration.
+
+**Inside:** DAG decomposition, wave scheduling, sub-agent roles, result aggregation, failure retry and concurrency control.
+
+**Platform requirements:** Designed for OpenClaw's `sessions_spawn` sub-agent mechanism. It expects `file-agent`, `search-agent`, `browser`, `app-agent` and `computer-agent`. Other platforms need to replace the dispatch layer.
+
+**Example prompts:**
+
+```
+Research these three companies in parallel and produce one comparison report.
+Break this large task down, run what can be parallel, and deliver one result.
+Process these files in batches of five and retry failures separately.
+```
+
+**Tags:** `orchestration` `dag` `multi-agent` `parallel` `subagents` `task-planning`
+
+Docs: [中文](./task-skill-orchestrator/README.md) · [English](./task-skill-orchestrator/README.en.md)
+
+</details>
+
+<details>
+<summary><b>merge-dev-docs</b> — Merging is conflict adjudication, not summarization.</summary>
 
 **What it solves:** Ask a model to "blend" two sets of dev docs and the output is always vaguer than either input — and a vague spec is no spec. This skill extracts claims one by one, finds the real conflicts, adjudicates each with evidence and writes something executable. It also handles three traps that break a naive merge: wording contamination from reading A before B, a single set contradicting itself, and old and new designs mixed in tense.
 
@@ -373,48 +361,128 @@ Take the best of both and produce one team standard.
 
 Docs: [中文](./merge-dev-docs/README.md) · [English](./merge-dev-docs/README.en.md)
 
-### html-designer__skillhub
+</details>
 
-**One-liner:** Turn web design principles into clean, openable HTML/CSS pages.
+<details>
+<summary><b>self-improving-agent</b> — Log every correction, failure and knowledge gap into `.learnings/`; promote the recurring ones into rules.</summary>
 
-**What it solves:** Pages that work but look unpolished: arbitrary type sizes, line heights, spacing and hierarchy; colors chosen by feel; mobile and desktop layouts that do not share a grid. This skill applies typography, color, grid, hierarchy and accessibility rules to produce clean HTML/CSS.
+**What it solves:** An agent forgets everything between sessions, so the same trap gets hit next week — the lesson lived only in one conversation. This skill turns "remember that" into a structured, searchable, closable action: three ledger files for lessons, failures and missing features, each entry carrying an ID, priority, status and area, related entries linked with `See Also`, and patterns past the threshold compressed into one preventive rule in the project rules file.
 
-**When to use it:** Landing pages, campaign pages, portfolios, design systems, type and color schemes, or turning a mockup/design brief into HTML.
+**When to use it:** You were corrected, a command failed, your knowledge turned out stale, the user asked for something missing, or you want to extract a reusable approach into a new skill.
 
-**Inside:** 4 design references (graphic design, glossary, UI/UX, web design), 5 openable HTML examples, a design workflow and an accessibility checklist.
+**Inside:** Full templates and field tables for the three ledgers, ID rules, status transitions and closing the loop, duplicate detection, the promotion threshold, criteria and quality gates for extracting a skill, and multi-platform wiring including optional hook scripts.
 
-**Note:** This is a third-party skill collected from SkillHub, not original work by Yardon. The original `SKILL.md`, `references/` and `assets/` are kept here; source and version are recorded in `_skillhub_meta.json`.
+**Boundaries:** Scoped to record, promote and extract. Active failure fixing belongs to `self-healing`; one-off typos are not logged.
 
 **Example prompts:**
 
 ```
-Build a minimal product landing page with professional typography, color and spacing.
-Redesign this portfolio page without changing the content.
-Give me a type and color system for a SaaS website, then implement it in HTML.
+Log this pitfall into .learnings/.
+Review .learnings/ and promote the recurring patterns into rules.
+This approach worked — extract it into a skill.
 ```
 
-**Tags:** `web-design` `html` `css` `typography` `color` `landing-page` `portfolio` `accessibility`
+**Tags:** `learnings` `memory` `retrospective` `self-improving` `knowledge-base`
 
-Docs: [中文](./html-designer__skillhub/README.md) · [English](./html-designer__skillhub/README.en.md)
+Docs: [中文](./self-improving-agent/README.md) · [English](./self-improving-agent/README.en.md)
+
+</details>
+
+### Writing and Expression
+
+Turn thinking into something a person reads clearly and a model executes precisely.
+
+<details>
+<summary><b>tech-blog-generator</b> — Turn code and docs into technical blog posts people can actually read, not terminology dumps.</summary>
+
+**What it solves:** Technical writing often becomes a code paraphrase or correct-but-empty filler. This skill follows a senior engineer's writing process: analyze the code architecture, choose a genre, apply 21 anti-fluff rules, then run three review passes.
+
+**When to use it:** Upload code or technical docs and ask for a blog post, tutorial, code explanation or documentation. Chinese and English are both supported.
+
+**Inside:** 21 writing rules, 6 genre templates, 3 review passes and bilingual templates. It focuses on technical writing only — not marketing copy, UI copy or casual chat.
+
+**Example prompts:**
+
+```
+Turn this Python project into a technical blog post.
+Write a tutorial from this design doc for readers new to the framework.
+Explain these modules in an article with code and trade-offs.
+```
+
+**Tags:** `technical-writing` `blog` `tutorial` `documentation` `bilingual` `chinese`
+
+Docs: [中文](./tech-blog-generator/README.md) · [English](./tech-blog-generator/README.en.md)
+
+</details>
+
+<details>
+<summary><b>yardon-writer</b> — Chinese longform writing: technical posts stay clear, narrative posts stay readable.</summary>
+
+**What it solves:** Technical posts turn into manuals, narrative posts turn into diaries, and mixing the two satisfies neither. This skill decides the mode first, applies the matching structure, rhythm and banned-phrase rules, then runs a reading-experience check.
+
+**When to use it:** WeChat articles, technical blogs, CSDN longform, project retrospectives, lessons learned and workplace observations. Also useful for turning a PDF, news link, transcript or scattered notes into an article.
+
+**Two modes:** Mode A keeps sections, tables, code and chapter summaries. Mode B pushes headings into the background, uses transitions, and puts first-person experience and a point of view first.
+
+**Boundaries:** Not for short social posts. Never invent experiences, numbers, amounts or dialogues. Company material is desensitized by default.
+
+**Example prompts:**
+
+```
+Turn these notes into a longform WeChat article in my style.
+Rewrite this project retrospective — no diary-style chronology.
+Turn this PDF into a technical longform article.
+This reads like AI wrote it. Rewrite it using the yardon-writer rules.
+```
+
+**Tags:** `writing` `chinese` `longform` `technical-writing` `narrative` `style`
+
+Docs: [中文](./yardon-writer/README.md) · [English](./yardon-writer/README.en.md)
+
+</details>
+
+<details>
+<summary><b>prompt-optimizer</b> — One draft prompt in, four finished variants out, pick the one that fits.</summary>
+
+**What it solves:** "the model didn't understand me" is almost never the model — the prompt is missing audience, output format, constraints or a definition of done. This skill doesn't polish; it rewrites the same request four ways so you can see how organization changes the result.
+
+**When to use it:** A prompt that isn't landing, a model that keeps missing the point, a need for deterministic output, or simply an instruction that should be more effective.
+
+**Inside:** Four strategies (detailed expansion / role-play / structured decomposition / reverse-engineered), optimization directions and use cases for each, a uniform output format with a comparison table, and five principles that keep the rewrite in bounds.
+
+**Boundaries:** Never changes the intent and never wraps a prompt that is already good; matches the input language.
+
+**Example prompts:**
+
+```
+Optimize this prompt and give me a few versions to compare.
+The model keeps missing my point — rewrite this request clearly.
+```
+
+**Tags:** `prompt-engineering` `prompt` `rewrite` `llm`
+
+Docs: [中文](./prompt-optimizer/README.md) · [English](./prompt-optimizer/README.en.md)
+
+</details>
 
 ## Compatibility
 
 | Skill | Runtime dependency | Platform notes |
 |---|---|---|
 | html-skill-effectiveness | None | Any Agent Skills-compatible tool |
-| markdown-renderer-fix | None / stdlib | Frontend and full-stack projects |
+| html-designer__skillhub | None | Third-party skill; see its source notes |
 | mobile-design-spec | Node.js >= 18 (scripts only) | Rules work without Node |
-| task-skill-orchestrator | OpenClaw `sessions_spawn` + 5 sub-agents | Other platforms need a custom dispatch layer |
-| tech-blog-generator | None | Any Agent Skills-compatible tool |
-| yardon-writer | None | Chinese longform writing |
-| code-review | None | Any Agent Skills-compatible tool |
-| self-improving-agent | None | Needs a writable `.learnings/` in the project |
+| markdown-renderer-fix | None / stdlib | Frontend and full-stack projects |
 | md-to-docx | Python + python-docx | Required by both scripts |
 | html-to-pdf | Chrome/Edge + PyMuPDF | PyMuPDF only for the verification step |
-| prompt-optimizer | None | Any Agent Skills-compatible tool |
+| code-review | None | Any Agent Skills-compatible tool |
 | dev-workflow | None | Pairs well with code-review |
+| task-skill-orchestrator | OpenClaw `sessions_spawn` + 5 sub-agents | Other platforms need a custom dispatch layer |
 | merge-dev-docs | Node.js >= 20 (scripts only) | Rules and templates work without Node |
-| html-designer__skillhub | None | Third-party skill; see its source notes |
+| self-improving-agent | None | Needs a writable `.learnings/` in the project |
+| tech-blog-generator | None | Any Agent Skills-compatible tool |
+| yardon-writer | None | Chinese longform writing |
+| prompt-optimizer | None | Any Agent Skills-compatible tool |
 
 Common tools: Claude Code, Codex, Qoder, Cursor, CodeBuddy, and any Agent Skills-compatible agent. Check your tool's docs for the exact load path.
 
@@ -422,35 +490,45 @@ Common tools: Claude Code, Codex, Qoder, Cursor, CodeBuddy, and any Agent Skills
 
 ```
 for-my-self-skills/
-├── README.md                 Chinese catalog
-├── README.en.md              English catalog
+├── README.md                 Chinese catalog (grouped)
+├── README.en.md              English catalog (grouped)
 ├── CHANGELOG.md              per-skill change notes
+│
+│   ── Web and Frontend (4) ──
 ├── html-skill-effectiveness/
 │   ├── SKILL.md              main rules (agent entry point)
 │   ├── README.md / README.en.md
 │   ├── references/
 │   └── docs/ assets/ tools/
-├── markdown-renderer-fix/
+├── html-designer__skillhub/
 ├── mobile-design-spec/
-├── task-skill-orchestrator/
-├── tech-blog-generator/
-├── yardon-writer/
-├── code-review/
-├── self-improving-agent/
+├── markdown-renderer-fix/
+│
+│   ── Documents and Delivery (2) ──
 ├── md-to-docx/
 │   ├── SKILL.md
 │   └── scripts/              conversion and zero-loss verification
 ├── html-to-pdf/
-├── prompt-optimizer/
+│
+│   ── Engineering Workflow and Quality (5) ──
+├── code-review/
 ├── dev-workflow/
 │   ├── SKILL.md
 │   └── reference/            five stage playbooks + review-kit guides
+├── task-skill-orchestrator/
 ├── merge-dev-docs/
 │   ├── SKILL.md
 │   ├── assets/               six templates
 │   └── scripts/              claim-index.cjs
-└── html-designer__skillhub/
+├── self-improving-agent/
+│
+└── Writing and Expression (3)
+    ├── tech-blog-generator/
+    ├── yardon-writer/
+    └── prompt-optimizer/
 ```
+
+The directory layout stays flat; the grouping lives in these READMEs only. That keeps every `tree/main/<skill-name>` link working and leaves the install commands untouched.
 
 Every folder uses `SKILL.md` as the entry point. `references/` is loaded on demand, not injected into every prompt.
 
