@@ -4,9 +4,9 @@
 
 # Yardon Skills
 
-#### 14 个在真实项目里用过、整理出来的 Agent Skills
+#### 15 个在真实项目里用过、整理出来的 Agent Skills
 
-[![Skills](https://img.shields.io/badge/Skills-14-10B981?style=flat-square)](#目录)
+[![Skills](https://img.shields.io/badge/Skills-15-10B981?style=flat-square)](#目录)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-8B5CF6?style=flat-square)](#兼容性)
 [![License](https://img.shields.io/badge/License-Apache--2.0-D97706?style=flat-square)](#license)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-D97706?style=flat-square&logo=anthropic&logoColor=white)](#兼容性)
@@ -26,7 +26,7 @@
 | 分类 | 管什么 | Skill 数 |
 |---|---|---|
 | [网页与前端](#网页与前端) | 产出界面，或修界面上看得见的问题。写页面的规范、视觉与移动端适配，以及 Markdown、SSE 这类渲染层的排错。 | 4 |
-| [文档与交付](#文档与交付) | 把内容变成别人能直接打开的文件。重点是保真和核验，不是排版创意。 | 2 |
+| [文档与交付](#文档与交付) | 把内容变成别人能直接打开的文件：转换要保真，演示要能被看懂。 | 3 |
 | [工程流程与质量](#工程流程与质量) | 管怎么做，也管做得对不对。从需求到设计的流程、代码审查标准、任务并行编排、文档合并裁决，以及经验怎么沉淀下来。 | 5 |
 | [写作与表达](#写作与表达) | 把想法写成别人能准确读懂、模型能准确执行的东西。 | 3 |
 
@@ -45,12 +45,13 @@
 
 ### 文档与交付
 
-把内容变成别人能直接打开的文件。重点是保真和核验，不是排版创意。
+把内容变成别人能直接打开的文件：转换要保真，演示要能被看懂。
 
 | Skill | 一句话 | 标签 | 文档 |
 |---|---|---|---|
 | [md-to-docx](./md-to-docx/) | Markdown 无损转 Word，逐元素保真，附零缺失校验脚本 | `markdown` `docx` `python-docx` | [中文](./md-to-docx/README.md) · [EN](./md-to-docx/README.en.md) |
 | [html-to-pdf](./html-to-pdf/) | 打印优化 HTML + Chrome 无头转 PDF，中文不乱码 | `pdf` `headless-chrome` `print` | [中文](./html-to-pdf/README.md) · [EN](./html-to-pdf/README.en.md) |
+| [slides-workflow](./slides-workflow/) | 从素材到成稿的幻灯片流程：逐页稿、风格说明、三形态选一 | `slides` `ppt` `pptx` `deck` | [中文](./slides-workflow/README.md) · [EN](./slides-workflow/README.en.md) |
 
 ### 工程流程与质量
 
@@ -211,7 +212,7 @@ Markdown 里的 Mermaid 不显示，代码块也没有高亮。
 
 ### 文档与交付
 
-把内容变成别人能直接打开的文件。重点是保真和核验，不是排版创意。
+把内容变成别人能直接打开的文件：转换要保真，演示要能被看懂。
 
 <details>
 <summary><b>md-to-docx</b> — 按 Markdown 逐元素映射到 Word，转完还要跑零缺失校验，`RESULT: PASS` 才算完成。</summary>
@@ -254,6 +255,31 @@ Markdown 里的 Mermaid 不显示，代码块也没有高亮。
 **标签**：`pdf` `html` `headless-chrome` `print` `document-delivery`
 
 文档：[中文](./html-to-pdf/README.md) · [English](./html-to-pdf/README.en.md)
+
+</details>
+
+<details>
+<summary><b>slides-workflow</b> — 内容先行，形态后选。先定说什么，再定长什么样，最后才决定做成 HTML、整页图片还是可编辑 PPTX。</summary>
+
+**解决什么**：用 AI 做 PPT 最常见的失败不是做不出来，是做到一半发现方向错了——AI 自己分页、自己写文案，做完一版发现页序和重点都不对；没有风格说明，逐页各做各的，改到第七页时前面几页已经不像同一套；选错形态，只想发给人看却要交付可编辑 PPTX。这个 Skill 把链路拆成四个阶段，前两个设成硬闸。
+
+**什么时候用**：要把一堆资料整理成汇报或培训用的演示、要判断该做 HTML 还是可编辑 PPTX、有图片稿想还原成能改的 pptx、或者某几页怎么改都不对。
+
+**内含**：四阶段作业方法（简报两型、逐页稿 7 字段、风格说明模板、五段式修改指令）、三套制作提示词（HTML Slides / 整页图片 / 可编辑 PPTX，含验收清单）、图片稿还原方法与清背景旧字的铁律、九个已知失败模式、两个零依赖校验脚本（项目脚手架、逐页稿与素材完整性）。
+
+**边界**：不做无素材的凭空创作；不做企业模板的像素级复刻；不承诺交付物必须联网才能放映。纯文档转换走 `md-to-docx` 与 `html-to-pdf`。
+
+**示例触发**：
+
+```
+帮我把这堆资料整理成一份汇报 PPT。
+这套 PPT 要反复改，怎么让 AI 做出来我能编辑的版本？
+我有一版图片稿，想转成能改的 PPTX。
+```
+
+**标签**：`slides` `ppt` `pptx` `presentation` `deck` `workflow`
+
+文档：[中文](./slides-workflow/README.md) · [English](./slides-workflow/README.en.md)
 
 </details>
 
@@ -475,6 +501,7 @@ AI 没理解我的意思，帮我把这个需求写清楚。
 | markdown-renderer-fix | 无 / 标准库 | 前端与全栈项目都适用 |
 | md-to-docx | Python + python-docx | 转换与校验脚本都需要 |
 | html-to-pdf | Chrome/Edge + PyMuPDF | 仅核验步骤需要 PyMuPDF |
+| slides-workflow | Python 3.8+（仅脚本） | 制作阶段的外部 Skill 按需自选，不装也能用提示词 |
 | code-review | 无 | 任何支持 Agent Skills 的工具 |
 | dev-workflow | 无 | 可选配合 code-review 使用 |
 | task-skill-orchestrator | OpenClaw `sessions_spawn` + 5 类 Sub Agent | 其他平台需替换派发层 |
@@ -504,11 +531,16 @@ for-my-self-skills/
 ├── mobile-design-spec/
 ├── markdown-renderer-fix/
 │
-│   ── 文档与交付（2）──
+│   ── 文档与交付（3）──
 ├── md-to-docx/
 │   ├── SKILL.md
 │   └── scripts/              转换与零缺失校验脚本
 ├── html-to-pdf/
+├── slides-workflow/
+│   ├── SKILL.md
+│   ├── references/           四阶段方法与三套制作提示词
+│   ├── assets/               简报、逐页稿、风格说明模板
+│   └── scripts/              scaffold.py、verify.py
 │
 │   ── 工程流程与质量（5）──
 ├── code-review/
@@ -534,13 +566,13 @@ for-my-self-skills/
 
 ## 隐私边界
 
-这个公开仓只有 14 个可公开的 Skill。个人上下文、私有 Skill、公司资料不在公开仓。示例里的姓名、邮箱、电话、公司名和数据都是虚构或占位；如果你在 Skill 里看到真实信息，请提 Issue。
+这个公开仓只有 15 个可公开的 Skill。个人上下文、私有 Skill、公司资料不在公开仓。示例里的姓名、邮箱、电话、公司名和数据都是虚构或占位；如果你在 Skill 里看到真实信息，请提 Issue。
 
 ## License
 
 仓库根目录的 [LICENSE](./LICENSE) 是 Apache-2.0；[NOTICE](./NOTICE) 说明第三方例外。
 
-13 个原创 Skill 使用 Apache-2.0：html-skill-effectiveness、markdown-renderer-fix、mobile-design-spec、task-skill-orchestrator、tech-blog-generator、yardon-writer、code-review、self-improving-agent、md-to-docx、html-to-pdf、prompt-optimizer、dev-workflow、merge-dev-docs。每个目录内附 `LICENSE`。
+14 个原创 Skill 使用 Apache-2.0：html-skill-effectiveness、markdown-renderer-fix、mobile-design-spec、task-skill-orchestrator、tech-blog-generator、yardon-writer、code-review、self-improving-agent、md-to-docx、html-to-pdf、prompt-optimizer、dev-workflow、merge-dev-docs、slides-workflow。每个目录内附 `LICENSE`。
 
 `html-designer__skillhub` 是从 SkillHub 收集的第三方 Skill，目录内没有独立 LICENSE 文件；复用或再分发前请核对原始来源与许可。
 
@@ -563,7 +595,7 @@ Issue 和 PR 都欢迎。为了让每个 Skill 的变更可追溯，约定：
 
 [Apache-2.0 License](./LICENSE) · 自由使用 / 修改 / 再分发（保留版权与许可声明）
 
-13 个原创 Skill 使用 Apache-2.0；`html-designer__skillhub` 为第三方 Skill，许可见其目录与原始来源。
+14 个原创 Skill 使用 Apache-2.0；`html-designer__skillhub` 为第三方 Skill，许可见其目录与原始来源。
 
 Made by [@YardonYan](https://github.com/YardonYan)
 

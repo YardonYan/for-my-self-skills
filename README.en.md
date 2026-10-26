@@ -4,9 +4,9 @@
 
 # Yardon Skills
 
-#### Fourteen Agent Skills I use and maintain in real projects
+#### Fifteen Agent Skills I use and maintain in real projects
 
-[![Skills](https://img.shields.io/badge/Skills-14-10B981?style=flat-square)](#catalog)
+[![Skills](https://img.shields.io/badge/Skills-15-10B981?style=flat-square)](#catalog)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-8B5CF6?style=flat-square)](#compatibility)
 [![License](https://img.shields.io/badge/License-Apache--2.0-D97706?style=flat-square)](#license)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-D97706?style=flat-square&logo=anthropic&logoColor=white)](#compatibility)
@@ -26,7 +26,7 @@ Grouped by where the skill sits in your work, four categories, one skill each. S
 | Category | What it covers | Skills |
 |---|---|---|
 | [Web and Frontend](#web-and-frontend) | Produce interfaces, or fix what is visibly broken in them. Page specs, visual design, mobile sizing, plus rendering-layer debugging for Markdown and SSE. | 4 |
-| [Documents and Delivery](#documents-and-delivery) | Turn content into a file someone else can just open. Fidelity and verification matter here, not layout creativity. | 2 |
+| [Documents and Delivery](#documents-and-delivery) | Turn content into a file someone else can just open: conversions keep fidelity, decks have to be understood. | 3 |
 | [Engineering Workflow and Quality](#engineering-workflow-and-quality) | Own how the work gets done and whether it is right. Requirement-to-design flow, review standards, parallel task orchestration, document merge adjudication, and how lessons persist. | 5 |
 | [Writing and Expression](#writing-and-expression) | Turn thinking into something a person reads clearly and a model executes precisely. | 3 |
 
@@ -45,12 +45,13 @@ Produce interfaces, or fix what is visibly broken in them. Page specs, visual de
 
 ### Documents and Delivery
 
-Turn content into a file someone else can just open. Fidelity and verification matter here, not layout creativity.
+Turn content into a file someone else can just open: conversions keep fidelity, decks have to be understood.
 
 | Skill | One-liner | Tags | Docs |
 |---|---|---|---|
 | [md-to-docx](./md-to-docx/) | Lossless Markdown to Word with element-by-element fidelity and a zero-loss check | `markdown` `docx` `python-docx` | [中文](./md-to-docx/README.md) · [EN](./md-to-docx/README.en.md) |
 | [html-to-pdf](./html-to-pdf/) | Print-optimized HTML to PDF via headless Chrome, CJK text intact | `pdf` `headless-chrome` `print` | [中文](./html-to-pdf/README.md) · [EN](./html-to-pdf/README.en.md) |
+| [slides-workflow](./slides-workflow/) | Raw material to finished deck: page script, style spec, then one of three formats | `slides` `ppt` `pptx` `deck` | [中文](./slides-workflow/README.md) · [EN](./slides-workflow/README.en.md) |
 
 ### Engineering Workflow and Quality
 
@@ -211,7 +212,7 @@ Docs: [中文](./markdown-renderer-fix/README.md) · [English](./markdown-render
 
 ### Documents and Delivery
 
-Turn content into a file someone else can just open. Fidelity and verification matter here, not layout creativity.
+Turn content into a file someone else can just open: conversions keep fidelity, decks have to be understood.
 
 <details>
 <summary><b>md-to-docx</b> — Map Markdown to Word element by element, then prove nothing was dropped. `RESULT: PASS` or it isn't done.</summary>
@@ -254,6 +255,31 @@ Docs: [中文](./md-to-docx/README.md) · [English](./md-to-docx/README.en.md)
 **Tags:** `pdf` `html` `headless-chrome` `print` `document-delivery`
 
 Docs: [中文](./html-to-pdf/README.md) · [English](./html-to-pdf/README.en.md)
+
+</details>
+
+<details>
+<summary><b>slides-workflow</b> — Content first, format second. Settle what the deck says, then what it looks like, then whether it becomes HTML, image pages or an editable PPTX.</summary>
+
+**What it solves:** The usual AI deck failure isn't "it can't produce one" — it's discovering halfway through that the direction was wrong. The model paginates on its own, the finished draft has the wrong page order and emphasis, and you throw it away. Without a style spec every page is designed separately until the deck looks like three decks. Pick the wrong format and you need an editable PPTX when you only wanted something to read. This skill splits the work into four stages with hard gates after the first two.
+
+**When to use it:** Turning a pile of material into a report or training deck, deciding between HTML and an editable PPTX, converting an image deck back into something editable, or finding out why a few pages never come out right.
+
+**Inside:** The four-stage method (two brief types, the seven-field page script, the style spec template, the five-part revision request), three build prompts (HTML Slides, image pages, editable PPTX, each with an acceptance checklist), the image-to-PPTX reconstruction method and the rule about clearing original text, nine known failure modes, and two zero-dependency verification scripts.
+
+**Boundaries:** No decks from thin air, no pixel-perfect brand template reproduction, no deliverables that need a network connection to present. Plain document conversion belongs to `md-to-docx` and `html-to-pdf`.
+
+**Example prompts:**
+
+```
+Turn these materials into a report deck.
+This deck will be revised repeatedly — how do I get an editable version out of AI?
+I have a deck as images and want a PPTX I can edit.
+```
+
+**Tags:** `slides` `ppt` `pptx` `presentation` `deck` `workflow`
+
+Docs: [中文](./slides-workflow/README.md) · [English](./slides-workflow/README.en.md)
 
 </details>
 
@@ -475,6 +501,7 @@ Docs: [中文](./prompt-optimizer/README.md) · [English](./prompt-optimizer/REA
 | markdown-renderer-fix | None / stdlib | Frontend and full-stack projects |
 | md-to-docx | Python + python-docx | Required by both scripts |
 | html-to-pdf | Chrome/Edge + PyMuPDF | PyMuPDF only for the verification step |
+| slides-workflow | Python 3.8+ (scripts only) | Production-stage external skills are optional; prompts work without them |
 | code-review | None | Any Agent Skills-compatible tool |
 | dev-workflow | None | Pairs well with code-review |
 | task-skill-orchestrator | OpenClaw `sessions_spawn` + 5 sub-agents | Other platforms need a custom dispatch layer |
@@ -504,11 +531,16 @@ for-my-self-skills/
 ├── mobile-design-spec/
 ├── markdown-renderer-fix/
 │
-│   ── Documents and Delivery (2) ──
+│   ── Documents and Delivery (3) ──
 ├── md-to-docx/
 │   ├── SKILL.md
 │   └── scripts/              conversion and zero-loss verification
 ├── html-to-pdf/
+├── slides-workflow/
+│   ├── SKILL.md
+│   ├── references/           four-stage method and three build prompts
+│   ├── assets/               brief, page script and style spec templates
+│   └── scripts/              scaffold.py, verify.py
 │
 │   ── Engineering Workflow and Quality (5) ──
 ├── code-review/
@@ -534,13 +566,13 @@ Every folder uses `SKILL.md` as the entry point. `references/` is loaded on dema
 
 ## Privacy boundary
 
-This public repo contains only the 14 public skills. Personal context, private skills and company material are not included. Names, emails, phone numbers, companies and data in examples are fictional or placeholders. If you find real information in a skill, please open an issue.
+This public repo contains only the 15 public skills. Personal context, private skills and company material are not included. Names, emails, phone numbers, companies and data in examples are fictional or placeholders. If you find real information in a skill, please open an issue.
 
 ## License
 
 The root [LICENSE](./LICENSE) is Apache-2.0; [NOTICE](./NOTICE) documents the third-party exception.
 
-Thirteen original skills are Apache-2.0: html-skill-effectiveness, markdown-renderer-fix, mobile-design-spec, task-skill-orchestrator, tech-blog-generator, yardon-writer, code-review, self-improving-agent, md-to-docx, html-to-pdf, prompt-optimizer, dev-workflow and merge-dev-docs. Each folder includes a `LICENSE` file.
+Fourteen original skills are Apache-2.0: html-skill-effectiveness, markdown-renderer-fix, mobile-design-spec, task-skill-orchestrator, tech-blog-generator, yardon-writer, code-review, self-improving-agent, md-to-docx, html-to-pdf, prompt-optimizer, dev-workflow, merge-dev-docs and slides-workflow. Each folder includes a `LICENSE` file.
 
 `html-designer__skillhub` is a third-party skill collected from SkillHub. It does not include a separate LICENSE file; check the original source and its license before reuse or redistribution.
 
@@ -563,7 +595,7 @@ Per-skill changes are recorded in [CHANGELOG.md](./CHANGELOG.md).
 
 [Apache-2.0 License](./LICENSE) · free to use / modify / redistribute with copyright and license notices
 
-Thirteen original skills are Apache-2.0; `html-designer__skillhub` is a third-party skill — see its folder and original source for licensing.
+Fourteen original skills are Apache-2.0; `html-designer__skillhub` is a third-party skill — see its folder and original source for licensing.
 
 Made by [@YardonYan](https://github.com/YardonYan)
 

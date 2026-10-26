@@ -1,0 +1,25 @@
+{
+  "name": "slides-workflow",
+  "version": "1.0.0",
+  "description": "Turn raw material into finished slides in four gated stages, then build as HTML Slides, image pages or editable PPTX.",
+  "author": {
+    "name": "Yardon",
+    "url": "https://github.com/YardonYan"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/YardonYan/for-my-self-skills/tree/main/slides-workflow",
+  "repository": "https://github.com/YardonYan/for-my-self-skills/tree/main/slides-workflow",
+  "displayName": "slides-workflow",
+  "keywords": [
+    "agent-skill",
+    "ai-skill",
+    "slides-workflow",
+    "ppt",
+    "presentation",
+    "pptx",
+    "slides",
+    "deck"
+  ],
+  "skills": "./",
+  "hooks": {}
+}

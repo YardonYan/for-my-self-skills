@@ -4,6 +4,15 @@ All notable changes to the public skill set. Each skill has its own section so c
 
 ## 2026-10-26
 
+### 新增 slides-workflow
+
+- 中文：新增 `slides-workflow`，把一套用 AI 做 PPT 的方法论落成可复用 Skill：四阶段流程（采集与逐页稿 → 风格说明 → 选形态制作 → 局部打磨），前两阶段设硬闸；三形态（HTML Slides / 整页图片 / 可编辑 PPTX）各有硬约束、制作提示词与验收清单；含图片稿还原方法、九个已知失败模式、两个零依赖校验脚本。
+- English: Added `slides-workflow`, turning an AI deck-production methodology into a reusable skill: a four-stage flow (gather and page script, style spec, choose format and build, targeted polish) with hard gates after the first two stages; three formats (HTML Slides, image pages, editable PPTX) each with constraints, a build prompt and an acceptance checklist; plus the image-to-PPTX reconstruction method, nine known failure modes and two zero-dependency verification scripts.
+- 中文：归入「文档与交付」类，该类数量由 2 增至 3，说明同步改为「转换要保真，演示要能被看懂」。公开层 14 → 15 个，原创 13 → 14 个。
+- English: Filed under Documents and Delivery, which grew from 2 to 3 skills; its description now reads "conversions keep fidelity, decks have to be understood". Public layer 14 → 15, original skills 13 → 14.
+- 中文：`verify.py script` 输出 `RESULT: PASS` 才算通过，会逐条报出页码缺失、字段名拼错、必填字段为空、图片引用不存在；`verify.py assets` 额外检查未引用文件与序号连续性。
+- English: `verify.py script` prints `RESULT: PASS` only when clean, reporting missing page numbers, misspelled field names, empty required fields and unresolved image references; `verify.py assets` additionally checks unreferenced files and numbering continuity.
+
 ### README 分类重构
 
 - 中文：两份根 README 由 14 个 Skill 平铺改为按四类分组：网页与前端（4）、文档与交付（2）、工程流程与质量（5）、写作与表达（3）。分类口径是「用在哪一步」，一个 Skill 只归一类。
