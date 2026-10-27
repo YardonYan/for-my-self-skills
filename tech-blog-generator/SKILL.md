@@ -48,6 +48,8 @@ Before writing, identify the appropriate genre from the user's request or infer 
 | **Quick Tip** | Single technique or pattern | Brief, actionable | Problem → Solution → Code → One Gotcha |
 | **Architecture Overview** | System design explanation | Systems-thinking | Context → Design Goals → Component Map → Data Flow → Decisions |
 
+For **5+ products or tools**, use the short visual comparison in `references/comparison_blog.md` instead of the long-form Comparison template. Hard rules: 4–6k Chinese characters, 5–8 tables, one positioning map, separate model-strategy and Skill-extension tables, a commonality table, a scenario matrix, no in-body citations, no local-environment framing.
+
 # Writing Quality Framework
 
 Adapted from agent-style (yzhao062), WRITING.md (Anbeeld), and classic writing authorities. These rules are ranked by severity: **Critical** (reader cannot trust the text) > **High** (visible AI-tell or clarity failure) > **Medium** (local readability cost).
@@ -288,6 +290,7 @@ genre: deep-dive
 - `references/style_guide.md` — Forbidden phrases and anti-patterns
 - `references/common_pitfalls.md` — Language-specific common errors (10 languages)
 - `references/blog_templates.md` — Multiple blog structure templates by genre
+- `references/comparison_blog.md` — Short visual comparison for 5+ products: tables-first, no in-body citations, one positioning map
 - `references/self_review_checklist.md` — Detailed audit checklist
 - `scripts/` — `validate_yaml.py`, `count_tokens.py`, `review_draft.py`
 

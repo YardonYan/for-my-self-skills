@@ -189,7 +189,7 @@ Qoder 装完需要执行 `/skills reload` 或重启会话才会识别。OpenClaw
 | 能力 | 说明 |
 |------|------|
 | **21 条写作规则** | 12 条经典写作权威（Strunk & White、Orwell、Pinker、Gopen & Swan）+ 9 条 AI 特定规则，每条有严重度分级和 BAD→GOOD 示例 |
-| **6 种文体模板** | 教程、深度解析、对比评测、复盘报告、速查技巧、架构概览 |
+| **6 种文体 + 短对比变体** | 教程、深度解析、对比评测、复盘报告、速查技巧、架构概览；5+ 产品用短图文对比模板 |
 | **中文写作模式** | 完整的中文技术写作规则：黑话词表（20+ 词）、句式禁令、TL;DR 三段式 |
 | **具体锚点强制** | 每一段必须包含可查证的名词、数字、引用或决策，缺失则自审标红 |
 | **10 种语言陷阱** | Go、Python、JS/TS、Java、Rust、C++、C#、Kotlin、Swift、Docker/K8s 常见错误 |
@@ -209,6 +209,8 @@ Qoder 装完需要执行 `/skills reload` 或重启会话才会识别。OpenClaw
 | **复盘报告** Postmortem | 事故或项目回顾 | 事实导向，不追责 |
 | **速查技巧** Quick Tip | 单一技巧或模式 | 简短，可直接使用 |
 | **架构概览** Architecture | 系统设计说明 | 系统思维，关注决策 |
+
+5 个以上产品/工具的对比，用 `references/comparison_blog.md` 的短图文变体：4–6 千字、5–8 张表、1–2 张图，正文不写脚注和引用。
 
 <a id="21-条写作规则"></a>
 
@@ -314,6 +316,7 @@ tech-blog-generator/
 │   ├── common_pitfalls.md           # 10 种语言常见错误速查
 │   ├── chinese_writing.md           # 中文技术写作规则 + 黑话词表
 │   ├── blog_templates.md            # 6 种文体结构模板
+│   ├── comparison_blog.md           # 5+ 产品短图文对比模板
 │   └── self_review_checklist.md     # 3 遍审计清单
 └── scripts/
     ├── validate_yaml.py             # Frontmatter 校验
