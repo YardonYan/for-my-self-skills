@@ -6,7 +6,7 @@ The failure mode this replaces: five equal-length product essays, local-environm
 
 ## Hard constraints
 
-- 5,000–7,000 Chinese characters for the short variant; 7,000–9,000 for the deep moat add-on. Tables count; long prose does not get extra room.
+- 5,000–7,000 Chinese characters for the short variant; 8,000–10,000 for the deep moat add-on. Tables count; long prose does not get extra room.
 - 5–8 tables for the short variant; 9–11 for the deep add-on. 1–2 visuals: one cover card, one positioning map or decision flow.
 - No in-body citations, footnotes, or "source: ..." text. Keep research notes internal. Add one dated disclaimer at the end: data cutoff, price disclaimer, subjective ratings.
 - Do not open with "I checked my local machine" or a list of config directories. Open with what each product delivers.
@@ -97,8 +97,9 @@ Use this when the reader asks why these products last, why they have durable adv
 5. **Competition map**: battlefield | main players | deciding factor | conclusion.
 6. **Moat decay table**: product | weakening signal | cause | when to switch.
 7. **Why users stay**: one paragraph on switching costs from context (AGENTS.md, Repo Wiki, local files, project history), not feature count.
+8. **Collaboration map**: shared files/artifacts, shared repo/code, shared knowledge/context, shared session/task, shared config/skill, permissions/audit. Start from the code-scattered problem: multi-repo → multi-rule → multi-session → context break → repeated explanation/review. The line is: shared files are the entry, shared context is retention.
 
-Length: 8–9k Chinese characters; 9–11 tables. The causal chain and decay tables carry the depth; do not turn it into five essays.
+Length: 8–10k Chinese characters; 9–11 tables. The causal chain and decay tables carry the depth; do not turn it into five essays.
 
 ## Visual guidance
 
@@ -130,6 +131,6 @@ Length: 8–9k Chinese characters; 9–11 tables. The causal chain and decay tab
 - [ ] The deep-dive product has a "why it survives + cost" table.
 - [ ] The scenario matrix makes office vs coding obvious.
 - [ ] The star matrix has a rubric, weights, and two concrete task outputs.
-- [ ] Deep variant: eight moat dimensions, a 5×8 matrix, an evidence table, a causal chain table, a competition map, and a moat decay table.
+- [ ] Deep variant: eight moat dimensions, a 5×8 matrix, an evidence table, a causal chain table, a competition map, a collaboration map, and a moat decay table.
 - [ ] No citations in the body; one dated disclaimer at the end.
 - [ ] Total length is under 7,000 (short) or 9,000 (deep) Chinese characters.
