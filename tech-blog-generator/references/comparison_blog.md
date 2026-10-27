@@ -6,7 +6,7 @@ The failure mode this replaces: five equal-length product essays, local-environm
 
 ## Hard constraints
 
-- 5,000–7,000 Chinese characters for the short variant; 8,000–10,000 for the deep moat add-on. Tables count; long prose does not get extra room.
+- 5,000–7,000 for the short variant; 7,000–8,000 for the compressed deep variant; 8,000–10,000 for the full deep add-on. Tables count; long prose does not get extra room.
 - 5–8 tables for the short variant; 9–11 for the deep add-on. 1–2 visuals: one cover card, one positioning map or decision flow.
 - No in-body citations, footnotes, or "source: ..." text. Keep research notes internal. Add one dated disclaimer at the end: data cutoff, price disclaimer, subjective ratings.
 - Do not open with "I checked my local machine" or a list of config directories. Open with what each product delivers.
@@ -101,6 +101,17 @@ Use this when the reader asks why these products last, why they have durable adv
 
 Length: 8–10k Chinese characters; 9–11 tables. The causal chain and decay tables carry the depth; do not turn it into five essays.
 
+## Compression pass (7–8k)
+
+When the user asks for depth but a tight read, compress the full deep draft:
+
+- Keep 7 tables: one-line table, latest-version/unique table, moat matrix, causal chain, model/Skill route, scoring rubric, task table.
+- Delete tables that repeat the causal chain: separate evidence table, competition table, new-entrant table, moat-decay table. Fold their one-line conclusions into prose.
+- Make the task table product-first: 5 rows, one office column, one coding column. Do not keep 10 task-first rows.
+- Keep 3 visuals: cover, positioning map, collaboration map.
+- Bold 6–10 conclusions; cut explanatory prose before cutting visuals.
+- Target 7,000–8,000 Chinese characters.
+
 ## Visual guidance
 
 - Use HTML/CSS + a headless browser screenshot for crisp Chinese labels. Do not use AI image generation for text-heavy diagrams; it garbles Chinese.
@@ -132,5 +143,6 @@ Length: 8–10k Chinese characters; 9–11 tables. The causal chain and decay ta
 - [ ] The scenario matrix makes office vs coding obvious.
 - [ ] The star matrix has a rubric, weights, and two concrete task outputs.
 - [ ] Deep variant: eight moat dimensions, a 5×8 matrix, an evidence table, a causal chain table, a competition map, a collaboration map, and a moat decay table.
+- [ ] Compressed deep variant: 7 tables, 3 visuals, 7–8k characters; no table repeats the causal chain.
 - [ ] No citations in the body; one dated disclaimer at the end.
 - [ ] Total length is under 7,000 (short) or 9,000 (deep) Chinese characters.

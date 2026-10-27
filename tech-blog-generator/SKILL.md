@@ -48,7 +48,7 @@ Before writing, identify the appropriate genre from the user's request or infer 
 | **Quick Tip** | Single technique or pattern | Brief, actionable | Problem → Solution → Code → One Gotcha |
 | **Architecture Overview** | System design explanation | Systems-thinking | Context → Design Goals → Component Map → Data Flow → Decisions |
 
-For **5+ products or tools**, use the short visual comparison in `references/comparison_blog.md` instead of the long-form Comparison template. Hard rules: 5–7k Chinese characters (short) or 8–10k (deep moat add-on); 5–8 tables (short) or 9–11 (deep); one positioning map; a latest-version/unique-advantage table for every product; separate model-strategy and Skill-extension tables; a scoring rubric with two concrete tasks; for deep pieces, an eight-dimension moat matrix, an evidence table, a competition map and a collaboration map; no in-body citations; no local-environment framing.
+For **5+ products or tools**, use the short visual comparison in `references/comparison_blog.md` instead of the long-form Comparison template. Hard rules: 5–7k (short), 7–8k (compressed deep) or 8–10k (full deep); 5–8 tables (short) or 9–11 (deep); one positioning map; a latest-version/unique-advantage table for every product; separate model-strategy and Skill-extension tables; a scoring rubric with two concrete tasks; for deep pieces, an eight-dimension moat matrix, an evidence table, a competition map and a collaboration map; no in-body citations; no local-environment framing.
 
 # Writing Quality Framework
 
