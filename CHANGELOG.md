@@ -12,6 +12,8 @@ All notable changes to the public skill set. Each skill has its own section so c
 - English: Split the comparison into five layers: model strategy, Skill-extension strategy, common capabilities, a latest-version/unique-combination/cost row for every product, and a scoring rubric with two concrete task outputs. Never deep-dive only one product.
 - 中文：场景星级必须给评分项、权重、两个任务的实际/预期产出；不能只给分数。
 - English: Scenario stars require criteria, weights, and two concrete task outputs; scores alone are not enough.
+- 中文：新增深挖版：8 层护城河矩阵（工作面/上下文/分发/扩展/成本/信任/切换成本/资本品牌）、证据表（最强/最弱/什么会杀死它）、竞争格局表；深挖版 8–9 千字、9–11 张表；核心是因果链表和护城河衰减表。
+- English: Added a deep variant: an eight-dimension moat matrix (work surface, context, distribution, extension, cost, trust, switching cost, capital/brand), an evidence table (strongest / weakest / what would kill it) and a competition map; 8–9k characters and 9–11 tables; the causal-chain and moat-decay tables carry the depth.
 - 中文：`SKILL.md`、`blog_templates.md`、`README.md` 同步挂入口；5+ 产品场景优先走短图文模板，不再套用长篇对比结构。
 - English: Cross-linked from `SKILL.md`, `blog_templates.md` and `README.md`; 5+ product comparisons now route to the short visual template instead of the long-form structure.
 

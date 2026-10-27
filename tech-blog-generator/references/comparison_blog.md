@@ -6,8 +6,8 @@ The failure mode this replaces: five equal-length product essays, local-environm
 
 ## Hard constraints
 
-- 5,000–7,000 Chinese characters total, frontmatter included. Tables count; long prose does not get extra room.
-- 5–8 tables and 1–2 visuals: one cover card, one positioning map or decision flow.
+- 5,000–7,000 Chinese characters for the short variant; 7,000–9,000 for the deep moat add-on. Tables count; long prose does not get extra room.
+- 5–8 tables for the short variant; 9–11 for the deep add-on. 1–2 visuals: one cover card, one positioning map or decision flow.
 - No in-body citations, footnotes, or "source: ..." text. Keep research notes internal. Add one dated disclaimer at the end: data cutoff, price disclaimer, subjective ratings.
 - Do not open with "I checked my local machine" or a list of config directories. Open with what each product delivers.
 - Every product gets a one-line intro. Do not write five mini-essays.
@@ -86,6 +86,20 @@ Never publish a star matrix without the rubric and at least two concrete tasks.
 
 Pick one office task and one coding task. For every product, write the expected output and why the score. Explain the largest gap with the rubric. Do not present expected outputs as a live benchmark; say "按公开能力推演" unless you actually ran all products.
 
+## Deep comparison add-on
+
+Use this when the reader asks why these products last, why they have durable advantages, or who will survive. Keep the short comparison structure, then add:
+
+1. **Eight moat dimensions**: work surface, context assets, distribution, extension supply, cost structure, enterprise trust, switching cost, capital/brand.
+2. **5×8 matrix**: score 1–5 per cell. Totals are for comparison, not ranking; say so.
+3. **Evidence table**: product | strongest moat | evidence | weakest link | what would kill it. Every score needs a reason.
+4. **Causal chain table**: product | how it survives (entry → context → habit → switching cost) | evidence | breaking point. This is the core of the deep version; a matrix alone is not enough.
+5. **Competition map**: battlefield | main players | deciding factor | conclusion.
+6. **Moat decay table**: product | weakening signal | cause | when to switch.
+7. **Why users stay**: one paragraph on switching costs from context (AGENTS.md, Repo Wiki, local files, project history), not feature count.
+
+Length: 8–9k Chinese characters; 9–11 tables. The causal chain and decay tables carry the depth; do not turn it into five essays.
+
 ## Visual guidance
 
 - Use HTML/CSS + a headless browser screenshot for crisp Chinese labels. Do not use AI image generation for text-heavy diagrams; it garbles Chinese.
@@ -98,6 +112,8 @@ Pick one office task and one coding task. For every product, write the expected 
 
 - Five equal-length product sections with repeated feature lists.
 - Deep-diving one product while the other four get a single line. Equal treatment is mandatory.
+- A feature table without a moat analysis when the question is "why do they last".
+- A moat matrix without causal chains, breaking points, or decay signals.
 - Opening with local config paths, `~/.codex`, `~/.workbuddy`, or "I installed all five".
 - Footnotes, source blocks, or "according to ..." in the body.
 - Star ratings without a rubric, weights, and at least two concrete task outputs.
@@ -114,5 +130,6 @@ Pick one office task and one coding task. For every product, write the expected 
 - [ ] The deep-dive product has a "why it survives + cost" table.
 - [ ] The scenario matrix makes office vs coding obvious.
 - [ ] The star matrix has a rubric, weights, and two concrete task outputs.
+- [ ] Deep variant: eight moat dimensions, a 5×8 matrix, an evidence table, a causal chain table, a competition map, and a moat decay table.
 - [ ] No citations in the body; one dated disclaimer at the end.
-- [ ] Total length is under 7,000 Chinese characters.
+- [ ] Total length is under 7,000 (short) or 9,000 (deep) Chinese characters.
