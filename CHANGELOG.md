@@ -6,19 +6,19 @@ All notable changes to the public skill set. Each skill has its own section so c
 
 ### tech-blog-generator 增加多产品短对比模板
 
-- 中文：新增 `references/comparison_blog.md`，面向 5 个以上产品/工具的横向对比。硬约束：4–6 千字、5–8 张表、1–2 张图；正文不放脚注/引用；不从本地环境切入；每个产品必须有一句话定位、公司、上线、最新、用户/规模、入门价、模型。
-- English: Added `references/comparison_blog.md` for comparisons of 5+ products/tools. Hard constraints: 4–6k Chinese characters, 5–8 tables, 1–2 visuals; no in-body citations; no local-environment framing; each product needs a one-liner, company, launch, latest update, user/scale metric, entry price and model list.
-- 中文：把对比拆成四层：模型路线（平台调度/单供应商/多模型）、Skill 扩展路线（模板库/应用商店/Claude Code 兼容/IDE 集成/仓库原生）、共通能力（MCP、Skills、子代理、云端、本地文件、企业审计）、场景矩阵。单产品深挖只保留“最新版本更新 + 优势 + 为什么还活着 + 代价”。
-- English: Split the comparison into four layers: model strategy (platform-routed / single-vendor / multi-model), Skill-extension strategy (template library / app store / Claude Code-compatible / IDE-integrated / repo-native), common capabilities (MCP, Skills, subagents, cloud, local files, enterprise audit) and a scenario matrix. The single-product deep dive keeps only "latest update + advantage + why it survives + cost".
+- 中文：新增 `references/comparison_blog.md`，面向 5 个以上产品/工具的横向对比。硬约束：5–7 千字、5–8 张表、1–2 张图；正文不放脚注/引用；不从本地环境切入；每个产品必须有一句话定位、公司、上线、最新、用户/规模、入门价、模型。
+- English: Added `references/comparison_blog.md` for comparisons of 5+ products/tools. Hard constraints: 5–7k Chinese characters, 5–8 tables, 1–2 visuals; no in-body citations; no local-environment framing; each product needs a one-liner, company, launch, latest update, user/scale metric, entry price and model list.
+- 中文：把对比拆成五层：模型路线（平台调度/单供应商/多模型）、Skill 扩展路线（模板库/应用商店/Claude Code 兼容/IDE 集成/仓库原生）、共通能力（MCP、Skills、子代理、云端、本地文件、企业审计）、每个产品的最新版本/独有组合/代价、场景评分标准与两个任务产出。不能只深挖一个产品。
+- English: Split the comparison into five layers: model strategy, Skill-extension strategy, common capabilities, a latest-version/unique-combination/cost row for every product, and a scoring rubric with two concrete task outputs. Never deep-dive only one product.
+- 中文：场景星级必须给评分项、权重、两个任务的实际/预期产出；不能只给分数。
+- English: Scenario stars require criteria, weights, and two concrete task outputs; scores alone are not enough.
 - 中文：`SKILL.md`、`blog_templates.md`、`README.md` 同步挂入口；5+ 产品场景优先走短图文模板，不再套用长篇对比结构。
 - English: Cross-linked from `SKILL.md`, `blog_templates.md` and `README.md`; 5+ product comparisons now route to the short visual template instead of the long-form structure.
-- 中文：修正：每个产品都必须有“最新版本 + 这一版新增 + 独有组合 + 仍然缺什么”一行；不能只深挖一个产品。`comparison_blog.md`、`SKILL.md`、`blog_templates.md` 与 `yardon-writer` 原型同步修改。
-- English: Correction: every product needs a "latest version + what changed + unique combination + still missing" row; never deep-dive only one product. Updated `comparison_blog.md`, `SKILL.md`, `blog_templates.md` and the `yardon-writer` prototype.
 
 ### yardon-writer 增加短图文对比原型
 
-- 中文：`references/article-prototypes.md` 新增“6. 短图文对比型（A 模式变体）”，适用 5 个以上产品横向对比；重心是一张定位图 + 模型/Skill/共通能力三张表 + 场景矩阵 + 选型流程，正文控制在 4–6 千字。
-- English: Added "6. Short Visual Comparison (A-mode variant)" to `references/article-prototypes.md` for 5+ product comparisons; the focus is one positioning map, three tables (models, Skills, common capabilities), a scenario matrix and a decision flow, with the body kept to 4–6k Chinese characters.
+- 中文：`references/article-prototypes.md` 新增“6. 短图文对比型（A 模式变体）”，适用 5 个以上产品横向对比；重心是一张定位图 + 模型/Skill/共通能力三张表 + 场景矩阵 + 选型流程，正文控制在 5–7 千字。
+- English: Added "6. Short Visual Comparison (A-mode variant)" to `references/article-prototypes.md` for 5+ product comparisons; the focus is one positioning map, three tables (models, Skills, common capabilities), a scenario matrix and a decision flow, with the body kept to 5–7k Chinese characters.
 - 中文：选原型速查表同步增加“5 个以上产品横向对比 → 6 短图文对比型”。
 - English: The prototype picker table now maps "5+ products side by side" to prototype 6.
 

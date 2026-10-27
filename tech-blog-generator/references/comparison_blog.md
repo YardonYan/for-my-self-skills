@@ -6,12 +6,13 @@ The failure mode this replaces: five equal-length product essays, local-environm
 
 ## Hard constraints
 
-- 4,000–6,000 Chinese characters total, frontmatter included. Tables count; long prose does not get extra room.
+- 5,000–7,000 Chinese characters total, frontmatter included. Tables count; long prose does not get extra room.
 - 5–8 tables and 1–2 visuals: one cover card, one positioning map or decision flow.
 - No in-body citations, footnotes, or "source: ..." text. Keep research notes internal. Add one dated disclaimer at the end: data cutoff, price disclaimer, subjective ratings.
 - Do not open with "I checked my local machine" or a list of config directories. Open with what each product delivers.
 - Every product gets a one-line intro. Do not write five mini-essays.
 - Every product gets a latest-version row and a unique-advantage cell. Never deep-dive only one product; if one gets extra detail, all five get equal treatment.
+- Every star matrix needs a rubric and at least two concrete tasks (one office, one coding). Scores without evidence are not allowed.
 - Include company, launch date, latest version or update, user/scale metric, entry price, and model list.
 - If a metric is not public, write "官方未公开" or omit it. Never invent a number to fill a cell.
 
@@ -24,7 +25,7 @@ The failure mode this replaces: five equal-length product essays, local-environm
 5. **Skill-extension table**: template library / app store / Claude Code-compatible / IDE-integrated / repo-native.
 6. **Commonality table**: MCP, Skills / `SKILL.md`, subagents or experts, cloud execution, local files, enterprise/audit. This answers "what is actually universal?" before the differences.
 7. **Latest-version table for every product**: latest version/date, what changed, unique combination, still missing. Follow with one short paragraph on the competitive position of all five.
-8. **Scenario matrix**: office / coding / large refactor / research / enterprise / onboarding. Use stars or 强/中/弱 and label it subjective.
+8. **Scoring rubric + task evidence**: six criteria with 5/3/1 definitions and office/coding weights; then one office task and one coding task, each with every product's expected output and why the score. Explain the biggest gap with the rubric. Label expected outputs as推断 unless you actually ran all products.
 9. **Decision flow + four combinations + one personal pick.**
 10. **One-line ending + dated disclaimer.**
 
@@ -70,6 +71,21 @@ Then a competitive-position table for all five:
 
 End with one honest sentence about the trade-offs, not a tribute to one product.
 
+## Scoring rubric + task evidence
+
+Never publish a star matrix without the rubric and at least two concrete tasks.
+
+| Criterion | 5 | 3 | 1 | Office weight | Coding weight |
+|---|---|---|---|---|---|
+| Task coverage | | | | 30% | 25% |
+| Artifact usability | | | | 30% | 25% |
+| Context access | | | | 20% | 20% |
+| Operation depth | | | | 10% | 15% |
+| Review/correction | | | | 5% | 10% |
+| Onboarding | | | | 5% | 5% |
+
+Pick one office task and one coding task. For every product, write the expected output and why the score. Explain the largest gap with the rubric. Do not present expected outputs as a live benchmark; say "按公开能力推演" unless you actually ran all products.
+
 ## Visual guidance
 
 - Use HTML/CSS + a headless browser screenshot for crisp Chinese labels. Do not use AI image generation for text-heavy diagrams; it garbles Chinese.
@@ -84,7 +100,7 @@ End with one honest sentence about the trade-offs, not a tribute to one product.
 - Deep-diving one product while the other four get a single line. Equal treatment is mandatory.
 - Opening with local config paths, `~/.codex`, `~/.workbuddy`, or "I installed all five".
 - Footnotes, source blocks, or "according to ..." in the body.
-- Star ratings without a "subjective, default configuration" label.
+- Star ratings without a rubric, weights, and at least two concrete task outputs.
 - Comparing credit prices across products as if credits were the same unit.
 - Stale user counts or prices without a date.
 - A "common features" section that only lists logos instead of behaviors.
@@ -97,5 +113,6 @@ End with one honest sentence about the trade-offs, not a tribute to one product.
 - [ ] Commonality is a table, not a paragraph.
 - [ ] The deep-dive product has a "why it survives + cost" table.
 - [ ] The scenario matrix makes office vs coding obvious.
+- [ ] The star matrix has a rubric, weights, and two concrete task outputs.
 - [ ] No citations in the body; one dated disclaimer at the end.
-- [ ] Total length is under 6,000 Chinese characters.
+- [ ] Total length is under 7,000 Chinese characters.

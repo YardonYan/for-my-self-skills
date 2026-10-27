@@ -123,7 +123,7 @@ genre: comparison
 [Specific, context-dependent guidance, not a one-size-fits-all verdict]
 ```
 
-**For 5+ products, use the short visual variant in `comparison_blog.md`.** Replace the long deep-comparison sections with a one-line table, a latest-version/unique-advantage table for every product, a model-strategy table, a Skill-extension table, a commonality table, a scenario matrix and a decision flow. Target 4–6k Chinese characters and 5–8 tables; do not put citations in the body.
+**For 5+ products, use the short visual variant in `comparison_blog.md`.** Replace the long deep-comparison sections with a one-line table, a latest-version/unique-advantage table for every product, a model-strategy table, a Skill-extension table, a commonality table, a scenario matrix and a decision flow. Target 5–7k Chinese characters and 5–8 tables; do not put citations in the body.
 
 ## 4. Postmortem / Retrospective
 

@@ -48,7 +48,7 @@ Before writing, identify the appropriate genre from the user's request or infer 
 | **Quick Tip** | Single technique or pattern | Brief, actionable | Problem → Solution → Code → One Gotcha |
 | **Architecture Overview** | System design explanation | Systems-thinking | Context → Design Goals → Component Map → Data Flow → Decisions |
 
-For **5+ products or tools**, use the short visual comparison in `references/comparison_blog.md` instead of the long-form Comparison template. Hard rules: 4–6k Chinese characters, 5–8 tables, one positioning map, a latest-version/unique-advantage table for every product, separate model-strategy and Skill-extension tables, a commonality table, a scenario matrix, no in-body citations, no local-environment framing.
+For **5+ products or tools**, use the short visual comparison in `references/comparison_blog.md` instead of the long-form Comparison template. Hard rules: 5–7k Chinese characters, 5–8 tables, one positioning map, a latest-version/unique-advantage table for every product, separate model-strategy and Skill-extension tables, a commonality table, a scoring rubric with two concrete tasks, no in-body citations, no local-environment framing.
 
 # Writing Quality Framework
 
