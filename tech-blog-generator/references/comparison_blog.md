@@ -11,6 +11,7 @@ The failure mode this replaces: five equal-length product essays, local-environm
 - No in-body citations, footnotes, or "source: ..." text. Keep research notes internal. Add one dated disclaimer at the end: data cutoff, price disclaimer, subjective ratings.
 - Do not open with "I checked my local machine" or a list of config directories. Open with what each product delivers.
 - Every product gets a one-line intro. Do not write five mini-essays.
+- Every product gets a latest-version row and a unique-advantage cell. Never deep-dive only one product; if one gets extra detail, all five get equal treatment.
 - Include company, launch date, latest version or update, user/scale metric, entry price, and model list.
 - If a metric is not public, write "官方未公开" or omit it. Never invent a number to fill a cell.
 
@@ -22,7 +23,7 @@ The failure mode this replaces: five equal-length product essays, local-environm
 4. **Model-strategy table**: platform-routed / single-vendor / multi-model / BYOK / fallback behavior.
 5. **Skill-extension table**: template library / app store / Claude Code-compatible / IDE-integrated / repo-native.
 6. **Commonality table**: MCP, Skills / `SKILL.md`, subagents or experts, cloud execution, local files, enterprise/audit. This answers "what is actually universal?" before the differences.
-7. **One product deep dive**: latest version updates, advantage, why it survives, and the cost of that position. Use a table, not a history essay.
+7. **Latest-version table for every product**: latest version/date, what changed, unique combination, still missing. Follow with one short paragraph on the competitive position of all five.
 8. **Scenario matrix**: office / coding / large refactor / research / enterprise / onboarding. Use stars or 强/中/弱 and label it subjective.
 9. **Decision flow + four combinations + one personal pick.**
 10. **One-line ending + dated disclaimer.**
@@ -51,19 +52,23 @@ Group products by how extensions are packaged:
 | IDE-integrated | Rules + Skills + Commands + Subagents + Hooks + MCP | Large repos, spec-driven teams |
 | Repo-native | `AGENTS.md` + Skills + Plugins + MCP | Terminal-first engineering teams |
 
-## "Why it survives" table
+## Latest-version and competitive-position tables
 
-When the reader asks why a product is still around in a crowded market, answer with a competition table, not a tribute:
+Every product gets the same treatment. Do not deep-dive one product and reduce the other four to a line.
 
-| Competition | Its answer | The cost |
+| Product | Latest version / date | What changed | Unique combination | Still missing |
+|---|---|---|---|---|
+| Product A | | | | |
+| Product B | | | | |
+
+Then a competitive-position table for all five:
+
+| Product | What it relies on | Cost / risk |
 |---|---|---|
-| Stronger coding tool | Compete on whole-project delivery, not code depth | Weak diff review |
-| Stronger office tool | Compete on cross-app orchestration and automation | Weak office ecosystem |
-| Commodity general agent | Cloud project container + always-on computer + event triggers | Unpredictable credits |
-| Model not top-tier | Harness/routing and tool orchestration | Black-box, hard to tune |
-| Funding pressure | Overseas revenue + fresh capital | Home market not launched |
+| Product A | | |
+| Product B | | |
 
-End with one honest sentence: what it is good at, what it is not, and why that position is defensible or not.
+End with one honest sentence about the trade-offs, not a tribute to one product.
 
 ## Visual guidance
 
@@ -76,6 +81,7 @@ End with one honest sentence: what it is good at, what it is not, and why that p
 ## Anti-patterns
 
 - Five equal-length product sections with repeated feature lists.
+- Deep-diving one product while the other four get a single line. Equal treatment is mandatory.
 - Opening with local config paths, `~/.codex`, `~/.workbuddy`, or "I installed all five".
 - Footnotes, source blocks, or "according to ..." in the body.
 - Star ratings without a "subjective, default configuration" label.

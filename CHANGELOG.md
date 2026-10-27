@@ -12,6 +12,8 @@ All notable changes to the public skill set. Each skill has its own section so c
 - English: Split the comparison into four layers: model strategy (platform-routed / single-vendor / multi-model), Skill-extension strategy (template library / app store / Claude Code-compatible / IDE-integrated / repo-native), common capabilities (MCP, Skills, subagents, cloud, local files, enterprise audit) and a scenario matrix. The single-product deep dive keeps only "latest update + advantage + why it survives + cost".
 - 中文：`SKILL.md`、`blog_templates.md`、`README.md` 同步挂入口；5+ 产品场景优先走短图文模板，不再套用长篇对比结构。
 - English: Cross-linked from `SKILL.md`, `blog_templates.md` and `README.md`; 5+ product comparisons now route to the short visual template instead of the long-form structure.
+- 中文：修正：每个产品都必须有“最新版本 + 这一版新增 + 独有组合 + 仍然缺什么”一行；不能只深挖一个产品。`comparison_blog.md`、`SKILL.md`、`blog_templates.md` 与 `yardon-writer` 原型同步修改。
+- English: Correction: every product needs a "latest version + what changed + unique combination + still missing" row; never deep-dive only one product. Updated `comparison_blog.md`, `SKILL.md`, `blog_templates.md` and the `yardon-writer` prototype.
 
 ### yardon-writer 增加短图文对比原型
 
