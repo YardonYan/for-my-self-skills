@@ -16,6 +16,8 @@ All notable changes to the public skill set. Each skill has its own section so c
 - English: Added a deep variant: an eight-dimension moat matrix (work surface, context, distribution, extension, cost, trust, switching cost, capital/brand), an evidence table (strongest / weakest / what would kill it) and a competition map; 8–10k characters and 9–11 tables; the causal-chain, collaboration and moat-decay tables carry the depth.
 - 中文：新增压缩版：7–8 千字、7 张表、3 张图；保留一句话表、最新版本表、护城河矩阵、因果链、模型/Skill、评分标准、任务表；删掉与因果链重复的证据/竞争/新玩家/衰减表，任务表改成每家一行两列。
 - English: Added a compressed variant: 7–8k characters, 7 tables and 3 visuals; keep the one-line, latest-version, moat matrix, causal chain, model/Skill, scoring and task tables; drop the evidence/competition/new-entrant/decay tables that repeat the causal chain, and make the task table product-first with 5 rows.
+- 中文：压缩时先删过渡句和元评论（“这张表说明”“不是拍脑袋”），保留数据口径、术语解释和评分理由。
+- English: In the compression pass, cut transition/meta sentences first ("this table shows", "not made up"); keep data caveats, term definitions and score reasons.
 - 中文：`SKILL.md`、`blog_templates.md`、`README.md` 同步挂入口；5+ 产品场景优先走短图文模板，不再套用长篇对比结构。
 - English: Cross-linked from `SKILL.md`, `blog_templates.md` and `README.md`; 5+ product comparisons now route to the short visual template instead of the long-form structure.
 

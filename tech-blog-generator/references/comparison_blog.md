@@ -110,6 +110,7 @@ When the user asks for depth but a tight read, compress the full deep draft:
 - Make the task table product-first: 5 rows, one office column, one coding column. Do not keep 10 task-first rows.
 - Keep 3 visuals: cover, positioning map, collaboration map.
 - Bold 6–10 conclusions; cut explanatory prose before cutting visuals.
+- Cut transition/meta sentences first ("this table shows", "not made up"); keep data caveats, term definitions and score reasons.
 - Target 7,000–8,000 Chinese characters.
 
 ## Visual guidance
