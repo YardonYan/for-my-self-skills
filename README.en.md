@@ -4,9 +4,9 @@
 
 # Yardon Skills
 
-#### Sixteen Agent Skills I use and maintain in real projects
+#### Seventeen Agent Skills I use and maintain in real projects
 
-[![Skills](https://img.shields.io/badge/Skills-16-10B981?style=flat-square)](#catalog)
+[![Skills](https://img.shields.io/badge/Skills-17-10B981?style=flat-square)](#catalog)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-8B5CF6?style=flat-square)](#compatibility)
 [![License](https://img.shields.io/badge/License-Apache--2.0-D97706?style=flat-square)](#license)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-D97706?style=flat-square&logo=anthropic&logoColor=white)](#compatibility)
@@ -27,7 +27,7 @@ Grouped by where the skill sits in your work, four categories, one skill each. S
 |---|---|---|
 | [Web and Frontend](#web-and-frontend) | Produce interfaces, or fix what is visibly broken in them. Page specs, visual design, mobile sizing, plus rendering-layer debugging for Markdown and SSE. | 4 |
 | [Documents and Delivery](#documents-and-delivery) | Turn content into a file someone else can just open: conversions keep fidelity, decks read clearly, publishing lands intact. | 4 |
-| [Engineering Workflow and Quality](#engineering-workflow-and-quality) | Own how the work gets done and whether it is right. Requirement-to-design flow, review standards, parallel task orchestration, document merge adjudication, and how lessons persist. | 5 |
+| [Engineering Workflow and Quality](#engineering-workflow-and-quality) | Own how the work gets done and whether it is right. Requirement-to-design flow, review standards, parallel task orchestration, document merge adjudication, research and distillation for building skills, and how lessons persist. | 6 |
 | [Writing and Expression](#writing-and-expression) | Turn thinking into something a person reads clearly and a model executes precisely. | 3 |
 
 ## Catalog
@@ -64,6 +64,7 @@ Own how the work gets done and whether it is right. Requirement-to-design flow, 
 | [dev-workflow](./dev-workflow/) | Five-stage development flow with per-stage playbooks and per-language review guides | `dev-workflow` `code-review` `sdlc` | [中文](./dev-workflow/README.md) · [EN](./dev-workflow/README.en.md) |
 | [task-skill-orchestrator](./task-skill-orchestrator/) | Turn a complex request into a dependency-aware DAG and dispatch it in parallel waves to sub-agents | `orchestration` `dag` `multi-agent` | [中文](./task-skill-orchestrator/README.md) · [EN](./task-skill-orchestrator/README.en.md) |
 | [merge-dev-docs](./merge-dev-docs/) | Merge two sets of dev docs by adjudicating conflicts, not summarizing | `documentation` `conflict-matrix` `adr` | [中文](./merge-dev-docs/README.md) · [EN](./merge-dev-docs/README.en.md) |
+| [skill-authoring](./skill-authoring/) | Research and distillation for building skills: six lanes, triple filter, failure fallback table | `skill-authoring` `research` `distillation` `quality-gate` | [中文](./skill-authoring/README.md) · [EN](./skill-authoring/README.en.md) |
 | [self-improving-agent](./self-improving-agent/) | Turn corrections, failures and knowledge gaps into project rules or a new skill | `learnings` `memory` `retrospective` | [中文](./self-improving-agent/README.md) · [EN](./self-improving-agent/README.en.md) |
 
 ### Writing and Expression
@@ -416,6 +417,31 @@ Docs: [中文](./merge-dev-docs/README.md) · [English](./merge-dev-docs/README.
 </details>
 
 <details>
+<summary><b>skill-authoring</b> — Building a skill is not a template problem. It is how clean the research is and how hard the distillation cuts.</summary>
+
+**What it solves:** Two ways to ship a useless skill, neither visible in the finished file. Skewed research: read only the person's own books and you get the version they wanted you to see; read only outside commentary and you get everyone else's version; read only recent activity and a passing remark becomes a lifelong position. Soft distillation: thirty candidates shipped as-is and the reader remembers none, or "think long-term" dressed up as a unique insight. This skill does two things only — cut the research cleanly, distill it hard.
+
+**When to use it:** Turning a person, a topic, or a pile of project docs and issues into a loadable skill; or auditing a third-party skill to decide whether its claims hold up.
+
+**Inside:** Six research lanes with a source-weighting table, the triple filter's pass/fail routing, the three-column failure fallback table, three checkpoints, weak-vs-strong honest boundaries, the difference between a verifiable check and a keyword count, plus a six-question audit for existing skills and eight anti-patterns.
+
+**Boundaries:** No layout, no template filling, and no verdict on whether a claim is true for you — it gives the evidence standard only. Explicitly refuses to source material around copyright or licensing.
+
+**Example prompts:**
+
+```
+Build me a Munger perspective skill, focused on how he judges investments.
+Turn our production validation flow into a Skill — I'll send you the material.
+This Skill claims every example scored A. Check whether that holds up.
+```
+
+**Tags:** `skill-authoring` `research` `distillation` `quality-gate` `evidence`
+
+Docs: [中文](./skill-authoring/README.md) · [English](./skill-authoring/README.en.md)
+
+</details>
+
+<details>
 <summary><b>self-improving-agent</b> — Log every correction, failure and knowledge gap into `.learnings/`; promote the recurring ones into rules.</summary>
 
 **What it solves:** An agent forgets everything between sessions, so the same trap gets hit next week — the lesson lived only in one conversation. This skill turns "remember that" into a structured, searchable, closable action: three ledger files for lessons, failures and missing features, each entry carrying an ID, priority, status and area, related entries linked with `See Also`, and patterns past the threshold compressed into one preventive rule in the project rules file.
@@ -533,6 +559,7 @@ Docs: [中文](./prompt-optimizer/README.md) · [English](./prompt-optimizer/REA
 | dev-workflow | None | Pairs well with code-review |
 | task-skill-orchestrator | OpenClaw `sessions_spawn` + 5 sub-agents | Other platforms need a custom dispatch layer |
 | merge-dev-docs | Node.js >= 20 (scripts only) | Rules and templates work without Node |
+| skill-authoring | None | Reference-only; no scripts, no network tools required |
 | self-improving-agent | None | Needs a writable `.learnings/` in the project |
 | tech-blog-generator | None | Any Agent Skills-compatible tool |
 | yardon-writer | None | Chinese longform writing |
@@ -574,7 +601,7 @@ for-my-self-skills/
 │   ├── assets/               colour themes
 │   └── scripts/              wmp.py (convert / check / push / doctor)
 │
-│   ── Engineering Workflow and Quality (5) ──
+│   ── Engineering Workflow and Quality (6) ──
 ├── code-review/
 ├── dev-workflow/
 │   ├── SKILL.md
@@ -584,6 +611,8 @@ for-my-self-skills/
 │   ├── SKILL.md
 │   ├── assets/               six templates
 │   └── scripts/              claim-index.cjs
+├── skill-authoring/
+│   └── SKILL.md              research lanes, triple filter, fallback table, six-question audit
 ├── self-improving-agent/
 │
 └── Writing and Expression (3)

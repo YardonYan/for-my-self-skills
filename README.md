@@ -4,9 +4,9 @@
 
 # Yardon Skills
 
-#### 16 个在真实项目里用过、整理出来的 Agent Skills
+#### 17 个在真实项目里用过、整理出来的 Agent Skills
 
-[![Skills](https://img.shields.io/badge/Skills-16-10B981?style=flat-square)](#目录)
+[![Skills](https://img.shields.io/badge/Skills-17-10B981?style=flat-square)](#目录)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Standard-8B5CF6?style=flat-square)](#兼容性)
 [![License](https://img.shields.io/badge/License-Apache--2.0-D97706?style=flat-square)](#license)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-compatible-D97706?style=flat-square&logo=anthropic&logoColor=white)](#兼容性)
@@ -27,7 +27,7 @@
 |---|---|---|
 | [网页与前端](#网页与前端) | 产出界面，或修界面上看得见的问题。写页面的规范、视觉与移动端适配，以及 Markdown、SSE 这类渲染层的排错。 | 4 |
 | [文档与交付](#文档与交付) | 把内容变成别人能直接打开的文件：转换要保真，演示要能看懂，发布要落到位。 | 4 |
-| [工程流程与质量](#工程流程与质量) | 管怎么做，也管做得对不对。从需求到设计的流程、代码审查标准、任务并行编排、文档合并裁决，以及经验怎么沉淀下来。 | 5 |
+| [工程流程与质量](#工程流程与质量) | 管怎么做，也管做得对不对。从需求到设计的流程、代码审查标准、任务并行编排、文档合并裁决、造 Skill 的调研与提炼方法，以及经验怎么沉淀下来。 | 6 |
 | [写作与表达](#写作与表达) | 把想法写成别人能准确读懂、模型能准确执行的东西。 | 3 |
 
 ## 目录
@@ -56,7 +56,7 @@
 
 ### 工程流程与质量
 
-管怎么做，也管做得对不对。从需求到设计的流程、代码审查标准、任务并行编排、文档合并裁决，以及经验怎么沉淀下来。
+管怎么做，也管做得对不对。从需求到设计的流程、代码审查标准、任务并行编排、文档合并裁决、造 Skill 的调研与提炼方法，以及经验怎么沉淀下来。
 
 | Skill | 一句话 | 标签 | 文档 |
 |---|---|---|---|
@@ -64,6 +64,7 @@
 | [dev-workflow](./dev-workflow/) | 开发五步法，每步有手册，附各语言审查指南包 | `dev-workflow` `code-review` `sdlc` | [中文](./dev-workflow/README.md) · [EN](./dev-workflow/README.en.md) |
 | [task-skill-orchestrator](./task-skill-orchestrator/) | 把复杂任务拆成依赖 DAG，分波次并行给多个 Sub Agent | `orchestration` `dag` `multi-agent` | [中文](./task-skill-orchestrator/README.md) · [EN](./task-skill-orchestrator/README.en.md) |
 | [merge-dev-docs](./merge-dev-docs/) | 两套开发文档合并：裁决冲突而不是摘要融合 | `documentation` `conflict-matrix` `adr` | [中文](./merge-dev-docs/README.md) · [EN](./merge-dev-docs/README.en.md) |
+| [skill-authoring](./skill-authoring/) | 造 Skill 的调研与提炼：六路调研、三重验证、失败降级表 | `skill-authoring` `research` `distillation` `quality-gate` | [中文](./skill-authoring/README.md) · [EN](./skill-authoring/README.en.md) |
 | [self-improving-agent](./self-improving-agent/) | 把纠正、报错与知识缺口沉淀成项目规则或新 Skill | `learnings` `memory` `retrospective` | [中文](./self-improving-agent/README.md) · [EN](./self-improving-agent/README.en.md) |
 
 ### 写作与表达
@@ -416,6 +417,31 @@ Markdown 里的 Mermaid 不显示，代码块也没有高亮。
 </details>
 
 <details>
+<summary><b>skill-authoring</b> — 造 Skill 的难点不在模板，在调研够不够干净、提炼够不够狠。</summary>
+
+**解决什么**：造 Skill 最容易出两种废品。调研偏了：只看本人著作，得到的是他想让你看的版本；只看外部评价，得到的是别人眼里的他；只看近期动态，把一时表态当成一贯立场。提炼软了：三十条候选全写进去，读者记不住任何一条；把「要长期主义」包装成独特洞察，一戳就破。这个 Skill 只管两件事，把调研切干净，把提炼做狠。
+
+**什么时候用**：要把一个人物、一个主题、一堆项目文档或 issue 整理成可加载的 Skill；或手上已有一份第三方 Skill，要判断它的结论值不值得信。
+
+**内含**：六路调研维度与信源权重表、三重验证的判定与分流规则、失败降级表的三列写法、三处检查点、诚实边界的强弱写法对照、可验证自检与关键词自检的区别，以及评估现成 Skill 的六问清单和反模式八条。
+
+**边界**：不给排版、不给模板套用，也不替你判断某个观点对不对，只给证据标准。明确拒绝绕开版权与授权取材料。
+
+**示例触发**：
+
+```
+帮我做一个芒格的视角 Skill，重点是他怎么看投资决策。
+把我们的生产校验流程整理成一份 Skill，材料我打包给你。
+这个 Skill 说自己全是 A 级，帮我看看这个结论靠不靠谱。
+```
+
+**标签**：`skill-authoring` `research` `distillation` `quality-gate` `evidence`
+
+文档：[中文](./skill-authoring/README.md) · [English](./skill-authoring/README.en.md)
+
+</details>
+
+<details>
 <summary><b>self-improving-agent</b> — 每次纠正、报错、知识缺口都写进 `.learnings/`，反复出现的模式提升成规则。</summary>
 
 **解决什么**：AI 每开一个新会话就失忆一次，同一个坑今天踩完明天还踩，因为教训只留在这次对话里。这个 Skill 把「记录」变成有格式、可检索、有闭环的动作：三个账本文件分管经验、报错与缺失功能，每条带 ID、优先级、状态与领域标签，同类问题用 `See Also` 关联，复发达阈值时压缩成一句预防式规则写进项目规则文件。
@@ -574,7 +600,7 @@ for-my-self-skills/
 │   ├── assets/               主题配色
 │   └── scripts/              wmp.py（convert / check / push / doctor）
 │
-│   ── 工程流程与质量（5）──
+│   ── 工程流程与质量（6）──
 ├── code-review/
 ├── dev-workflow/
 │   ├── SKILL.md
@@ -584,6 +610,8 @@ for-my-self-skills/
 │   ├── SKILL.md
 │   ├── assets/               六份模板
 │   └── scripts/              claim-index.cjs
+├── skill-authoring/
+│   └── SKILL.md              调研维度、三重验证、失败降级表、六问审计
 ├── self-improving-agent/
 │
 └── 写作与表达（3）

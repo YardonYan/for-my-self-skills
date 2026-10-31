@@ -2,6 +2,19 @@
 
 All notable changes to the public skill set. Each skill has its own section so changes stay traceable.
 
+## 2026-10-31
+
+### skill-authoring 新增（第 17 个技能）
+
+- 中文：新增 `skill-authoring`，把造 Skill 的调研与提炼方法独立成技能。核心是三件事：六路调研（原始论述、对话即兴、措辞表达、外部评价、决策行为、时间线近期）、三重验证（跨域复现、生成力、排他性，三关全过才算模型，过一到两关降为启发式，零关丢弃）、失败降级表（触发条件 → 一线修复 → 仍失败兜底三列写法）。
+- English: Added `skill-authoring`, a standalone skill for the research and distillation work behind building a skill. Three core pieces: six research lanes (original writing, conversations, phrasing, external criticism, decisions, timeline), the triple filter (cross-domain recurrence, generative power, exclusivity — all three make a model, one or two degrade to a heuristic, none is discarded), and the three-column failure fallback table (trigger → first-line fix → fallback).
+- 中文：随附两份清单。六问审计用于判断现成 Skill 的可信度与合规性：信息密度、失败降级、结论可溯源、自检可信度、可移植性、合规。反模式八条，含编造原话、常识包装成洞察、只收正面材料、信息不足硬写、关键词统计当自检、路径写死、检查点变阻塞、处理真人材料不提示同意。
+- English: Ships two checklists. A six-question audit for judging an existing skill's credibility and compliance: information density, failure fallbacks, traceable claims, credibility of self-checks, portability, compliance. And eight anti-patterns, including fabricated quotes, common sense dressed as insight, positive-only material, writing past insufficient information, keyword counting passed off as a check, hardcoded paths, checkpoints that block delivery, and handling real people's material without consent.
+- 中文：方法参考 `alchaincyf/nuwa-skill`（MIT）后重写，并改掉三处判断：信源不设绝对行业黑名单，按可追溯性分权重，机构官方渠道可作一手；自检不采用关键词统计，改为必须产出过或不过的事实依据；路径不硬编码单一工具的 skills 目录，按宿主平台约定处理。未复制其原文，来源与差异在技能 README 与 SKILL.md 末尾标出。
+- English: The method was inspired by `alchaincyf/nuwa-skill` (MIT) and then rewritten, with three judgement changes: sources are weighted by traceability instead of an absolute industry blocklist, official channels can count as primary; self-checks must produce a pass-or-fail fact rather than a keyword count; paths follow the host platform instead of hardcoding one tool's skills directory. No original text was copied; the source and the differences are noted at the end of the skill README and SKILL.md.
+- 中文：新增 `skill-authoring/` 四件套（`SKILL.md`、`README.md`、`README.en.md`、`LICENSE`）。根 `README.md` 与 `README.en.md` 的技能数 16 改为 17，工程流程与质量分类 5 改为 6，目录表、Skills 详情区、仓库结构图同步挂入口；英文版依赖表补该技能为无依赖。
+- English: Added the four-file set under `skill-authoring/` (`SKILL.md`, `README.md`, `README.en.md`, `LICENSE`). Root `README.md` and `README.en.md` moved from 16 to 17 skills and from 5 to 6 in the Engineering Workflow and Quality group; the catalog table, the Skills detail section and the repository layout diagram are cross-linked, and the English dependency table lists this skill as dependency-free.
+
 ## 2026-10-28
 
 ### tech-blog-generator 增加多产品短对比模板
