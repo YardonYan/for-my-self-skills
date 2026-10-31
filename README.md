@@ -2,6 +2,8 @@
 
 **中文** · [English](./README.en.md)
 
+<img src="./assets/cover.svg" alt="Yardon Skills 封面：17 个技能分四类，右侧为 17 本书脊示意" width="100%">
+
 # Yardon Skills
 
 #### 17 个在真实项目里用过、整理出来的 Agent Skills
@@ -29,6 +31,12 @@
 | [文档与交付](#文档与交付) | 把内容变成别人能直接打开的文件：转换要保真，演示要能看懂，发布要落到位。 | 4 |
 | [工程流程与质量](#工程流程与质量) | 管怎么做，也管做得对不对。从需求到设计的流程、代码审查标准、任务并行编排、文档合并裁决、造 Skill 的调研与提炼方法，以及经验怎么沉淀下来。 | 6 |
 | [写作与表达](#写作与表达) | 把想法写成别人能准确读懂、模型能准确执行的东西。 | 3 |
+
+<img src="./assets/category-bar.svg" alt="四类构成：网页与前端 4、文档与交付 4、工程流程与质量 6、写作与表达 3" width="100%">
+
+不知道手上这个任务归哪类，先按产出走一遍：
+
+<img src="./assets/flow-choose-skill.svg" alt="选型流程图：从任务类型分出四路，分别指向四类技能与具体技能名" width="100%">
 
 ## 目录
 
@@ -568,11 +576,17 @@ AI 没理解我的意思，帮我把这个需求写清楚。
 
 ## 仓库结构
 
+每个技能都是同一个骨架，四件套齐全才算完成：
+
+<img src="./assets/skill-anatomy.svg" alt="一个 Skill 的四件套：SKILL.md、README.md、README.en.md、LICENSE，references 为可选" width="100%">
+
 ```
 for-my-self-skills/
 ├── README.md                 中文目录（按四类分组）
 ├── README.en.md              English catalog
 ├── CHANGELOG.md              每个 Skill 的变更说明
+├── assets/                   README 配图（SVG 源文件 + 封面 PNG）
+├── tools/gen_assets.py       配图生成脚本，改文案后重跑即可
 │
 │   ── 网页与前端（4）──
 ├── html-skill-effectiveness/

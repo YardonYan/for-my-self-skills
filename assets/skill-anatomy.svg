@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="540" viewBox="0 0 1000 540" role="img" aria-label="Skill 结构图">
+<title>Skill 结构图</title>
+<desc>SKILL.md、README.md、README.en.md、LICENSE 四件套，references 为可选。</desc>
+<rect x="0" y="0" width="1000" height="540" rx="0" fill="#FAFAF7"/>
+<text x="60" y="82" font-family="PingFang SC, Microsoft YaHei, Noto Sans SC, system-ui, sans-serif" font-size="34" font-weight="600" letter-spacing="-0.01em" fill="#1A1916">一个 Skill 的四件套</text>
+<text x="60" y="116" font-family="PingFang SC, Microsoft YaHei, Noto Sans SC, system-ui, sans-serif" font-size="15" fill="#6B6964">目录扁平，每个技能自包含。缺任何一件都不收。</text>
+<line x1="78" y1="186" x2="78" y2="450" stroke="#E4E0D8" stroke-width="2" stroke-linecap="butt"/>
+<circle cx="78" cy="186" r="6" fill="#FAFAF7" stroke="#B45309" stroke-width="2.5"/>
+<text x="108" y="192" font-family="JetBrains Mono, SF Mono, Menlo, Consolas, monospace" font-size="17" font-weight="600" fill="#1A1916">SKILL.md</text>
+<rect x="300" y="175" width="51.0" height="22" rx="4" fill="#B45309" opacity="0.12"/>
+<text x="309" y="190" font-family="PingFang SC, Microsoft YaHei, Noto Sans SC, system-ui, sans-serif" font-size="11" font-weight="500" fill="#B45309">主规则</text>
+<text x="470" y="192" font-family="PingFang SC, Microsoft YaHei, Noto Sans SC, system-ui, sans-serif" font-size="14" fill="#6B6964">触发条件、执行流程、边界、反模式。Agent 的加载入口</text>
+<circle cx="78" cy="252" r="6" fill="#FAFAF7" stroke="#0F766E" stroke-width="2.5"/>
+<text x="108" y="258" font-family="JetBrains Mono, SF Mono, Menlo, Consolas, monospace" font-size="17" font-weight="600" fill="#1A1916">README.md</text>
+<rect x="300" y="241" width="62.0" height="22" rx="4" fill="#0F766E" opacity="0.12"/>
+<text x="309" y="256" font-family="PingFang SC, Microsoft YaHei, Noto Sans SC, system-ui, sans-serif" font-size="11" font-weight="500" fill="#0F766E">中文说明</text>
+<text x="470" y="258" font-family="PingFang SC, Microsoft YaHei, Noto Sans SC, system-ui, sans-serif" font-size="14" fill="#6B6964">解决什么、什么时候用、内含什么、边界在哪</text>
+<circle cx="78" cy="318" r="6" fill="#FAFAF7" stroke="#0F766E" stroke-width="2.5"/>
+<text x="108" y="324" font-family="JetBrains Mono, SF Mono, Menlo, Consolas, monospace" font-size="17" font-weight="600" fill="#1A1916">README.en.md</text>
+<rect x="300" y="307" width="60.4" height="22" rx="4" fill="#0F766E" opacity="0.12"/>
+<text x="309" y="322" font-family="PingFang SC, Microsoft YaHei, Noto Sans SC, system-ui, sans-serif" font-size="11" font-weight="500" fill="#0F766E">English</text>
+<text x="470" y="324" font-family="PingFang SC, Microsoft YaHei, Noto Sans SC, system-ui, sans-serif" font-size="14" fill="#6B6964">与中文版章节一一对应，不是机器翻译腔</text>
+<circle cx="78" cy="384" r="6" fill="#FAFAF7" stroke="#2563EB" stroke-width="2.5"/>
+<text x="108" y="390" font-family="JetBrains Mono, SF Mono, Menlo, Consolas, monospace" font-size="17" font-weight="600" fill="#1A1916">LICENSE</text>
+<rect x="300" y="373" width="40.0" height="22" rx="4" fill="#2563EB" opacity="0.12"/>
+<text x="309" y="388" font-family="PingFang SC, Microsoft YaHei, Noto Sans SC, system-ui, sans-serif" font-size="11" font-weight="500" fill="#2563EB">许可</text>
+<text x="470" y="390" font-family="PingFang SC, Microsoft YaHei, Noto Sans SC, system-ui, sans-serif" font-size="14" fill="#6B6964">与仓库主协议一致，第三方素材在 NOTICE 单独注明</text>
+<circle cx="78" cy="450" r="6" fill="#FAFAF7" stroke="#6D28D9" stroke-width="2.5"/>
+<text x="108" y="456" font-family="JetBrains Mono, SF Mono, Menlo, Consolas, monospace" font-size="17" font-weight="600" fill="#1A1916">references/</text>
+<rect x="300" y="439" width="40.0" height="22" rx="4" fill="#6D28D9" opacity="0.12"/>
+<text x="309" y="454" font-family="PingFang SC, Microsoft YaHei, Noto Sans SC, system-ui, sans-serif" font-size="11" font-weight="500" fill="#6D28D9">可选</text>
+<text x="470" y="456" font-family="PingFang SC, Microsoft YaHei, Noto Sans SC, system-ui, sans-serif" font-size="14" fill="#6B6964">按需加载的细则与模板，不塞进主文件</text>
+<line x1="60" y1="496" x2="940" y2="496" stroke="#E4E0D8" stroke-width="1" stroke-linecap="butt"/>
+<text x="60" y="526" font-family="PingFang SC, Microsoft YaHei, Noto Sans SC, system-ui, sans-serif" font-size="13" fill="#6B6964">复制整个目录就能独立使用：不依赖仓库其他路径，也不依赖网络。</text>
+</svg>

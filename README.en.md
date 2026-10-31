@@ -2,6 +2,8 @@
 
 [中文](./README.md) · **English**
 
+<img src="./assets/cover.svg" alt="Yardon Skills cover: 17 skills in four groups, with 17 book spines on the right" width="100%">
+
 # Yardon Skills
 
 #### Seventeen Agent Skills I use and maintain in real projects
@@ -29,6 +31,12 @@ Grouped by where the skill sits in your work, four categories, one skill each. S
 | [Documents and Delivery](#documents-and-delivery) | Turn content into a file someone else can just open: conversions keep fidelity, decks read clearly, publishing lands intact. | 4 |
 | [Engineering Workflow and Quality](#engineering-workflow-and-quality) | Own how the work gets done and whether it is right. Requirement-to-design flow, review standards, parallel task orchestration, document merge adjudication, research and distillation for building skills, and how lessons persist. | 6 |
 | [Writing and Expression](#writing-and-expression) | Turn thinking into something a person reads clearly and a model executes precisely. | 3 |
+
+<img src="./assets/category-bar.svg" alt="Composition by group: Web and Frontend 4, Documents and Delivery 4, Engineering Workflow and Quality 6, Writing and Expression 3" width="100%">
+
+Not sure which group your task falls into? Walk it by output:
+
+<img src="./assets/flow-choose-skill.svg" alt="Selection flowchart: four paths from task type, each pointing to a group and its skills" width="100%">
 
 ## Catalog
 
@@ -569,11 +577,17 @@ Common tools: Claude Code, Codex, Qoder, Cursor, CodeBuddy, and any Agent Skills
 
 ## Repository layout
 
+Every skill has the same skeleton. All four pieces, or it does not ship:
+
+<img src="./assets/skill-anatomy.svg" alt="A skill's four pieces: SKILL.md, README.md, README.en.md, LICENSE, with references optional" width="100%">
+
 ```
 for-my-self-skills/
 ├── README.md                 Chinese catalog (grouped)
 ├── README.en.md              English catalog (grouped)
 ├── CHANGELOG.md              per-skill change notes
+├── assets/                   README visuals (SVG sources + cover PNG)
+├── tools/gen_assets.py       regenerates the visuals after copy changes
 │
 │   ── Web and Frontend (4) ──
 ├── html-skill-effectiveness/
